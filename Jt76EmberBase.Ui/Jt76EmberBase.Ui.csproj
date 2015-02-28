@@ -269,7 +269,11 @@
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\ionicons.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Jt76EmberBase\app.js" />
+    <Content Include="Jt76EmberBase\application.hbs.js">
+      <DependentUpon>application.hbs</DependentUpon>
+    </Content>
+    <Content Include="Jt76EmberBase\application.js" />
+    <Content Include="Jt76EmberBase\Common\common.js" />
     <Content Include="Jt76EmberBase\Common\components.js" />
     <Content Include="Jt76EmberBase\Common\helpers.js" />
     <Content Include="Jt76EmberBase\Common\partialViews.js" />
@@ -279,6 +283,9 @@
     <Content Include="Jt76EmberBase\Data\dataContext.js" />
     <Content Include="Jt76EmberBase\Data\dataService.js" />
     <Content Include="Jt76EmberBase\Data\models.js" />
+    <Content Include="Jt76EmberBase\index.hbs.js">
+      <DependentUpon>index.hbs</DependentUpon>
+    </Content>
     <Content Include="Jt76EmberBase\Layout\footer.js" />
     <Content Include="Jt76EmberBase\Layout\sidebarMenu.js" />
     <Content Include="Jt76EmberBase\Layout\topNav.js" />
@@ -310,35 +317,30 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
-    <Content Include="Jt76EmberBase\Templates\application.hbs" />
-    <Content Include="Jt76EmberBase\Templates\index.hbs" />
-    <Content Include="Jt76EmberBase\Templates\index.hbs.js">
-      <DependentUpon>index.hbs</DependentUpon>
-    </Content>
-    <Content Include="Jt76EmberBase\Templates\Layout\footer.hbs" />
-    <Content Include="Jt76EmberBase\Templates\Layout\sidebarMenu.hbs" />
-    <Content Include="Jt76EmberBase\Templates\Layout\sidebarMenu.hbs.js">
+    <Content Include="Jt76EmberBase\Layout\footer.hbs" />
+    <Content Include="Jt76EmberBase\Layout\sidebarMenu.hbs" />
+    <Content Include="Jt76EmberBase\Layout\sidebarMenu.hbs.js">
       <DependentUpon>sidebarMenu.hbs</DependentUpon>
     </Content>
-    <Content Include="Jt76EmberBase\Templates\Layout\topNav.hbs" />
-    <Content Include="Jt76EmberBase\Templates\Modules\About\about.hbs.js">
+    <Content Include="Jt76EmberBase\Layout\topNav.hbs" />
+    <Content Include="Jt76EmberBase\Modules\About\about.hbs.js">
       <DependentUpon>about.hbs</DependentUpon>
     </Content>
-    <Content Include="Jt76EmberBase\Templates\Modules\Admin\dashboard.hbs" />
-    <Content Include="Jt76EmberBase\Templates\Modules\Admin\dashboard.hbs.js">
+    <Content Include="Jt76EmberBase\Modules\Admin\dashboard.hbs" />
+    <Content Include="Jt76EmberBase\Modules\Admin\dashboard.hbs.js">
       <DependentUpon>dashboard.hbs</DependentUpon>
     </Content>
-    <Content Include="Jt76EmberBase\Templates\Modules\Admin\errors.hbs.js">
+    <Content Include="Jt76EmberBase\Modules\Admin\errors.hbs.js">
       <DependentUpon>errors.hbs</DependentUpon>
     </Content>
-    <Content Include="Jt76EmberBase\Templates\Modules\Admin\logMessages.hbs.js">
+    <Content Include="Jt76EmberBase\Modules\Admin\logMessages.hbs.js">
       <DependentUpon>logMessages.hbs</DependentUpon>
     </Content>
-    <Content Include="Jt76EmberBase\Templates\Modules\Admin\userAdmin.hbs.js">
+    <Content Include="Jt76EmberBase\Modules\Admin\userAdmin.hbs.js">
       <DependentUpon>userAdmin.hbs</DependentUpon>
     </Content>
-    <Content Include="Jt76EmberBase\Templates\Modules\Contact\contact.hbs" />
-    <Content Include="Jt76EmberBase\Templates\Modules\Dashboard\dashboard.hbs" />
+    <Content Include="Jt76EmberBase\Modules\Contact\contact.hbs" />
+    <Content Include="Jt76EmberBase\Modules\Dashboard\dashboard.hbs" />
     <Content Include="fonts\fontawesome-webfont.eot" />
     <Content Include="fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fontawesome-webfont.woff" />
@@ -353,7 +355,7 @@
     <Content Include="Content\Images\Touch\Thumbs.db" />
     <Content Include="Content\site.less" />
     <Content Include="Content\toastr.less" />
-    <Content Include="Jt76EmberBase\Templates\Modules\Dashboard\dashboard.hbs.js">
+    <Content Include="Jt76EmberBase\Modules\Dashboard\dashboard.hbs.js">
       <DependentUpon>dashboard.hbs</DependentUpon>
     </Content>
     <Content Include="Scripts\bootstrap-datetimepicker.js" />
@@ -430,14 +432,16 @@
     <Content Include="Content\toastr.css.map">
       <DependentUpon>toastr.css</DependentUpon>
     </Content>
-    <Content Include="Jt76EmberBase\Templates\Modules\Projects\projectOne.hbs" />
-    <Content Include="Jt76EmberBase\Templates\Modules\Projects\projectTwo.hbs" />
+    <Content Include="Jt76EmberBase\Modules\Projects\projectOne.hbs" />
+    <Content Include="Jt76EmberBase\Modules\Projects\projectTwo.hbs" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap.css.map" />
-    <Content Include="Jt76EmberBase\Templates\Modules\Admin\errors.hbs" />
-    <Content Include="Jt76EmberBase\Templates\Modules\Admin\userAdmin.hbs" />
-    <Content Include="Jt76EmberBase\Templates\Modules\Admin\logMessages.hbs" />
-    <Content Include="Jt76EmberBase\Templates\Modules\About\about.hbs" />
+    <Content Include="Jt76EmberBase\Modules\Admin\errors.hbs" />
+    <Content Include="Jt76EmberBase\Modules\Admin\userAdmin.hbs" />
+    <Content Include="Jt76EmberBase\Modules\Admin\logMessages.hbs" />
+    <Content Include="Jt76EmberBase\Modules\About\about.hbs" />
+    <Content Include="Jt76EmberBase\application.hbs" />
+    <Content Include="Jt76EmberBase\index.hbs" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\ember-data-1.14.js.map" />
     <Content Include="Views\Home\LockScreen.cshtml" />

@@ -6,7 +6,7 @@
 //:itemProperty if passing an item
 //:[itemname]_id if only doing a find by id (no need to create the route, ember does this)
 Jt76EmberBase.Router.map(function () {
-    this.route("index", { path: "" }, function () {
+    this.route("index", { path: "/" }, function () {
         this.route("dashboard");
         this.route("projects", { path: "Projects/" }, function () {
             this.route("projectOne");
@@ -21,8 +21,6 @@ Jt76EmberBase.Router.map(function () {
             this.route("userAdmin");
         });
     });
-
-
 });
 
 

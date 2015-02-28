@@ -5,7 +5,7 @@
 Jt76EmberBase.IndexAdminErrorsRoute = Ember.Route.extend({
     model: function () {
         return Ember.$.getJSON('/api/v1/errors').then(function (data) {
-            console.log(data);
+            Ember.Logger.log(data);
             return data;
         });
         //return this.store.find('error');

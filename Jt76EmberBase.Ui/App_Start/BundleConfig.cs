@@ -14,7 +14,7 @@ namespace Jt76EmberBase.Ui
             Debug.WriteLine("BundleConfig.RegisterBundles()");
 
             bundles.Add(new Bundle("~/bundles/jt76EmberBase/templates", new HandlebarsTransformer())
-                .IncludeDirectory("~/Jt76EmberBase/Templates", "*.hbs", true)
+                .IncludeDirectory("~/Jt76EmberBase", "*.hbs", true)
             );
 
             //this must be true to get the template bundle handlebars helper creates
@@ -72,11 +72,11 @@ namespace Jt76EmberBase.Ui
 
             //Ember App Directory  
             var appBundle = new ScriptBundle("~/bundles/jt76EmberBase").Include(
-                "~/Jt76EmberBase/app.js",
+                "~/Jt76EmberBase/application.js",
                 "~/Jt76EmberBase/config.js",
                 "~/Jt76EmberBase/config.exceptionHandler.js",
                 "~/Jt76EmberBase/config.route.js"
-                )
+            )
             .IncludeDirectory("~/Jt76EmberBase/Common", "*.js", true)
             .IncludeDirectory("~/Jt76EmberBase/Data", "*.js", true)
             .IncludeDirectory("~/Jt76EmberBase/Layout", "*.js", true)

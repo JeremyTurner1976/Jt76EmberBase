@@ -10,10 +10,11 @@ Jt76EmberBase.IndexDashboardRoute = Ember.Route.extend({
     //    //outlet: "#jt76emberbase-dashboard";
     //}
     model: function() {
-        return Ember.$.getJSON('/api/v1/errors').then(function(data) {
-            console.log(data);
+        return Ember.$.getJSON("/api/v1/errors").then(function(data) {
+            Ember.Logger.info(data);
             return data;
         });
+
         //return this.store.find('error');
         //gets errors from the api properly, but not mapped
 
@@ -22,7 +23,7 @@ Jt76EmberBase.IndexDashboardRoute = Ember.Route.extend({
         //});
 
         //data.findBy("paramName", key);
-}
+    }
 });
 
 Jt76EmberBase.IndexDashboardController = Ember.ObjectController.extend({
