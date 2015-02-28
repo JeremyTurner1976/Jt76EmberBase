@@ -1,17 +1,17 @@
-﻿<aside class="sidebar-menu" >
+﻿<aside class="sidebar-menu">
     <div class="sidebar-inner">
 
         <div class="main-menu">
             <ul class="accordion sidebar-accordion">
                 <li class="bg-palette-bluegreen active">
-                    {{#link-to "dashboard"}}
-                        <span class="menu-content block">
-                            <span class="menu-icon"><i class="block fa fa-cloud fa-lg"></i></span>
-                            <span class="text m-left-sm">Dashboard</span>
-                        </span>
-                        <span class="menu-content-hover block">
-                            Dash
-                        </span>
+                    {{#link-to "index.dashboard"}}
+                    <span class="menu-content block">
+                        <span class="menu-icon"><i class="block fa fa-cloud fa-lg"></i></span>
+                        <span class="text m-left-sm">Dashboard</span>
+                    </span>
+                    <span class="menu-content-hover block">
+                        Dash
+                    </span>
                     {{/link-to}}
                 </li>
 
@@ -27,33 +27,41 @@
                         </span>
                     </a>
                     <ul class="submenu bg-palette-light-green">
-                        <li><a href="#/projects"><span class="submenu-label">Project One</span></a></li>
-                        <li><a href="#/projects"><span class="submenu-label">Project Two</span></a></li>
+                        <li>
+                            {{#link-to "index.projects.projectOne"}}
+                            <span class="submenu-label">Project One</span>
+                            {{/link-to}}
+                        </li>
+                        <li>
+                            {{#link-to "index.projects.projectTwo"}}
+                            <span class="submenu-label">Project Two</span>
+                            {{/link-to}}
+                        </li>
                     </ul>
                 </li>
 
                 <li class="bg-palette-dark-blue">
-                    <a href="#/about">
-                        <span class="menu-content block">
-                            <span class="menu-icon"><i class="block fa fa-star fa-lg"></i></span>
-                            <span class="text m-left-sm">About</span>
-                        </span>
-                        <span class="menu-content-hover block">
-                            About
-                        </span>
-                    </a>
+                    {{#link-to "index.about"}}
+                    <span class="menu-content block">
+                        <span class="menu-icon"><i class="block fa fa-star fa-lg"></i></span>
+                        <span class="text m-left-sm">About</span>
+                    </span>
+                    <span class="menu-content-hover block">
+                        About
+                    </span>
+                    {{/link-to}}
                 </li>
 
                 <li class="bg-palette-light-blue">
-                    <a href="#/contact">
-                        <span class="menu-content block">
-                            <span class="menu-icon"><i class="block fa fa-envelope fa-lg"></i></span>
-                            <span class="text m-left-sm">Contact</span>
-                        </span>
-                        <span class="menu-content-hover block">
-                            Contact
-                        </span>
-                    </a>
+                    {{#link-to "index.contact"}}
+                    <span class="menu-content block">
+                        <span class="menu-icon"><i class="block fa fa-envelope fa-lg"></i></span>
+                        <span class="text m-left-sm">Contact</span>
+                    </span>
+                    <span class="menu-content-hover block">
+                        Contact
+                    </span>
+                    {{/link-to}}
                 </li>
 
 
@@ -70,27 +78,27 @@
                     </a>
                     <ul class="submenu bg-palette4">
                         <li>
-                            <a href="#/admin/dashboard">
-                                Dashboard
-                            </a>
+                            {{#link-to "index.admin.dashboard"}}
+                            Dashboard
+                            {{/link-to}}
                         </li>
                         <li>
-                            <a href="#/admin/errors">
-                                <span class="badge badge-warning m-right-xs">{{vm.errorsCount}}</span>
-                                Errors
-                            </a>
+                            {{#link-to "index.admin.errors"}}
+                            <span class="badge badge-warning m-right-xs">{{vm.errorsCount}}</span>
+                            Errors
+                            {{/link-to}}
                         </li>
                         <li>
-                            <a href="#/admin/logMessages">
-                                <span class="badge badge-info m-right-xs">{{vm.logMessagesCount}}</span>
-                                Log Messages
-                            </a>
+                            {{#link-to "index.admin.logMessages"}}
+                            <span class="badge badge-info m-right-xs">{{vm.logMessagesCount}}</span>
+                            Log Messages
+                            {{/link-to}}
                         </li>
                         <li>
-                            <a href="#/admin/userAdmin">
-                                <span class="badge badge-success m-right-xs">{{vm.usersCount}}</span>
-                                User Admin
-                            </a>
+                            {{#link-to "index.admin.userAdmin"}}
+                            <span class="badge badge-success m-right-xs">{{vm.usersCount}}</span>
+                            User Admin
+                            {{/link-to}}
                         </li>
                     </ul>
                 </li>

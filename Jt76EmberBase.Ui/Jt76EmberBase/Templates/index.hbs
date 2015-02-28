@@ -2,7 +2,15 @@
 
     {{view "topNav"}}
     {{view "sidebarMenu"}}
-    {{view "mainContainer"}}
+
+    <div class="main-container jt76-content-placeholder">
+        <div class="padding-md">
+            <div class="row">
+                {{outlet}}
+            </div>
+        </div>
+    </div>
+
     {{view "footer"}}
 
 </div>

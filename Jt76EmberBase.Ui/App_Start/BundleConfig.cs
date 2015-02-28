@@ -1,6 +1,8 @@
 ﻿using System.Diagnostics;
+using System.Linq;
 using System.Web.Optimization;
 using HandlebarsHelper;
+using Microsoft.Ajax.Utilities;
 
 namespace Jt76EmberBase.Ui
 {
@@ -68,17 +70,22 @@ namespace Jt76EmberBase.Ui
                 "~/Scripts/ui-bootstrap-tpls-0.10.0.js" //pagination
             ));
 
-            //Angular App Directory 
-            bundles.Add(new ScriptBundle("~/bundles/jt76EmberBase").Include(
+            //Ember App Directory  
+            var appBundle = new ScriptBundle("~/bundles/jt76EmberBase").Include(
                 "~/Jt76EmberBase/app.js",
                 "~/Jt76EmberBase/config.js",
                 "~/Jt76EmberBase/config.exceptionHandler.js",
                 "~/Jt76EmberBase/config.route.js"
-            )
+                )
             .IncludeDirectory("~/Jt76EmberBase/Common", "*.js", true)
             .IncludeDirectory("~/Jt76EmberBase/Data", "*.js", true)
             .IncludeDirectory("~/Jt76EmberBase/Layout", "*.js", true)
-            .IncludeDirectory("~/Jt76EmberBase/Modules", "*.js", true));
+            .IncludeDirectory("~/Jt76EmberBase/Modules", "*.js", true);
+            #if DEBUG
+            //remove minification on this bundle in debug
+            appBundle.Transforms.Clear();
+            #endif
+            bundles.Add(appBundle);
         }
     }
 }

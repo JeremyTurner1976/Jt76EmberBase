@@ -1,4 +1,3 @@
-﻿Jt76EmberBase.ContactView = Ember.View.extend({
-    rootElement: "#jt76emberbase-contact",
+﻿Jt76EmberBase.IndexContactView = Ember.View.extend({
     templateName: "Modules/Contact/contact"
 });

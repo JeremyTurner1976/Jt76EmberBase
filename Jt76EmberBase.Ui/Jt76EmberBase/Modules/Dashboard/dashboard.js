@@ -1,23 +1,31 @@
-﻿Jt76EmberBase.DashboardView = Ember.View.extend({
-    rootElement: "#jt76emberbase-dashboard",
+﻿Jt76EmberBase.IndexDashboardView = Ember.View.extend({
     templateName: "Modules/Dashboard/dashboard"
 });
 
-Jt76EmberBase.DashboardRoute = Ember.Route.extend({
+Jt76EmberBase.IndexDashboardRoute = Ember.Route.extend({
     //setupController: function (controller) {
     //    controller.loadDashboard();
     //}
-});
-
-Jt76EmberBase.DashboardController = Ember.ObjectController.extend({
-    model: function () {
-        return Ember.$.get('/api/v1/errors').then(function(data) {
-            //here is where you would convert your xml to a JS object
-            console.log(data); //can return an actual html error page
+    //renderTemplate: function() {
+    //    //outlet: "#jt76emberbase-dashboard";
+    //}
+    model: function() {
+        return Ember.$.getJSON('/api/v1/errors').then(function(data) {
+            console.log(data);
             return data;
         });
-    }.property('model'),
+        //return this.store.find('error');
+        //gets errors from the api properly, but not mapped
 
+        //ember array helpers
+        //data.forEach(function(item){
+        //});
+
+        //data.findBy("paramName", key);
+}
+});
+
+Jt76EmberBase.IndexDashboardController = Ember.ObjectController.extend({
     actions: {
         refresh: function () {
             this.loadDashboard();

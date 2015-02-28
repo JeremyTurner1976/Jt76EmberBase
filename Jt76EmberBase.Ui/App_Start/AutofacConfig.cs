@@ -41,13 +41,15 @@ namespace Jt76EmberBase.Ui
 
             builder.RegisterType<UiService>().AsSelf().As<IUiService>().PropertiesAutowired();
 
-            //// Register your Web API controllers
+            // Register your MVC controllers
             builder.RegisterControllers(typeof(ErrorsController).Assembly);
-            builder.RegisterControllers(typeof(AutofacConfig).Assembly);
-            builder.RegisterApiControllers(typeof(ErrorsApiController).Assembly);
-            builder.RegisterApiControllers(typeof(AutofacConfig).Assembly);
+            builder.RegisterControllers(typeof(HomeController).Assembly);
 
-            //// OPTIONAL: Register the Autofac filter provider.
+            // Register your Web API controllers
+            builder.RegisterApiControllers(typeof(ErrorsApiController).Assembly);
+            builder.RegisterApiControllers(typeof(LogMessagesApiController).Assembly);
+
+            // OPTIONAL: Register the Autofac filter provider.
             builder.RegisterWebApiFilterProvider(GlobalConfiguration.Configuration);
 
             // Set the dependency resolver to be Autofac.

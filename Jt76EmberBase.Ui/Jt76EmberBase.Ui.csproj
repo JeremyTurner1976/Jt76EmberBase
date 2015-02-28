@@ -181,7 +181,6 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
-    <Compile Include="Controllers\Api\EmailController.cs" />
     <Compile Include="Controllers\Api\ErrorsApiController.cs" />
     <Compile Include="Controllers\Api\LogMessagesApiController.cs" />
     <Compile Include="Controllers\ErrorsController.cs" />
@@ -281,14 +280,17 @@
     <Content Include="Jt76EmberBase\Data\dataService.js" />
     <Content Include="Jt76EmberBase\Data\models.js" />
     <Content Include="Jt76EmberBase\Layout\footer.js" />
-    <Content Include="Jt76EmberBase\Layout\mainContainer.js" />
     <Content Include="Jt76EmberBase\Layout\sidebarMenu.js" />
     <Content Include="Jt76EmberBase\Layout\topNav.js" />
-    <Content Include="Jt76EmberBase\Modules\Admin\admin.js" />
+    <Content Include="Jt76EmberBase\Modules\About\about.js" />
+    <Content Include="Jt76EmberBase\Modules\Admin\dashboard.js" />
+    <Content Include="Jt76EmberBase\Modules\Admin\errors.js" />
+    <Content Include="Jt76EmberBase\Modules\Admin\logMessages.js" />
+    <Content Include="Jt76EmberBase\Modules\Admin\userAdmin.js" />
     <Content Include="Jt76EmberBase\Modules\Contact\contact.js" />
     <Content Include="Jt76EmberBase\Modules\Dashboard\dashboard.js" />
-    <Content Include="Jt76EmberBase\Modules\Project\projectOne.js" />
-    <Content Include="Jt76EmberBase\Modules\Project\projectTwo.js" />
+    <Content Include="Jt76EmberBase\Modules\Projects\projectOne.js" />
+    <Content Include="Jt76EmberBase\Modules\Projects\projectTwo.js" />
     <Content Include="Areas\HelpPage\Views\Web.config" />
     <Content Include="Areas\HelpPage\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\ResourceModel.cshtml" />
@@ -310,11 +312,31 @@
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
     <Content Include="Jt76EmberBase\Templates\application.hbs" />
     <Content Include="Jt76EmberBase\Templates\index.hbs" />
+    <Content Include="Jt76EmberBase\Templates\index.hbs.js">
+      <DependentUpon>index.hbs</DependentUpon>
+    </Content>
     <Content Include="Jt76EmberBase\Templates\Layout\footer.hbs" />
-    <Content Include="Jt76EmberBase\Templates\Layout\mainContainer.hbs" />
     <Content Include="Jt76EmberBase\Templates\Layout\sidebarMenu.hbs" />
+    <Content Include="Jt76EmberBase\Templates\Layout\sidebarMenu.hbs.js">
+      <DependentUpon>sidebarMenu.hbs</DependentUpon>
+    </Content>
     <Content Include="Jt76EmberBase\Templates\Layout\topNav.hbs" />
-    <Content Include="Jt76EmberBase\Templates\Modules\Admin\admin.hbs" />
+    <Content Include="Jt76EmberBase\Templates\Modules\About\about.hbs.js">
+      <DependentUpon>about.hbs</DependentUpon>
+    </Content>
+    <Content Include="Jt76EmberBase\Templates\Modules\Admin\dashboard.hbs" />
+    <Content Include="Jt76EmberBase\Templates\Modules\Admin\dashboard.hbs.js">
+      <DependentUpon>dashboard.hbs</DependentUpon>
+    </Content>
+    <Content Include="Jt76EmberBase\Templates\Modules\Admin\errors.hbs.js">
+      <DependentUpon>errors.hbs</DependentUpon>
+    </Content>
+    <Content Include="Jt76EmberBase\Templates\Modules\Admin\logMessages.hbs.js">
+      <DependentUpon>logMessages.hbs</DependentUpon>
+    </Content>
+    <Content Include="Jt76EmberBase\Templates\Modules\Admin\userAdmin.hbs.js">
+      <DependentUpon>userAdmin.hbs</DependentUpon>
+    </Content>
     <Content Include="Jt76EmberBase\Templates\Modules\Contact\contact.hbs" />
     <Content Include="Jt76EmberBase\Templates\Modules\Dashboard\dashboard.hbs" />
     <Content Include="fonts\fontawesome-webfont.eot" />
@@ -331,10 +353,12 @@
     <Content Include="Content\Images\Touch\Thumbs.db" />
     <Content Include="Content\site.less" />
     <Content Include="Content\toastr.less" />
+    <Content Include="Jt76EmberBase\Templates\Modules\Dashboard\dashboard.hbs.js">
+      <DependentUpon>dashboard.hbs</DependentUpon>
+    </Content>
     <Content Include="Scripts\bootstrap-datetimepicker.js" />
     <Content Include="Scripts\bootstrap-slider.js" />
     <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\dataTables.bootstrap.js" />
     <Content Include="Scripts\datepicker.js" />
     <Content Include="Scripts\dropzone.js" />
@@ -406,8 +430,14 @@
     <Content Include="Content\toastr.css.map">
       <DependentUpon>toastr.css</DependentUpon>
     </Content>
-    <Content Include="Jt76EmberBase\Templates\Modules\Project\projectOne.hbs" />
-    <Content Include="Jt76EmberBase\Templates\Modules\Project\projectTwo.hbs" />
+    <Content Include="Jt76EmberBase\Templates\Modules\Projects\projectOne.hbs" />
+    <Content Include="Jt76EmberBase\Templates\Modules\Projects\projectTwo.hbs" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Jt76EmberBase\Templates\Modules\Admin\errors.hbs" />
+    <Content Include="Jt76EmberBase\Templates\Modules\Admin\userAdmin.hbs" />
+    <Content Include="Jt76EmberBase\Templates\Modules\Admin\logMessages.hbs" />
+    <Content Include="Jt76EmberBase\Templates\Modules\About\about.hbs" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\ember-data-1.14.js.map" />
     <Content Include="Views\Home\LockScreen.cshtml" />
@@ -430,7 +460,9 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>58259</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:58259/</IISUrl>
+          <IISUrl>http://localhost:58259</IISUrl>
+          <OverrideIISAppRootUrl>True</OverrideIISAppRootUrl>
+          <IISAppRootUrl>http://localhost:58259</IISAppRootUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

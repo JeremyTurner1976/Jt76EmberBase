@@ -1,16 +1,30 @@
 ﻿//ROUTES
-//Router Map
+//Router Map - 
+//use routes for adjectives, verbs, adverbs (Controller based properties)
+//use resources for Nouns (Route setting model properties)
 //:variablename if passing a primitive
 //:itemProperty if passing an item
 //:[itemname]_id if only doing a find by id (no need to create the route, ember does this)
 Jt76EmberBase.Router.map(function () {
-    this.resource("dashboard");
-    this.resource("project", { path: "Project/" }, function (){
-        this.resource("projectOne");
-        this.resource("projectTwo");
+    this.route("index", { path: "" }, function () {
+        this.route("dashboard");
+        this.route("projects", { path: "Projects/" }, function () {
+            this.route("projectOne");
+            this.route("projectTwo");
+        });
+        this.route("contact");
+        this.route("about");
+        this.route("admin", { path: "Admin/" }, function () {
+            this.route("dashboard");
+            this.route("errors");
+            this.route("logMessages");
+            this.route("userAdmin");
+        });
     });
-    this.resource("contact");
-    this.resource("admin");
+
+
 });
+
+
 
 
