@@ -4,18 +4,7 @@
 
 Jt76EmberBase.IndexAdminUserAdminRoute = Ember.Route.extend({
     model: function () {
-        return Ember.$.getJSON('/api/v1/errors').then(function (data) {
-            Ember.Logger.log(data);
-            return data;
-        });
-        //return this.store.find('error');
-        //gets errors from the api properly, but not mapped
 
-        //ember array helpers
-        //data.forEach(function(item){
-        //});
-
-        //data.findBy("paramName", key);
     }
 });
 

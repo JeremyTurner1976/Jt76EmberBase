@@ -5,17 +5,17 @@
 Jt76EmberBase.IndexDashboardRoute = Ember.Route.extend({
     //setupController: function (controller) {
     //    controller.loadDashboard();
-    //}
-    //renderTemplate: function() {
-    //    //outlet: "#jt76emberbase-dashboard";
-    //}
+    //},
+    //renderTemplate: function () {
+    //    this.render({ outlet: "main" });
+    //},
     model: function() {
         return Ember.$.getJSON("/api/v1/weatherService").then(function(data) {
             Ember.Logger.info(data);
             return data;
         });
 
-        //return this.store.find('error');
+        //return this.store.findAll('error');
         //gets errors from the api properly, but not mapped
 
         //ember array helpers

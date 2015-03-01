@@ -1,4 +1,6 @@
-﻿<p>TEST ADMIN LOG MESSAGES</p>
+﻿{{outlet}}
+<hr />
+<p>TEST ADMIN LOG MESSAGES</p>
 {{#each item in model}}
-{{item.strLogMessage}}<br />
+{{#link-to "index.admin.logMessages.logMessage" item}}{{item.strLogMessage}}{{/link-to}}<br /><br />
 {{/each}}

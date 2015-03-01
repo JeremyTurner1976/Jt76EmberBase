@@ -75,7 +75,8 @@ namespace Jt76EmberBase.Ui
                 "~/Jt76EmberBase/application.js",
                 "~/Jt76EmberBase/config.js",
                 "~/Jt76EmberBase/config.exceptionHandler.js",
-                "~/Jt76EmberBase/config.route.js"
+                "~/Jt76EmberBase/config.route.js",
+                "~/Jt76EmberBase/Data/models.js"
             )
             .IncludeDirectory("~/Jt76EmberBase/Common", "*.js", true)
             .IncludeDirectory("~/Jt76EmberBase/Data", "*.js", true)

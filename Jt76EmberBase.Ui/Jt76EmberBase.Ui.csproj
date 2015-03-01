@@ -285,6 +285,7 @@
     <Content Include="Jt76EmberBase\config.js" />
     <Content Include="Jt76EmberBase\config.route.js" />
     <Content Include="Jt76EmberBase\Data\dataContext.js" />
+    <Content Include="Jt76EmberBase\Data\dataFixtures.js" />
     <Content Include="Jt76EmberBase\Data\dataService.js" />
     <Content Include="Jt76EmberBase\Data\models.js" />
     <Content Include="Jt76EmberBase\index.hbs.js">
@@ -300,7 +301,18 @@
     </Content>
     <Content Include="Jt76EmberBase\Layout\topNav.js" />
     <Content Include="Jt76EmberBase\Modules\About\about.js" />
+    <Content Include="Jt76EmberBase\Modules\Admin\customError.hbs.js">
+      <DependentUpon>customError.hbs</DependentUpon>
+    </Content>
     <Content Include="Jt76EmberBase\Modules\Admin\dashboard.js" />
+    <Content Include="Jt76EmberBase\Modules\Admin\logMessage.hbs.js">
+      <DependentUpon>logMessage.hbs</DependentUpon>
+    </Content>
+    <Content Include="Jt76EmberBase\Modules\Admin\logMessage.js" />
+    <Content Include="Jt76EmberBase\Modules\Admin\error.hbs.js">
+      <DependentUpon>customError.hbs</DependentUpon>
+    </Content>
+    <Content Include="Jt76EmberBase\Modules\Admin\customError.js" />
     <Content Include="Jt76EmberBase\Modules\Admin\errors.js" />
     <Content Include="Jt76EmberBase\Modules\Admin\logMessages.js" />
     <Content Include="Jt76EmberBase\Modules\Admin\userAdmin.js" />
@@ -461,6 +473,8 @@
     <Content Include="Jt76EmberBase\Modules\About\about.hbs" />
     <Content Include="Jt76EmberBase\application.hbs" />
     <Content Include="Jt76EmberBase\index.hbs" />
+    <Content Include="Jt76EmberBase\Modules\Admin\customError.hbs" />
+    <Content Include="Jt76EmberBase\Modules\Admin\logMessage.hbs" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\ember-data-1.14.js.map" />
     <Content Include="Views\Home\LockScreen.cshtml" />

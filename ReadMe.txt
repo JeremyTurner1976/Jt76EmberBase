@@ -2,6 +2,9 @@ Note: If handlebars are changed the matching HandleBarsHelper nuget package must
 
 http://Jt76EmberBase/Help will load the web api help area (VS Template item)
 
+Animated routes
+https://github.com/billysbilling/ember-animated-outlet
+
 jsbin - awesome place to get a quick page running
 cdnjs - has downloadable scripts
 ember - official page has a starter kit
