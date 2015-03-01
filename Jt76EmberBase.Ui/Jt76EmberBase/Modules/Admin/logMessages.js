@@ -4,7 +4,7 @@
 
 Jt76EmberBase.IndexAdminLogMessagesRoute = Ember.Route.extend({
     model: function () {
-        return Ember.$.getJSON('/api/v1/errors').then(function (data) {
+        return Ember.$.getJSON('/api/v1/logMessages').then(function (data) {
             Ember.Logger.log(data);
             return data;
         });

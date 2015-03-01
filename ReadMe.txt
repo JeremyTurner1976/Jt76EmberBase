@@ -1,12 +1,14 @@
 Note: If handlebars are changed the matching HandleBarsHelper nuget package must be installed
 
+http://Jt76EmberBase/Help will load the web api help area (VS Template item)
+
 jsbin - awesome place to get a quick page running
 cdnjs - has downloadable scripts
 ember - official page has a starter kit
 
 {{}} always looks first in the controller, then in the model
 
-bind-attr src="src" for most other non specified helpers
+{{bind-attr src="src" alt="title"}} for most other native html elements
 class inside of helpers - :class means always  variable:truthy:falsy  or variable:falsy
 tagName="li" inside of helpers - link-to as a <li>, etc
 

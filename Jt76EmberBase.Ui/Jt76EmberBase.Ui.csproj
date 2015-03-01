@@ -63,6 +63,9 @@
     <Reference Include="EntityFramework.SqlServer">
       <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Forecast.io.45">
+      <HintPath>..\packages\Forecast.io.1.0.8\lib\net45\Forecast.io.45.dll</HintPath>
+    </Reference>
     <Reference Include="HandlebarsHelper">
       <HintPath>..\packages\HandlebarsHelper.2.0.5\lib\net451\HandlebarsHelper.dll</HintPath>
     </Reference>
@@ -183,6 +186,7 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\Api\ErrorsApiController.cs" />
     <Compile Include="Controllers\Api\LogMessagesApiController.cs" />
+    <Compile Include="Controllers\Api\WeatherServiceApiController.cs" />
     <Compile Include="Controllers\ErrorsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -286,17 +290,32 @@
     <Content Include="Jt76EmberBase\index.hbs.js">
       <DependentUpon>index.hbs</DependentUpon>
     </Content>
+    <Content Include="Jt76EmberBase\Layout\footer.hbs.js">
+      <DependentUpon>footer.hbs</DependentUpon>
+    </Content>
     <Content Include="Jt76EmberBase\Layout\footer.js" />
     <Content Include="Jt76EmberBase\Layout\sidebarMenu.js" />
+    <Content Include="Jt76EmberBase\Layout\topNav.hbs.js">
+      <DependentUpon>topNav.hbs</DependentUpon>
+    </Content>
     <Content Include="Jt76EmberBase\Layout\topNav.js" />
     <Content Include="Jt76EmberBase\Modules\About\about.js" />
     <Content Include="Jt76EmberBase\Modules\Admin\dashboard.js" />
     <Content Include="Jt76EmberBase\Modules\Admin\errors.js" />
     <Content Include="Jt76EmberBase\Modules\Admin\logMessages.js" />
     <Content Include="Jt76EmberBase\Modules\Admin\userAdmin.js" />
+    <Content Include="Jt76EmberBase\Modules\Contact\contact.hbs.js">
+      <DependentUpon>contact.hbs</DependentUpon>
+    </Content>
     <Content Include="Jt76EmberBase\Modules\Contact\contact.js" />
     <Content Include="Jt76EmberBase\Modules\Dashboard\dashboard.js" />
+    <Content Include="Jt76EmberBase\Modules\Projects\projectOne.hbs.js">
+      <DependentUpon>projectOne.hbs</DependentUpon>
+    </Content>
     <Content Include="Jt76EmberBase\Modules\Projects\projectOne.js" />
+    <Content Include="Jt76EmberBase\Modules\Projects\projectTwo.hbs.js">
+      <DependentUpon>projectTwo.hbs</DependentUpon>
+    </Content>
     <Content Include="Jt76EmberBase\Modules\Projects\projectTwo.js" />
     <Content Include="Areas\HelpPage\Views\Web.config" />
     <Content Include="Areas\HelpPage\Views\Shared\_Layout.cshtml" />

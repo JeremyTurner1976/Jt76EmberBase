@@ -71,6 +71,9 @@ select.ng-invalid,
 textarea.ng-invalid {
   border: 1px solid #bd362f;
 }
+a {
+  cursor: pointer;
+}
 /*#region Angular ng-show dissolve animation */
 .dissolve-animation.ng-hide-remove {
   display: inline!important;

@@ -1,3 +1,9 @@
+body, 
+.body, 
+#body.help-page{
+    padding:10px !important;
+}
+
 .help-page h1,
 .help-page .h1,
 .help-page h2,

@@ -10,7 +10,7 @@ Jt76EmberBase.IndexDashboardRoute = Ember.Route.extend({
     //    //outlet: "#jt76emberbase-dashboard";
     //}
     model: function() {
-        return Ember.$.getJSON("/api/v1/errors").then(function(data) {
+        return Ember.$.getJSON("/api/v1/weatherService").then(function(data) {
             Ember.Logger.info(data);
             return data;
         });

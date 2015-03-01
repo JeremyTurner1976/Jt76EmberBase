@@ -46,28 +46,25 @@ namespace Jt76EmberBase.Ui
 
             config.Formatters.JsonFormatter.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
 
-            //config.MapHttpAttributeRoutes();
+            config.MapHttpAttributeRoutes();
 
-            config.Routes.MapHttpRoute("ErrorsRoute", "api/v1/errors/{id}",
-                new { controller = "ErrorsApi", id = RouteParameter.Optional }
-            );
+            //config.Routes.MapHttpRoute("ErrorsRoute", "api/v1/errors/{id}",
+            //    new { controller = "ErrorsApi", id = RouteParameter.Optional }
+            //);
 
-            config.Routes.MapHttpRoute("LogMessagesRoute", "api/v1/logMessages/{id}",
-                new { controller = "LogMessagesApi", id = RouteParameter.Optional }
-            );
+            //config.Routes.MapHttpRoute("LogMessagesRoute", "api/v1/logMessages/{id}",
+            //    new { controller = "LogMessagesApi", id = RouteParameter.Optional }
+            //);
 
-            config.Routes.MapHttpRoute(
-                name: "DefaultApi",
-                routeTemplate: "api/v1/{controller}/{id}",
-                defaults: new { id = RouteParameter.Optional }
-            );
+            //config.Routes.MapHttpRoute("WeatherServiceRoute", "api/v1/weatherService/{id}",
+            //     new { controller = "WeatherServiceApi", id = RouteParameter.Optional }
+            //);
 
-            ////a hack for Chrome because Chrome wants XML over JSON ... which is weird
-            //var appXmlType = config.Formatters.XmlFormatter.SupportedMediaTypes.FirstOrDefault(t => t.MediaType == "application/xml");
-            //config.Formatters.XmlFormatter.SupportedMediaTypes.Remove(appXmlType);
-
-            ////ignore hacky loops in our objects
-            //config.Formatters.JsonFormatter.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+            //config.Routes.MapHttpRoute(
+            //    name: "DefaultApi",
+            //    routeTemplate: "api/v1/{controller}/{id}",
+            //    defaults: new { id = RouteParameter.Optional }
+            //);
         }
     }
 }

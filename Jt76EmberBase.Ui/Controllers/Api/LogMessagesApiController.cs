@@ -24,6 +24,7 @@ namespace Jt76EmberBase.Ui.Controllers.Api
         }
 
         //map verbs
+        [Route("api/v1/logMessages")]
         public IEnumerable<LogMessage> Get()
         {
             Debug.WriteLine(GetType().FullName + "." + MethodBase.GetCurrentMethod().Name);
@@ -40,6 +41,7 @@ namespace Jt76EmberBase.Ui.Controllers.Api
             return logMessages;
         }
 
+        [Route("api/v1/logMessages")]
         public HttpResponseMessage Post([FromBody] LogMessage newLogMessage)
         {
             Debug.WriteLine(GetType().FullName + "." + MethodBase.GetCurrentMethod().Name);

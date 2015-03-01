@@ -1,0 +1,3 @@
+﻿var footer = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
+  return "﻿<footer class=\"footer\">\r\n    <span class=\"footer-brand\">\r\n        <strong class=\"text-danger\">Jt76</strong> Base\r\n    </span>\r\n    <p class=\"no-margin\">\r\n        &copy; 2015 <strong>Jt76 Base</strong>. ALL Rights Reserved.\r\n    </p>\r\n</footer>";
+  },"useData":true});
