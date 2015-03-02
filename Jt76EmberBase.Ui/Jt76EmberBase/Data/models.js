@@ -3,6 +3,8 @@
 //    error: DS.attr("string")
 //});
 
+//DS.attr("number")
+
 Jt76EmberBase.Error = DS.Model.extend({
     strMessage: DS.attr("string"),
     strSource: DS.attr("string"),

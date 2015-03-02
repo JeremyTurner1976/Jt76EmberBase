@@ -11,7 +11,7 @@ Jt76EmberBase.IndexAdminLogMessagesLogMessageRoute = Ember.Route.extend({
         //    return data;
         //});
         //console.log("AT LOG MESSAGE");
-        //return this.store.findBy("id", params.id);
+        //return this.store.find("logMessage", params.id);
         //works great using the fixture adapter
         //gets errors from the api properly using RESTAdapter, but not mapped
     }

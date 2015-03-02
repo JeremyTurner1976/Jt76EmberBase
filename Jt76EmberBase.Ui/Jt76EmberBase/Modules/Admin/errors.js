@@ -4,12 +4,12 @@
 
 Jt76EmberBase.IndexAdminErrorsRoute = Ember.Route.extend({
     model: function () {
-        return Ember.$.getJSON('/api/v1/errors').then(function (data) {
-            Ember.Logger.log(data);
-            return data;
-        });
+        //return Ember.$.getJSON('/api/v1/errors').then(function (data) {
+        //    Ember.Logger.log(data);
+        //    return data;
+        //});
 
-        //return this.store.findAll("error");
+        return this.store.findAll("error");
         //works great using the fixture adapter
         //gets errors from the api properly using RESTAdapter, but not mapped
     }
