@@ -5,13 +5,12 @@
 Jt76EmberBase.IndexAdminLogMessagesRoute = Ember.Route.extend({
     model: function () {
         //return Ember.$.getJSON('/api/v1/logMessages').then(function (data) {
-        //    Ember.Logger.log(data);
+        //    Ember.Logger.info(data);
         //    return data;
         //});
-
-        return this.store.find("logMessage");
-        //works great using the fixture adapter
-        //gets errors from the api properly using RESTAdapter, but not mapped
+        var data = this.store.find("logMessage");
+        Ember.Logger.info(data);
+        return data;
     }
 });
 

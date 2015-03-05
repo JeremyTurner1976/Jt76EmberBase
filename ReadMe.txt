@@ -17,3 +17,9 @@ tagName="li" inside of helpers - link-to as a <li>, etc
 
 //If the resource has a path with title, sending this will automatically choose title for url param. No need to send this.title specifically
 {{#link-to 'product' this tagName='button' classNames='btn btn-success'}}Buy for ${{price}}{{/link-to}}
+
+
+//ember array helpers
+data.forEach(function(item){
+});
+data.findBy("paramName", key);

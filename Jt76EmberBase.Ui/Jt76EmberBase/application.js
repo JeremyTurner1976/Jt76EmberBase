@@ -5,7 +5,7 @@
 window.Jt76EmberBase = Ember.Application.create({
     rootElement: "#jt76emberbase-app", //This will only apply to elements in the dom with this id
     //Note that views appended to the DOM outside the root element will not receive events.
-    LOG_TRANSITIONS: true, // basic logging of successful transitions
+    LOG_TRANSITIONS: true//, // basic logging of successful transitions
     //LOG_TRANSITIONS_INTERNAL: true // detailed logging of all routing steps
 });
 

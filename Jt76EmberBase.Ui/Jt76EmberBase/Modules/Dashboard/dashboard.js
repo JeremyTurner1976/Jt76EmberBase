@@ -14,15 +14,12 @@ Jt76EmberBase.IndexDashboardRoute = Ember.Route.extend({
             Ember.Logger.info(data);
             return data;
         });
-
-        //return this.store.findAll('error');
-        //gets errors from the api properly, but not mapped
-
-        //ember array helpers
-        //data.forEach(function(item){
-        //});
-
-        //data.findBy("paramName", key);
+        //var data = this.store.find("weatherService");
+        //Ember.Logger.info(data);
+        //return data;
+        //TODO I do not want to alter the controller name to weatherServices and return an array of weatherService objects
+        //find an example of an object return ember data likes that does not need to be an array
+        //although this may be the convention over design
     }
 });
 

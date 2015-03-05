@@ -287,7 +287,6 @@
     <Content Include="Jt76EmberBase\config.route.js" />
     <Content Include="Jt76EmberBase\Data\dataContext.js" />
     <Content Include="Jt76EmberBase\Data\dataFixtures.js" />
-    <Content Include="Jt76EmberBase\Data\dataService.js" />
     <Content Include="Jt76EmberBase\Data\models.js" />
     <Content Include="Jt76EmberBase\index.hbs.js">
       <DependentUpon>index.hbs</DependentUpon>

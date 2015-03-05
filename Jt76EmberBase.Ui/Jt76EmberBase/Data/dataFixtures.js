@@ -1,4 +1,5 @@
 ﻿//can pull this directly from /Help or by calling the Api directly
+//NOTE: when using the api, only set the singularName.FIXTURES as the array in the web api
 
 Jt76EmberBase.Error.FIXTURES = [
    {

@@ -1,33 +1,37 @@
-﻿////Non implemented- Have not got these to link in yet
+﻿////Not fully implemented- Have not got RSVP to link in yet
 ////throw new Error("Message","Cause","Stacktrace"); to throw an exception in code.
+Ember.onerror = function (e) {
+    var debug = Jt76EmberBase.CONFIG.create().get("debug");
+    //Ember.Logger.log("Debug is set to: " + debug);
 
-//Ember.Logger.log?
+    if (debug) {
+        Ember.Logger.info(e);
+        Ember.Logger.error(e, "Jt76EmberBase", e.stack);
+        alert("Ember.OnError: ");
+    }
+    // TODO log error to server
+};
 
-////Ember.onerror = function (error) {
-////    console.log(error);
-////    alert("onerror");
-////};
-
-//Ember.onerror = function (e) {
-//    console.log(debug);
+//Ember.RSVP.configure('onerror', function (e) {
+//    var debug = Jt76EmberBase.CONFIG.create().get("debug");
+//    Ember.Logger.log("Debug is set to: " + debug);
 
 //    if (debug) {
-//        console.log(e);
-//        console.log(e.stack);
-//        alert(e.stack);
+//        Ember.Logger.info(e);
+//        Ember.Logger.error(e, "Jt76EmberBase", e.stack);
+//        alert("Ember..RSVP.OnError: " );
 //    }
-//    // log error to server
-
-//    console.log(e);
-//    console.log(e.stack);
-//};
-
-////Ember.RSVP.configure('onerror', function (e) {
-////    console.log(e.message);
-////    console.log(e.stack);
-////});
-
-//Ember.RSVP.on('onerror', function (e) {
-//    console.log(e.message);
-//    console.log(e.stack);
+//    // TODO log error to server
 //});
+
+Ember.RSVP.on('onerror', function (e) {
+    var debug = Jt76EmberBase.CONFIG.create().get("debug");
+    //Ember.Logger.log("Debug is set to: " + debug);
+
+    if (debug) {
+        Ember.Logger.info(e);
+        Ember.Logger.error(e, "Jt76EmberBase", e.stack);
+        alert("Ember..RSVP.OnError: ");
+    }
+    // TODO log error to server
+});

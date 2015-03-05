@@ -7,6 +7,7 @@ using System.Net.Http;
 using System.Reflection;
 using System.Web.Http;
 using Jt76EmberBase.Data.Models;
+using Newtonsoft.Json;
 
 namespace Jt76EmberBase.Ui.Controllers.Api
 {
@@ -25,7 +26,7 @@ namespace Jt76EmberBase.Ui.Controllers.Api
 
         //map verbs
         [Route("api/v1/errors")]
-        public IEnumerable<Error> Get()
+        public Object Get()
         {
             Debug.WriteLine(GetType().FullName + "." + MethodBase.GetCurrentMethod().Name);
 
@@ -38,7 +39,7 @@ namespace Jt76EmberBase.Ui.Controllers.Api
 
             //_uiService.LogMessage(errors.Count() + " different errors loaded");
 
-            return errors;
+            return new {errors};
         }
 
         [Route("api/v1/errors")]

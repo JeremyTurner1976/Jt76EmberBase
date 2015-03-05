@@ -33,6 +33,7 @@ namespace Jt76EmberBase.Ui.Controllers.Api
         {
             Debug.WriteLine(GetType().FullName + "." + MethodBase.GetCurrentMethod().Name);
 
+            //NOTE: only 1000 free pulls of this are allowed daily
             //https://github.com/f0xy/forecast.io-csharp  // API Key, Lat, Long, Unit
             var request = new ForecastIORequest("ec8fab02bc1bf58c04e74c58bc2c3525", fLatitude, fLongitude, Unit.us);
             var response = request.Get();
@@ -45,7 +46,8 @@ namespace Jt76EmberBase.Ui.Controllers.Api
             var currentWeather = new { currently.summary, currently.icon, currently.temperature };
             var dailyWeather = tempList.AsQueryable().Select(x => new { x.summary, x.icon, x.temperatureMin, x.temperatureMinTime, x.temperatureMax, x.temperatureMaxTime }).ToList();
 
-            return new { strSummary, currentWeather, dailyWeather };
+            var weatherService = new { strSummary, currentWeather, dailyWeather };
+            return new { weatherService };
         }
     }
 }
