@@ -4,8 +4,5 @@
     init: function () {
         //var config = Jt76EmberBase.CONFIG.create();
         //Ember.Logger.log(config.get("title"));
-
-        //var title = this.get('title');
-        //alert(title + ", reporting for duty!");
     }
 });

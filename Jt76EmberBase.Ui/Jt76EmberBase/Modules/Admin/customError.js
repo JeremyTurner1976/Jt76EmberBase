@@ -4,20 +4,15 @@
 
 Jt76EmberBase.IndexAdminCustomErrorRoute = Ember.Route.extend({
     model: function (params) {
-        return params.data;
-
-        //return Ember.$.getJSON('/api/v1/errors/' + params.id).then(function (data) {
-        //    Ember.Logger.log(data);
-        //    return data;
-        //});
-        //return this.store.find("error", params.id);
+        return this.store.find("error", params.id);
+    },
+    setupController: function (controller, model) {
+        Ember.Logger.info(model);
+        controller.set("model", model);
     }
 });
 
 Jt76EmberBase.IndexAdminCustomErrorController = Ember.ObjectController.extend({
     actions: {
-        refresh: function () {
-            this.loadAdminError();
-        }
     }
 });

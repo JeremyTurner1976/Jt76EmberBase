@@ -3,17 +3,12 @@
 });
 
 Jt76EmberBase.IndexDashboardRoute = Ember.Route.extend({
-    model: function() {
-        //return Ember.$.getJSON("/api/v1/weatherService").then(function(data) {
-        //    Ember.Logger.info(data);
-        //    return data;
-        //});
-
-        //ember data expects an array
-        var data = this.store.find("weatherService");
-        return data;
+    model: function () {
+        var data = this.store.all("weatherService");
+        return (data.get("content").length === 0) ? this.store.find("weatherService") : data;
     },
     setupController: function (controller, model) {
+        Ember.Logger.info(model.get("content")[0].get("data"));
         controller.set("model", model);
     }
 });
@@ -21,7 +16,8 @@ Jt76EmberBase.IndexDashboardRoute = Ember.Route.extend({
 Jt76EmberBase.IndexDashboardController = Ember.ObjectController.extend({
     actions: {
         refresh: function () {
-            this.loadDashboard();
+            var model = this.get("model");
+            model.reload();
         }
     }
 });

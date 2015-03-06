@@ -4,13 +4,16 @@
 
 Jt76EmberBase.IndexAdminLogMessagesRoute = Ember.Route.extend({
     model: function () {
-        //return Ember.$.getJSON('/api/v1/logMessages').then(function (data) {
-        //    Ember.Logger.info(data);
-        //    return data;
+        //var data = this.store.all("logMessage");
+        //return (data.get("content").length === 0) ? this.store.find("logMessage") : data;
+        return this.store.find("logMessage");
+    },
+    setupController: function (controller, model) {
+        //model.get("content").forEach(function(item) {
+        //    Ember.Logger.info(item.get("data"));
         //});
-        var data = this.store.find("logMessage");
-        Ember.Logger.info(data);
-        return data;
+        Ember.Logger.info(model.get("content").length + " items gathered.");
+        controller.set("model", model);
     }
 });
 

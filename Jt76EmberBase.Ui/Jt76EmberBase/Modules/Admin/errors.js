@@ -4,12 +4,16 @@
 
 Jt76EmberBase.IndexAdminErrorsRoute = Ember.Route.extend({
     model: function () {
-        //return Ember.$.getJSON('/api/v1/errors').then(function (data) {
-        //    Ember.Logger.log(data);
-        //    return data;
+        //var data = this.store.all("error");
+        //return (data.get("content").length === 0) ? this.store.find("error") : data;
+        return this.store.find("error");
+    },
+    setupController: function (controller, model) {
+        //model.get("content").forEach(function(item) {
+        //    Ember.Logger.info(item.get("data"));
         //});
-
-        return this.store.findAll("error");
+        Ember.Logger.info(model.get("content").length + " items gathered.");
+        controller.set("model", model);
     }
 });
 

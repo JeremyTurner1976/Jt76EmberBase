@@ -2,12 +2,12 @@ Note: If handlebars are changed the matching HandleBarsHelper nuget package must
 
 http://Jt76EmberBase/Help will load the web api help area (VS Template item)
 
-Animated routes
-https://github.com/billysbilling/ember-animated-outlet
 
 jsbin - awesome place to get a quick page running
 cdnjs - has downloadable scripts
 ember - official page has a starter kit
+http://emberjs.com/api/
+http://emberjs.com/api/data/
 
 {{}} always looks first in the controller, then in the model
 
@@ -23,12 +23,13 @@ data.forEach(function(item){
 });
 data.findBy("paramName", key);
 
-https://github.com/heartsentwined/ember-auth
+renderTemplate: function() {
+	this.render('favoritePost', {   // the template to render
+		into: 'posts',                // the template to render into
+		outlet: 'posts',              // the name of the outlet in that template
+		controller: 'blogPost'        // the controller to use for the template
+	});
+}
 
-  renderTemplate: function() {
-    this.render('favoritePost', {   // the template to render
-      into: 'posts',                // the template to render into
-      outlet: 'posts',              // the name of the outlet in that template
-      controller: 'blogPost'        // the controller to use for the template
-    });
-  }
+http://stackoverflow.com/questions/15235574/ember-data-reloading-content-ui-not-updating
+https://github.com/heartsentwined/ember-auth
