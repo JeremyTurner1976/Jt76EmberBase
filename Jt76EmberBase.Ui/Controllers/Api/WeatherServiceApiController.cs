@@ -28,7 +28,8 @@ namespace Jt76EmberBase.Ui.Controllers.Api
             _uiService = uiService;
         }
 
-        [Route("api/v1/weatherService")]
+        //Ember expects a singular store.find() call, alter the route as below to plural
+        [Route("api/v1/weatherServices")]
         public object Get(float fLatitude = 47.4886f, float fLongitude = -117.5786f)
         {
             Debug.WriteLine(GetType().FullName + "." + MethodBase.GetCurrentMethod().Name);
@@ -38,16 +39,21 @@ namespace Jt76EmberBase.Ui.Controllers.Api
             var request = new ForecastIORequest("ec8fab02bc1bf58c04e74c58bc2c3525", fLatitude, fLongitude, Unit.us);
             var response = request.Get();
 
-            List<DailyForecast> tempList = new ListStack<DailyForecast>();
             var strSummary = response.daily.summary;
             var currently = response.currently;
+
+            List<DailyForecast> tempList = new ListStack<DailyForecast>();
             tempList.AddRange(response.daily.data);
 
+            //Ember expects a JSon array and an id in all returns
+            const int id = 1;
             var currentWeather = new { currently.summary, currently.icon, currently.temperature };
             var dailyWeather = tempList.AsQueryable().Select(x => new { x.summary, x.icon, x.temperatureMin, x.temperatureMinTime, x.temperatureMax, x.temperatureMaxTime }).ToList();
 
-            var weatherService = new { strSummary, currentWeather, dailyWeather };
-            return new { weatherService };
+            var data = new {id, strSummary, currentWeather, dailyWeather};
+            var weatherService = new List<object>() { data }.AsEnumerable();
+
+            return new {weatherService};
         }
     }
 }

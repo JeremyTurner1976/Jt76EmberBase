@@ -18,8 +18,17 @@ tagName="li" inside of helpers - link-to as a <li>, etc
 //If the resource has a path with title, sending this will automatically choose title for url param. No need to send this.title specifically
 {{#link-to 'product' this tagName='button' classNames='btn btn-success'}}Buy for ${{price}}{{/link-to}}
 
-
 //ember array helpers
 data.forEach(function(item){
 });
 data.findBy("paramName", key);
+
+https://github.com/heartsentwined/ember-auth
+
+  renderTemplate: function() {
+    this.render('favoritePost', {   // the template to render
+      into: 'posts',                // the template to render into
+      outlet: 'posts',              // the name of the outlet in that template
+      controller: 'blogPost'        // the controller to use for the template
+    });
+  }

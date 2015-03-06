@@ -1,5 +1,6 @@
 ﻿//can pull this directly from /Help or by calling the Api directly
-//NOTE: when using the api, only set the singularName.FIXTURES as the array in the web api
+//NOTE: Errors array is filled by Error.FIXTURES and this.store.findAll("error"); 
+//Singular/Plural array based model convention is required for Ember Data Linkage
 
 Jt76EmberBase.Error.FIXTURES = [
    {
@@ -357,17 +358,80 @@ Jt76EmberBase.LogMessage.FIXTURES = [
    }
 ];
 
-//Jt76EmberBase.WeatherService.FIXTURES = {
-//    "strSummary": "Light snow tomorrow, with temperatures bottoming out at 30°F on Tuesday.",
-//    "currentWeather": { "summary": "Partly Cloudy", "icon": "partly-cloudy-day", "temperature": 28.76 },
-//    "dailyWeather": [
-//        { "summary": "Mostly cloudy throughout the day.", "icon": "partly-cloudy-day", "temperatureMin": 21.34, "temperatureMinTime": 1425218400, "temperatureMax": 44.84, "temperatureMaxTime": 1425250800 },
-//        { "summary": "Mostly cloudy until evening.", "icon": "partly-cloudy-day", "temperatureMin": 22.8, "temperatureMinTime": 1425366000, "temperatureMax": 40.68, "temperatureMaxTime": 1425333600 },
-//        { "summary": "Clear throughout the day.", "icon": "clear-day", "temperatureMin": 16.95, "temperatureMinTime": 1425391200, "temperatureMax": 30.12, "temperatureMaxTime": 1425423600 },
-//        { "summary": "Partly cloudy starting in the evening.", "icon": "partly-cloudy-night", "temperatureMin": 16.92, "temperatureMinTime": 1425474000, "temperatureMax": 41.73, "temperatureMaxTime": 1425513600 },
-//        { "summary": "Mostly cloudy throughout the day.", "icon": "partly-cloudy-day", "temperatureMin": 23.06, "temperatureMinTime": 1425556800, "temperatureMax": 49.52, "temperatureMaxTime": 1425596400 },
-//        { "summary": "Clear throughout the day.", "icon": "clear-day", "temperatureMin": 29.61, "temperatureMinTime": 1425636000, "temperatureMax": 48.07, "temperatureMaxTime": 1425675600 },
-//        { "summary": "Partly cloudy in the evening.", "icon": "partly-cloudy-night", "temperatureMin": 28.05, "temperatureMinTime": 1425729600, "temperatureMax": 53.28, "temperatureMaxTime": 1425769200 },
-//        { "summary": "Clear throughout the day.", "icon": "clear-day", "temperatureMin": 29.2, "temperatureMinTime": 1425812400, "temperatureMax": 55.68, "temperatureMaxTime": 1425859200 }
-//    ]
-//};
+Jt76EmberBase.WeatherService.FIXTURES = [
+    {
+        "id": 1,
+        "strSummary": "Light rain on Wednesday and Thursday, with temperatures rising to 63°F on Tuesday.",
+        "currentWeather": {
+            "summary": "Partly Cloudy",
+            "icon": "partly-cloudy-night",
+            "temperature": 44.71
+        },
+        "dailyWeather": [
+            {
+                "summary": "Partly cloudy throughout the day.",
+                "icon": "partly-cloudy-day",
+                "temperatureMin": 27.02,
+                "temperatureMinTime": 1425553200,
+                "temperatureMax": 52.15,
+                "temperatureMaxTime": 1425596400
+            },
+            {
+                "summary": "Mostly cloudy throughout the day.",
+                "icon": "partly-cloudy-day",
+                "temperatureMin": 30.75,
+                "temperatureMinTime": 1425650400,
+                "temperatureMax": 56.16,
+                "temperatureMaxTime": 1425682800
+            },
+            {
+                "summary": "Partly cloudy in the morning.",
+                "icon": "partly-cloudy-night",
+                "temperatureMin": 35.03,
+                "temperatureMinTime": 1425736800,
+                "temperatureMax": 57.56,
+                "temperatureMaxTime": 1425769200
+            },
+            {
+                "summary": "Partly cloudy starting in the evening.",
+                "icon": "partly-cloudy-night",
+                "temperatureMin": 33.18,
+                "temperatureMinTime": 1425823200,
+                "temperatureMax": 57.89,
+                "temperatureMaxTime": 1425855600
+            },
+            {
+                "summary": "Partly cloudy in the morning.",
+                "icon": "partly-cloudy-day",
+                "temperatureMin": 33.8,
+                "temperatureMinTime": 1425906000,
+                "temperatureMax": 60.43,
+                "temperatureMaxTime": 1425942000
+            },
+            {
+                "summary": "Mostly cloudy throughout the day.",
+                "icon": "partly-cloudy-day",
+                "temperatureMin": 34.6,
+                "temperatureMinTime": 1425988800,
+                "temperatureMax": 63.36,
+                "temperatureMaxTime": 1426028400
+            },
+            {
+                "summary": "Light rain starting in the afternoon.",
+                "icon": "rain",
+                "temperatureMin": 41.99,
+                "temperatureMinTime": 1426075200,
+                "temperatureMax": 62.15,
+                "temperatureMaxTime": 1426118400
+            },
+            {
+                "summary": "Light rain until evening.",
+                "icon": "rain",
+                "temperatureMin": 39.41,
+                "temperatureMinTime": 1426161600,
+                "temperatureMax": 56.73,
+                "temperatureMaxTime": 1426204800
+            }
+        ]
+    }
+];

@@ -3,23 +3,18 @@
 });
 
 Jt76EmberBase.IndexDashboardRoute = Ember.Route.extend({
-    //setupController: function (controller) {
-    //    controller.loadDashboard();
-    //},
-    //renderTemplate: function () {
-    //    this.render({ outlet: "main" });
-    //},
     model: function() {
-        return Ember.$.getJSON("/api/v1/weatherService").then(function(data) {
-            Ember.Logger.info(data);
-            return data;
-        });
-        //var data = this.store.find("weatherService");
-        //Ember.Logger.info(data);
-        //return data;
-        //TODO I do not want to alter the controller name to weatherServices and return an array of weatherService objects
-        //find an example of an object return ember data likes that does not need to be an array
-        //although this may be the convention over design
+        //return Ember.$.getJSON("/api/v1/weatherService").then(function(data) {
+        //    Ember.Logger.info(data);
+        //    return data;
+        //});
+
+        //ember data expects an array
+        var data = this.store.find("weatherService");
+        return data;
+    },
+    setupController: function (controller, model) {
+        controller.set("model", model);
     }
 });
 

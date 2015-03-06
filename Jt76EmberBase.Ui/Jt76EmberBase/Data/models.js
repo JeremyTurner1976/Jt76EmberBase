@@ -24,11 +24,11 @@ Jt76EmberBase.LogMessage = DS.Model.extend({
     dtCreated: DS.attr("date")
 });
 
-//Jt76EmberBase.WeatherService = DS.Model.extend({
-//    strSummary: DS.attr("string"),
-//    currentWeather: DS.attr("object"),
-//    dailyWeather: DS.attr("object")
-//});
+Jt76EmberBase.WeatherService = DS.Model.extend({
+    strSummary: DS.attr("string"),
+    currentWeather: DS.attr(),
+    dailyWeather: DS.attr()
+});
 
 //{ "summary": "Partly Cloudy", "icon": "partly-cloudy-day", "temperature": 28.76 }
 

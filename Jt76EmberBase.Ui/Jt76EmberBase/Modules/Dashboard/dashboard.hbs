@@ -1,6 +1,8 @@
 ﻿<p>TEST DASHBOARD</p>
-This week {{model.weatherService.strSummary}}
-<hr />
-{{#each item in model.weatherService.dailyWeather}}
-    {{item.summary}}<br />
+{{#each item in model}}
+    This week {{item.strSummary}}
+    <hr />
+    {{#each innerItem in item.dailyWeather}}
+        {{innerItem.summary}}<br />
+    {{/each}}
 {{/each}}
