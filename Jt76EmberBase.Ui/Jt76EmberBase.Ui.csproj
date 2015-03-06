@@ -291,6 +291,7 @@
     <Content Include="Jt76EmberBase\index.hbs.js">
       <DependentUpon>index.hbs</DependentUpon>
     </Content>
+    <Content Include="Jt76EmberBase\index.js" />
     <Content Include="Jt76EmberBase\Layout\footer.hbs.js">
       <DependentUpon>footer.hbs</DependentUpon>
     </Content>

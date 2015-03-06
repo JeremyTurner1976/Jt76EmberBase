@@ -73,6 +73,7 @@ namespace Jt76EmberBase.Ui
             //Ember App Directory  
             var appBundle = new ScriptBundle("~/bundles/jt76EmberBase").Include(
                 "~/Jt76EmberBase/application.js",
+                "~/Jt76EmberBase/index.js",
                 "~/Jt76EmberBase/config.js",
                 "~/Jt76EmberBase/config.exceptionHandler.js",
                 "~/Jt76EmberBase/config.route.js",

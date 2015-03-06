@@ -5,14 +5,13 @@
     
     <div class="main-container jt76-content-placeholder">
         <div class="padding-md">
-            <div class="row">
+            <div class="row" {{bind-attr style="heightStyle"}} >
 
                 {{outlet}}
 
             </div>
         </div>
     </div>
-
     {{view "footer"}}
 
 </div>
