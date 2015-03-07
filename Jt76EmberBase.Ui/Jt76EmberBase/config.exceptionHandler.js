@@ -4,11 +4,11 @@ Ember.onerror = function (e) {
     var debug = Jt76EmberBase.CONFIG.create().get("debug");
     //Ember.Logger.log("Debug is set to: " + debug);
 
+    Ember.Logger.error(e);
     if (debug) {
-        Ember.Logger.info(e);
-        Ember.Logger.error(e, "Jt76EmberBase", e.stack);
-        alert("Ember.OnError: ");
+        alert("Ember.OnError: " + e.toString());
     }
+
     // TODO log error to server
 };
 

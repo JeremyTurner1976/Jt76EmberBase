@@ -22,10 +22,11 @@ Jt76EmberBase.IndexAdminLogMessagesRoute = Ember.Route.extend({
 });
 
 Jt76EmberBase.IndexAdminLogMessagesController = Ember.ArrayController.extend({
+    nItemCount: Ember.computed.alias("length"),
     sortProperties: ["dtCreated:desc", "numericId:desc"],
     sortedModel: Ember.computed.sort("model", "sortProperties"),
     actions: {
-        refresh: function () {
+        refresh: function () { 
             this.loadAdminLogMessages();
         }
     }

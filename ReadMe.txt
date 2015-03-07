@@ -22,6 +22,7 @@ tagName="li" inside of helpers - link-to as a <li>, etc
 data.forEach(function(item){
 });
 data.findBy("paramName", key);
+data.slice(0,3);
 
 renderTemplate: function() {
 	this.render('favoritePost', {   // the template to render
@@ -30,6 +31,8 @@ renderTemplate: function() {
 		controller: 'blogPost'        // the controller to use for the template
 	});
 }
+
+this.modelFor("indexErrors") to get another model's data
 
 http://stackoverflow.com/questions/15235574/ember-data-reloading-content-ui-not-updating
 https://github.com/heartsentwined/ember-auth
