@@ -1,6 +1,6 @@
 ﻿{{outlet}}
 <hr />
 <p>TEST ADMIN LOG MESSAGES</p>
-{{#each item in model}}
+{{#each item in sortedModel}}
 {{#link-to "index.admin.logMessages.logMessage" item}}{{item.strLogMessage}}{{/link-to}}<br /><br />
 {{/each}}

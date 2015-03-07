@@ -1,6 +1,6 @@
 ﻿<p>TEST ADMIN ERRORS</p>
 {{outlet}}
 <hr />
-{{#each item in model}}
+{{#each item in sortedModel}}
 {{#link-to "index.admin.customError" item}}{{item.strMessage}}{{/link-to}}<br />
 {{/each}}

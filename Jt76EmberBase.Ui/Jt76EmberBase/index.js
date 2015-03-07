@@ -9,6 +9,10 @@ Jt76EmberBase.IndexRoute = Ember.Route.extend({
         var nOverallPadding = 55;
         var nDesiredHeight = (window.innerHeight - (nFooterHeight + nHeaderHeight + nOverallPadding));
 
+        //min-height of the application
+        if (nDesiredHeight < 450)
+            nDesiredHeight = 450;
+
         var model = {
             height: nDesiredHeight,
             heightStyle: "min-height:" + nDesiredHeight + "px;"
@@ -16,7 +20,7 @@ Jt76EmberBase.IndexRoute = Ember.Route.extend({
         return model;
     },
     setupController: function (controller, model) {
-        Ember.Logger.info(model.height + "px to fill");
+        //Ember.Logger.info(model.height + "px to fill");
         controller.set("model", model);
     }
 });

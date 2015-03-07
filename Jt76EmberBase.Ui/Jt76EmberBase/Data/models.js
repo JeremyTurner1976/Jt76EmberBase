@@ -7,7 +7,7 @@
 //
 ////The items below will always be linked by the id (or array of ids) as number values
 //    ownedModels: DS.hasMany("model", {async: true}), //async allows lazy loading
-//    ownerOfThisModel: DS.belongsTo("OwnerModel");
+//    OwnerModel: DS.belongsTo("OwnerModel");
 //});
 
 Jt76EmberBase.Error = DS.Model.extend({

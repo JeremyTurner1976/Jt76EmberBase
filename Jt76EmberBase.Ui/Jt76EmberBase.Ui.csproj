@@ -321,6 +321,9 @@
       <DependentUpon>contact.hbs</DependentUpon>
     </Content>
     <Content Include="Jt76EmberBase\Modules\Contact\contact.js" />
+    <Content Include="Jt76EmberBase\Modules\Dashboard\dashboard.hbs.js">
+      <DependentUpon>dashboard.hbs</DependentUpon>
+    </Content>
     <Content Include="Jt76EmberBase\Modules\Dashboard\dashboard.js" />
     <Content Include="Jt76EmberBase\Modules\Projects\projectOne.hbs.js">
       <DependentUpon>projectOne.hbs</DependentUpon>
@@ -372,7 +375,6 @@
       <DependentUpon>userAdmin.hbs</DependentUpon>
     </Content>
     <Content Include="Jt76EmberBase\Modules\Contact\contact.hbs" />
-    <Content Include="Jt76EmberBase\Modules\Dashboard\dashboard.hbs" />
     <Content Include="fonts\fontawesome-webfont.eot" />
     <Content Include="fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fontawesome-webfont.woff" />
@@ -387,9 +389,6 @@
     <Content Include="Content\Images\Touch\Thumbs.db" />
     <Content Include="Content\site.less" />
     <Content Include="Content\toastr.less" />
-    <Content Include="Jt76EmberBase\Modules\Dashboard\dashboard.hbs.js">
-      <DependentUpon>dashboard.hbs</DependentUpon>
-    </Content>
     <Content Include="Scripts\bootstrap-datetimepicker.js" />
     <Content Include="Scripts\bootstrap-slider.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -476,6 +475,7 @@
     <Content Include="Jt76EmberBase\index.hbs" />
     <Content Include="Jt76EmberBase\Modules\Admin\customError.hbs" />
     <Content Include="Jt76EmberBase\Modules\Admin\logMessage.hbs" />
+    <Content Include="Jt76EmberBase\Modules\Dashboard\dashboard.hbs" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\ember-data-1.14.js.map" />
     <Content Include="Views\Home\LockScreen.cshtml" />

@@ -6,18 +6,24 @@ Jt76EmberBase.IndexAdminLogMessagesRoute = Ember.Route.extend({
     model: function () {
         //var data = this.store.all("logMessage");
         //return (data.get("content").length === 0) ? this.store.find("logMessage") : data;
-        return this.store.find("logMessage");
+
+        return this.store.find("logMessage").then(function (data) {
+            var array = data.toArray();
+            array.forEach(function (item) {
+                item.set("numericId", parseInt(item.id));
+            });
+            return array;
+        });
     },
     setupController: function (controller, model) {
-        //model.get("content").forEach(function(item) {
-        //    Ember.Logger.info(item.get("data"));
-        //});
-        Ember.Logger.info(model.get("content").length + " items gathered.");
+        Ember.Logger.info(model);
         controller.set("model", model);
     }
 });
 
-Jt76EmberBase.IndexAdminLogMessagesController = Ember.ObjectController.extend({
+Jt76EmberBase.IndexAdminLogMessagesController = Ember.ArrayController.extend({
+    sortProperties: ["dtCreated:desc", "numericId:desc"],
+    sortedModel: Ember.computed.sort("model", "sortProperties"),
     actions: {
         refresh: function () {
             this.loadAdminLogMessages();

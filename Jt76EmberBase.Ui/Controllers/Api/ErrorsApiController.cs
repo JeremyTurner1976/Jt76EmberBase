@@ -34,8 +34,9 @@ namespace Jt76EmberBase.Ui.Controllers.Api
 
             var errors = _viewModel.GetErrors();
 
-            errors = errors
-                .OrderByDescending(x => x.DtCreated).ThenByDescending(x => x.Id);
+            //errors = errors
+            //    .OrderByDescending(x => x.DtCreated)
+            //    .ThenByDescending(x => x.Id);
 
             //_uiService.LogMessage(errors.Count() + " different errors loaded");
 

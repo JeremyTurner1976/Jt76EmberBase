@@ -33,8 +33,9 @@ namespace Jt76EmberBase.Ui.Controllers.Api
 
             IQueryable<LogMessage> logMessages = _viewModel.GetLogMessages();
 
-            logMessages = logMessages
-                .OrderByDescending(x => x.DtCreated).ThenByDescending(x => x.Id);
+            //logMessages = logMessages
+            //    .OrderByDescending(x => x.DtCreated)
+            //    .ThenByDescending(x => x.Id);
 
             //_uiService.LogMessage(logMessages.Count() + " different LogMessages loaded");
 
