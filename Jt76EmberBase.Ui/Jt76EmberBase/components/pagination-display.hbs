@@ -1,0 +1,16 @@
+﻿<div class="pull-left hidden-xs clearfix"><em>Showing {{pagination.nFilteredCount}} / {{pagination.nTotalCount}} items</em></div>
+
+<ul class="pagination pull-right clearfix" {{bind-attr style="pagination.strPagingVisibility"}}>
+    <li><a>First</a></li>
+    <li><a>Prev</a></li>
+    <li class="active"><a>1</a></li>
+    <li><a>2</a></li>
+    <li><a>3</a></li>
+    <li><a>4</a></li>
+    <li><a>5</a></li>
+    <li><a>Next</a></li>
+    <li><a>Last</a></li>
+</ul>
+
+<div class="pull-right clearfix m-right-sm" {{bind-attr style="pagination.strPagingVisibility"}}><strong>Page {{pagination.nCurrentPage}} of {{pagination.nMaxPages}}</strong></div>
+<div class="pull-right clearfix m-right-sm" {{bind-attr style="pagination.strSearchVisibility"}}><strong>Search Mode</strong></div>

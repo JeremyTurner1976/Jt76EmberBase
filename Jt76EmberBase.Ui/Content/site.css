@@ -1,15 +1,15 @@
 ﻿*::-webkit-input-placeholder {
-  color: #cccccc !important;
+  color: #e6e6e6 !important;
   font-weight: 400;
 }
 *::-moz-placeholder {
   /* FF 19+ */
-  color: #cccccc !important;
+  color: #e6e6e6 !important;
   font-weight: 400;
 }
 *:-ms-input-placeholder {
   /* IE 10+ */
-  color: #cccccc !important;
+  color: #e6e6e6 !important;
   font-weight: 400;
 }
 .jt76-brand-name {
@@ -23,7 +23,7 @@
   color: #bd362f;
 }
 .jt76-hr-md {
-  border-bottom: 2px solid #cccccc;
+  border-bottom: 2px solid #e6e6e6;
 }
 .jt76-multiline {
   white-space: pre-line;
@@ -45,7 +45,7 @@
   padding-right: 60px !important;
 }
 .jt76-page-title {
-  margin-top: 0 !important;
+  margin-top: -10px !important;
 }
 .jt76-title-link {
   font-weight: bold;
@@ -57,7 +57,7 @@
   text-decoration: underline;
 }
 .jt76-verticalLine {
-  border-left: 1px solid #cccccc;
+  border-left: 1px solid #e6e6e6;
 }
 /*colors*/
 .jt76-bg-green {
@@ -70,6 +70,19 @@ textarea.ng-invalid {
 }
 a {
   cursor: pointer;
+}
+.btn-default:hover {
+  background-position: 0 !important;
+  background-color: #e6e6e6 !important;
+}
+.btn-default:focus {
+  background-position: 0 !important;
+  background-color: #e6e6e6 !important;
+}
+.pagination li.active a,
+.pagination li.active a:hover,
+.pagination li.active a:focus {
+  background: #e6e6e6 !important;
 }
 /*#region Angular ng-show dissolve animation */
 .dissolve-animation.ng-hide-remove {

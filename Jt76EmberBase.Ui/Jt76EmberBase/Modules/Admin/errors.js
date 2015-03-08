@@ -32,6 +32,18 @@ Jt76EmberBase.IndexAdminErrorsController = Ember.ArrayController.extend({
     nItemCount: Ember.computed.alias("length"), //this property observes changes in length
     sortProperties: ["dtCreated:desc", "numericId:desc"],
     filterProperties: "",
+    paginationData: function() {
+        return {
+            nFilteredCount: 5,
+            nTotalCount: 25,
+            nCurrentPage: 1,
+            nMaxPages: 10,
+            nMaxPagesToDisplay: 5,
+            nMaxPageItemsToDisplay: 5,
+            strPagingVisibility: "visibility: visible;",
+            strSearchVisibility: "visibility: hidden;"
+        };
+    }.property(),
 
     sortedModel: Ember.computed.sort("model", "sortProperties"),
     filteredModel: function () {

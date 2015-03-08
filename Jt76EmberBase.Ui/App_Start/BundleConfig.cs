@@ -66,8 +66,7 @@ namespace Jt76EmberBase.Ui
 
             bundles.Add(new ScriptBundle("~/bundles/thirdParty").Include(
                 "~/Scripts/moment.js", //date and time handler
-                "~/Scripts/toastr.js", //toaster
-                "~/Scripts/ui-bootstrap-tpls-0.10.0.js" //pagination
+                "~/Scripts/toastr.js"//toaster
             ));
 
             //Ember App Directory  

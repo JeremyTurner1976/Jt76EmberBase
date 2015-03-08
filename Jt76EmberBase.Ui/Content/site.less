@@ -1,6 +1,5 @@
 ﻿@dark-green: #4c5f70;
 @dark: #1c2b36;
-@light-grey:#ddd;
 @link-blue: #396dd7;
 @light-red: red;
 @shadow: rgba(128, 128, 128, 0.91);
@@ -9,7 +8,7 @@
 // Variables
 @black: #000000;
 @grey: #999999;
-@light-grey: #CCCCCC;
+@light-grey: #e6e6e6;
 @white: #FFFFFF;
 @near-black: #030303;
 @green: #51A351;
@@ -74,7 +73,7 @@
     padding-right:60px !important;
 }
 .jt76-page-title{
-    margin-top:0 !important;
+    margin-top:-10px !important;
 }
 .jt76-title-link {
   font-weight: bold;
@@ -108,6 +107,20 @@ a{
     cursor:pointer;
 }
 
+//bootstrap overrides
+.btn-default:hover{
+   background-position: 0 !important; 
+   background-color: @light-grey !important;
+}
+
+.btn-default:focus {
+   background-position: 0 !important; 
+   background-color: @light-grey !important;
+}
+
+.pagination li.active a, .pagination li.active a:hover, .pagination li.active a:focus {
+    background: @light-grey !important;
+}
 
 
 

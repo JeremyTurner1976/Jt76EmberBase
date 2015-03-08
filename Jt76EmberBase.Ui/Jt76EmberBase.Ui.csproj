@@ -279,9 +279,11 @@
     </Content>
     <Content Include="Jt76EmberBase\application.js" />
     <Content Include="Jt76EmberBase\Common\common.js" />
-    <Content Include="Jt76EmberBase\Common\components.js" />
     <Content Include="Jt76EmberBase\Common\helpers.js" />
     <Content Include="Jt76EmberBase\Common\partialViews.js" />
+    <Content Include="Jt76EmberBase\components\pagination-display.hbs.js">
+      <DependentUpon>pagination-display.hbs</DependentUpon>
+    </Content>
     <Content Include="Jt76EmberBase\config.exceptionHandler.js" />
     <Content Include="Jt76EmberBase\config.js" />
     <Content Include="Jt76EmberBase\config.route.js" />
@@ -476,6 +478,7 @@
     <Content Include="Jt76EmberBase\Modules\Admin\customError.hbs" />
     <Content Include="Jt76EmberBase\Modules\Admin\logMessage.hbs" />
     <Content Include="Jt76EmberBase\Modules\Dashboard\dashboard.hbs" />
+    <Content Include="Jt76EmberBase\components\pagination-display.hbs" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\ember-data-1.14.js.map" />
     <Content Include="Views\Home\LockScreen.cshtml" />
