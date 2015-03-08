@@ -281,6 +281,9 @@
     <Content Include="Jt76EmberBase\Common\common.js" />
     <Content Include="Jt76EmberBase\Common\helpers.js" />
     <Content Include="Jt76EmberBase\Common\partialViews.js" />
+    <Content Include="Jt76EmberBase\components\page-header.hbs.js">
+      <DependentUpon>page-header.hbs</DependentUpon>
+    </Content>
     <Content Include="Jt76EmberBase\components\pagination-display.hbs.js">
       <DependentUpon>pagination-display.hbs</DependentUpon>
     </Content>
@@ -479,6 +482,7 @@
     <Content Include="Jt76EmberBase\Modules\Admin\logMessage.hbs" />
     <Content Include="Jt76EmberBase\Modules\Dashboard\dashboard.hbs" />
     <Content Include="Jt76EmberBase\components\pagination-display.hbs" />
+    <Content Include="Jt76EmberBase\components\page-header.hbs" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\ember-data-1.14.js.map" />
     <Content Include="Views\Home\LockScreen.cshtml" />

@@ -29,7 +29,10 @@ Jt76EmberBase.IndexAdminErrorsRoute = Ember.Route.extend({
 });
 
 Jt76EmberBase.IndexAdminErrorsController = Ember.ArrayController.extend({
-    nItemCount: Ember.computed.alias("length"), //this property observes changes in length
+    strPageTitle: "Admin Errors",
+    strSubHeader: "Handle your business.",
+
+    nTotalCount: Ember.computed.alias("length"), //this property observes changes in length
     sortProperties: ["dtCreated:desc", "numericId:desc"],
     filterProperties: "",
     paginationData: function() {

@@ -1,4 +1,6 @@
-﻿<div class="inbox-body jt76-padding-sides-md p-top-xs ">
+﻿{{page-header strPageTitle=strPageTitle strSubHeader=strSubHeader}}
+
+<div class="inbox-body jt76-padding-sides-md p-top-xs ">
     <div class="row m-bottom-md">
         <div class="col-sm-3 m-bottom-sm">
             <h2 class="no-margin">
@@ -55,7 +57,7 @@
                         <div class="jt76-multiline">{{item.strCreated}}</div>
                     </td>
                     <td>
-                        {{#link-to "index.admin.customError" item}}{{item.strMessage}}{{/link-to}}<br />
+                        {{#link-to "index.admin.customError" item }}<span class="jt76-title-link">{{item.strMessage}}</span>{{/link-to}}<br />
                     </td>
                     <td>
                         <div class="jt76-multiline">{{item.strSource}} {{item.strErrorLevel}}</div>
@@ -69,6 +71,6 @@
         </table>
     </div>
     
-    {{pagination-display classNames="pagination-row clearfix"}}
+    {{pagination-display classNames="pagination-row clearfix m-bottom-sm" pagination=paginationData}}
 
 </div>
