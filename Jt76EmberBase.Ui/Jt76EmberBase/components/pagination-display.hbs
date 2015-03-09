@@ -1,16 +1,18 @@
-﻿<div class="pull-left hidden-xs clearfix"><em>Showing {{pagination.nFilteredCount}} / {{pagination.nTotalCount}} items</em></div>
+﻿<div style="padding-top:3px;">
+    <div class="pull-left hidden-xs"><em>Showing {{pagination.nFilteredCount}} / {{pagination.nTotalCount}} items</em></div>
 
-<ul class="pagination pull-right clearfix" {{bind-attr style="pagination.strPagingVisibility"}}>
-    <li><a>First</a></li>
-    <li><a>Prev</a></li>
-    <li class="active"><a>1</a></li>
-    <li><a>2</a></li>
-    <li><a>3</a></li>
-    <li><a>4</a></li>
-    <li><a>5</a></li>
-    <li><a>Next</a></li>
-    <li><a>Last</a></li>
-</ul>
 
-<div class="pull-right clearfix m-right-sm" {{bind-attr style="pagination.strPagingVisibility"}}><strong>Page {{pagination.nCurrentPage}} of {{pagination.nMaxPages}}</strong></div>
-<div class="pull-right clearfix m-right-sm" {{bind-attr style="pagination.strSearchVisibility"}}><strong>Search Mode</strong></div>
+    <ul class="pagination pagination-sm pull-right" style="min-width:338px; margin-right:-16px">
+        <li><a {{action gotoPage "First"}}>First</a></li>
+        <li {{bind-attr class="prevClassName"}}><a {{action gotoPage "Prev"}}>Prev</a></li>
+        {{#each item in visiblePages}}
+        <li {{bind-attr class="item.className"}}>
+            <a {{action gotoPage item}}>{{item.nPageNumber}}</a>
+        </li>
+        {{/each}}
+        <li {{bind-attr class="nextClassName"}}><a {{action gotoPage "Next"}} {{bind-attr disabled=bNextDisabled}}>Next</a></li>
+        <li><a {{action gotoPage "Last"}}>Last</a></li>
+    </ul>
+
+    <div class="pull-right m-right-sm"><strong>Page {{pagination.nCurrentPage}} of {{pagination.nMaxPages}}</strong></div>
+</div>

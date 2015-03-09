@@ -33,18 +33,20 @@ Jt76EmberBase.IndexAdminErrorsController = Ember.ArrayController.extend({
     strSubHeader: "Handle your business.",
 
     nTotalCount: Ember.computed.alias("length"), //this property observes changes in length
+    nFilteredCount: Ember.computed.alias("filteredModel.length"),
     sortProperties: ["dtCreated:desc", "numericId:desc"],
     filterProperties: "",
     paginationData: function() {
+        var nMaxPageItemsToDisplay = 5;
+        var bInSearchMode = this.get("filterProperties").length === 0;
         return {
-            nFilteredCount: 5,
-            nTotalCount: 25,
+            nFilteredCount: bInSearchMode ? this.get("nFilteredCount") : nMaxPageItemsToDisplay,
+            nTotalCount: this.get("nTotalCount"),
             nCurrentPage: 1,
-            nMaxPages: 10,
+            nMaxPages: Math.ceil(this.get("nTotalCount") / nMaxPageItemsToDisplay),
             nMaxPagesToDisplay: 5,
-            nMaxPageItemsToDisplay: 5,
-            strPagingVisibility: "visibility: visible;",
-            strSearchVisibility: "visibility: hidden;"
+            nMaxPageItemsToDisplay: nMaxPageItemsToDisplay,
+            bInSearchMode: bInSearchMode
         };
     }.property(),
 

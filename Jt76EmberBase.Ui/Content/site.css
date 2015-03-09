@@ -83,6 +83,7 @@ a {
 .pagination li.active a:hover,
 .pagination li.active a:focus {
   background: #e6e6e6 !important;
+  border-color: #999999 !important;
 }
 /*#region Angular ng-show dissolve animation */
 .dissolve-animation.ng-hide-remove {

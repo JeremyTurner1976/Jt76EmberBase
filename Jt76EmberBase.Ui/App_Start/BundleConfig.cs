@@ -79,13 +79,14 @@ namespace Jt76EmberBase.Ui
                 "~/Jt76EmberBase/Data/models.js"
             )
             .IncludeDirectory("~/Jt76EmberBase/Common", "*.js", true)
+            .IncludeDirectory("~/Jt76EmberBase/components", "*.js", true)
             .IncludeDirectory("~/Jt76EmberBase/Data", "*.js", true)
             .IncludeDirectory("~/Jt76EmberBase/Layout", "*.js", true)
             .IncludeDirectory("~/Jt76EmberBase/Modules", "*.js", true);
-            #if DEBUG
+            //#if DEBUG
             //remove minification on this bundle in debug
             appBundle.Transforms.Clear();
-            #endif
+            //#endif
             bundles.Add(appBundle);
         }
     }
