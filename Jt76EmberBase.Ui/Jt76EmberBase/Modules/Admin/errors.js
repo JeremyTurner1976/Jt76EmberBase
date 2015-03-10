@@ -1,5 +1,11 @@
 ﻿Jt76EmberBase.IndexAdminErrorsView = Ember.View.extend({
-    templateName: "Modules/Admin/errors"
+    templateName: "Modules/Admin/errors",
+    className: ["jt76-loading-slide"],
+    classNameBindings: ["bIsLoading"],
+    bIsLoading: function () {
+        return this.get("controller.bIsLoaded") ? "jt76-loaded-slide" : "jt76-loading-slide";
+    }.property("controller.bIsLoaded") //bind to the property change
+    //tag
 });
 
 Jt76EmberBase.IndexAdminErrorsRoute = Ember.Route.extend({
@@ -25,12 +31,15 @@ Jt76EmberBase.IndexAdminErrorsRoute = Ember.Route.extend({
     setupController: function (controller, model) {
         Ember.Logger.info(model);
         controller.set("model", model);
+        //give the dom time to set the jt76-loading class then switch it
+        setTimeout(function () { controller.set("bIsLoaded", true); }, 250);
     }
 });
 
 Jt76EmberBase.IndexAdminErrorsController = Ember.ArrayController.extend({
     strPageTitle: "Admin Errors",
     strSubHeader: "Handle your business.",
+    bIsLoaded: false,
 
     nTotalCount: Ember.computed.alias("length"), //this property observes changes in length
     nFilteredCount: Ember.computed.alias("filteredModel.length"),

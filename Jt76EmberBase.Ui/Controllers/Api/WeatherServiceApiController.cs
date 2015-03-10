@@ -9,6 +9,7 @@ using System.Net.Http;
 using System.Reflection;
 using System.Runtime.Remoting.Messaging;
 using System.Web.Http;
+using System.Web.UI.WebControls;
 using Antlr.Runtime.Misc;
 using ForecastIO;
 using Newtonsoft.Json.Linq;
@@ -34,9 +35,14 @@ namespace Jt76EmberBase.Ui.Controllers.Api
         {
             Debug.WriteLine(GetType().FullName + "." + MethodBase.GetCurrentMethod().Name);
 
-            //NOTE: only 1000 free pulls of this are allowed daily
+            //NOTE:
+            //The first thousand API calls you make every day are free, period.
+            //Every API call after that costs $0.0001 each.
+            //Credit us with a “Powered by Forecast” badge that links to http://forecast.io/ wherever you display data from the API.
+            //https://api.forecast.io/forecast/ec8fab02bc1bf58c04e74c58bc2c3525/47.4886,-117.5786
+
             //https://github.com/f0xy/forecast.io-csharp  // API Key, Lat, Long, Unit
-            var request = new ForecastIORequest("ec8fab02bc1bf58c04e74c58bc2c3525", fLatitude, fLongitude, Unit.us);
+            var request = new ForecastIORequest("ec8fab02bc1bf58c04e74c58bc2c3525", fLatitude, fLongitude, ForecastIO.Unit.us);
             var response = request.Get();
 
             var strSummary = response.daily.summary;
