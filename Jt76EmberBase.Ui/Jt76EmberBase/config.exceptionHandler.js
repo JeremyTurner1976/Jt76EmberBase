@@ -1,16 +1,16 @@
 ﻿////Not fully implemented- Have not got RSVP to link in yet
 ////throw new Error("Message","Cause","Stacktrace"); to throw an exception in code.
-Ember.onerror = function (e) {
-    var debug = Jt76EmberBase.CONFIG.create().get("debug");
-    //Ember.Logger.log("Debug is set to: " + debug);
+//Ember.onerror = //function (e) {
+//    var debug = Jt76EmberBase.CONFIG.create().get("debug");
+//    //Ember.Logger.log("Debug is set to: " + debug);
 
-    Ember.Logger.error(e);
-    if (debug) {
-        alert("Ember.OnError: " + e.toString());
-    }
+//    if (debug) {
+//        alert("Ember.OnError: " + e.toString());
 
-    // TODO log error to server
-};
+//    }
+//    //Ember.Logger.error(e);
+//    // TODO log error to server
+//};
 
 //Ember.RSVP.configure('onerror', function (e) {
 //    var debug = Jt76EmberBase.CONFIG.create().get("debug");

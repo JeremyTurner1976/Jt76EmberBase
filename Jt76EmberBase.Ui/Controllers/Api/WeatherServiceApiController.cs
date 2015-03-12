@@ -51,7 +51,7 @@ namespace Jt76EmberBase.Ui.Controllers.Api
             List<DailyForecast> tempList = new ListStack<DailyForecast>();
             tempList.AddRange(response.daily.data);
 
-            //Ember expects a JSon array and an id in all returns
+            //Ember Data expects a JSon array and an id in all returns
             const int id = 1;
             var currentWeather = new { currently.summary, currently.icon, currently.temperature };
             var dailyWeather = tempList.AsQueryable().Select(x => new { x.summary, x.icon, x.temperatureMin, x.temperatureMinTime, x.temperatureMax, x.temperatureMaxTime }).ToList();

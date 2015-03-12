@@ -54,6 +54,9 @@
                         throw new Error("Not all cases caught in components/pagination-display.js.");
                 }
             }
+
+            this.set("parentView.controller.paginationData", this.get("pagination"));
+            this.get("parentView.controller").send("gotoPage"); //, item); //objects can be passed, as many as needed separated by commas
         }
     }
 });

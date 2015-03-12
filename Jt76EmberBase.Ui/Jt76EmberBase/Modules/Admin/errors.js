@@ -5,6 +5,10 @@
     bIsLoading: function () {
         return this.get("controller.bIsLoaded") ? "jt76-loaded-slide" : "jt76-loading-slide";
     }.property("controller.bIsLoaded") //bind to the property change
+    //bIsLoading: function () {
+    //    //does not allow the dom time to set the jt76-loading-slide css
+    //    //return Ember.computed.equal(this.get("_state"), "inDOM") ? "jt76-loaded-slide" : "jt76-loading-slide";
+    //}.property()
     //tag
 });
 
@@ -31,8 +35,9 @@ Jt76EmberBase.IndexAdminErrorsRoute = Ember.Route.extend({
     setupController: function (controller, model) {
         Ember.Logger.info(model);
         controller.set("model", model);
+
         //give the dom time to set the jt76-loading class then switch it
-        setTimeout(function () { controller.set("bIsLoaded", true); }, 250);
+        setTimeout(function () { controller.set("bIsLoaded", true); }, 100);
     }
 });
 
@@ -44,10 +49,10 @@ Jt76EmberBase.IndexAdminErrorsController = Ember.ArrayController.extend({
     nTotalCount: Ember.computed.alias("length"), //this property observes changes in length
     nFilteredCount: Ember.computed.alias("filteredModel.length"),
     sortProperties: ["dtCreated:desc", "numericId:desc"],
-    filterProperties: "",
-    paginationData: function() {
+    strFilter: "",
+    paginationData: function () {
         var nMaxPageItemsToDisplay = 5;
-        var bInSearchMode = this.get("filterProperties").length === 0;
+        var bInSearchMode = this.get("strFilter").length === 0;
         return {
             nFilteredCount: bInSearchMode ? this.get("nFilteredCount") : nMaxPageItemsToDisplay,
             nTotalCount: this.get("nTotalCount"),
@@ -61,9 +66,9 @@ Jt76EmberBase.IndexAdminErrorsController = Ember.ArrayController.extend({
 
     sortedModel: Ember.computed.sort("model", "sortProperties"),
     filteredModel: function () {
-        var filterProperties = this.get("filterProperties").toUpperCase();
-        var bFilterActive = (filterProperties.length !== 0);
-        return this.get("sortedModel").filter(function(item) {
+        var strFilter = this.get("strFilter").toUpperCase();
+        var bFilterActive = (strFilter.length !== 0);
+        return this.get("sortedModel").filter(function (item) {
             if (bFilterActive) {
                 var strConcat = (item.get("strMessage") +
                     item.get("strSource") +
@@ -71,19 +76,27 @@ Jt76EmberBase.IndexAdminErrorsController = Ember.ArrayController.extend({
                     item.get("strAdditionalInformation") +
                     item.get("strStackTrace") +
                     item.get("strCreated"));
-                return strConcat.toUpperCase().indexOf(filterProperties) !== -1;
+                return strConcat.toUpperCase().indexOf(strFilter) !== -1;
             } else {
                 return true;
             }
         });
-    }.property("filterProperties", "sortProperties"),//set this to watch ui changes
-               //"@each.strMessage", "@each.strSource",
-               //"@each.strErrorLevel", "@each.strAdditionalInformation",
-               //"@each.strStackTrace"), //set this to watch model changes for properties that can change
+    }.property("strFilter", "sortProperties"),//set this to watch ui changes
+    //"@each.strMessage", "@each.strSource",
+    //"@each.strErrorLevel", "@each.strAdditionalInformation",
+    //"@each.strStackTrace"), //set this to watch model changes for properties that can change
 
     actions: {
         refresh: function () {
-            this.loadAdminErrors();
+            this.get("target.router").refresh();
+        },
+        gotoPage: function () {
+            //update the model. pagination data updated by the component
+            var nCurrentPage = this.get("paginationData.nCurrentPage");
+            var nMaxPageItemsToDisplay = this.get("paginationData.nMaxPageItemsToDisplay");
+            var nStartItem = (nCurrentPage * nMaxPageItemsToDisplay) - nMaxPageItemsToDisplay;
+            var pagedArray = this.get("sortedModel").toArray().splice(nStartItem, nMaxPageItemsToDisplay);
+            this.set("filteredModel", pagedArray);
         }
     }
 });

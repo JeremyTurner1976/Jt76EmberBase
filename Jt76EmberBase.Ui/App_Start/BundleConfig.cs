@@ -83,10 +83,10 @@ namespace Jt76EmberBase.Ui
             .IncludeDirectory("~/Jt76EmberBase/Data", "*.js", true)
             .IncludeDirectory("~/Jt76EmberBase/Layout", "*.js", true)
             .IncludeDirectory("~/Jt76EmberBase/Modules", "*.js", true);
-            //#if DEBUG
+            #if DEBUG
             //remove minification on this bundle in debug
             appBundle.Transforms.Clear();
-            //#endif
+            #endif
             bundles.Add(appBundle);
         }
     }

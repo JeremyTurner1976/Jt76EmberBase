@@ -10,7 +10,7 @@
 
         <div class="col-sm-3">
             <div class="search-input">
-                <input type="text" class="form-control input-sm inline-block">
+                {{input value=strFilter class="form-control input-sm inline-block"}}
                 <a href="#" class="input-icon text-normal"><i class="ion-ios7-search-strong"></i></a>
             </div>
         </div>
@@ -32,7 +32,7 @@
             <a class="btn btn-success">
                 <i class="fa fa-plus-circle"></i>&nbsp;Add Error
             </a>
-            <a class="btn btn-info">
+            <a class="btn btn-info" {{action "refresh"}}>
                 <i class="fa fa-refresh"></i>&nbsp;Refresh
             </a>
         </div>

@@ -17,6 +17,11 @@ tagName="li" inside of helpers - link-to as a <li>, etc
 //If the resource has a path with title, sending this will automatically choose title for url param. No need to send this.title specifically
 {{#link-to 'product' this tagName='button' classNames='btn btn-success'}}Buy for ${{price}}{{/link-to}}
 
+//targets possible on actions or use Send
+{{action "gotoPage" "Prev" target=view.parentView.controller}}
+this.set("parentView.controller.paginationData", this.get("pagination"));
+this.get("parentView.controller").send("gotoPage"); //, item); //objects can be passed, as many as needed separated by commas
+
 //ember array helpers
 data.forEach(function(item){
 });
@@ -36,5 +41,8 @@ this.modelFor("indexErrors") to get another model's data
 Shorthand for function(){...}.property("controller.bIsLoaded")
 Ember.computed.alias("controller.bIsLoaded") to set a property that is bound to the controllers bIsLoaded property for change events 
 
+.property().volatile() means it is reloaded every time it is called
+
 http://stackoverflow.com/questions/15235574/ember-data-reloading-content-ui-not-updating
 https://github.com/heartsentwined/ember-auth
+http://stackoverflow.com/questions/18863710/how-do-i-call-an-action-method-on-controller-from-the-outside-with-the-same-beh

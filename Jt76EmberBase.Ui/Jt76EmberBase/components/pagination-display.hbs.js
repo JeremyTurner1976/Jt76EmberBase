@@ -5,7 +5,7 @@
     'class': ("item.className")
   },"data":data})))
     + ">\r\n            <a "
-    + escapeExpression(((helpers.action || (depth0 && depth0.action) || helperMissing).call(depth0, (depth0 != null ? depth0.gotoPage : depth0), (depth0 != null ? depth0.item : depth0), {"name":"action","hash":{},"data":data})))
+    + escapeExpression(((helpers.action || (depth0 && depth0.action) || helperMissing).call(depth0, "gotoPage", (depth0 != null ? depth0.item : depth0), {"name":"action","hash":{},"data":data})))
     + ">"
     + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.item : depth0)) != null ? stack1.nPageNumber : stack1), depth0))
     + "</a>\r\n        </li>\r\n";
@@ -15,13 +15,13 @@
     + " / "
     + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.pagination : depth0)) != null ? stack1.nTotalCount : stack1), depth0))
     + " items</em></div>\r\n\r\n\r\n    <ul class=\"pagination pagination-sm pull-right\" style=\"min-width:338px; margin-right:-16px\">\r\n        <li><a "
-    + escapeExpression(((helpers.action || (depth0 && depth0.action) || helperMissing).call(depth0, (depth0 != null ? depth0.gotoPage : depth0), "First", {"name":"action","hash":{},"data":data})))
+    + escapeExpression(((helpers.action || (depth0 && depth0.action) || helperMissing).call(depth0, "gotoPage", "First", {"name":"action","hash":{},"data":data})))
     + ">First</a></li>\r\n        <li "
     + escapeExpression(((helpers['bind-attr'] || (depth0 && depth0['bind-attr']) || helperMissing).call(depth0, {"name":"bind-attr","hash":{
     'class': ("prevClassName")
   },"data":data})))
     + "><a "
-    + escapeExpression(((helpers.action || (depth0 && depth0.action) || helperMissing).call(depth0, (depth0 != null ? depth0.gotoPage : depth0), "Prev", {"name":"action","hash":{},"data":data})))
+    + escapeExpression(((helpers.action || (depth0 && depth0.action) || helperMissing).call(depth0, "gotoPage", "Prev", {"name":"action","hash":{},"data":data})))
     + ">Prev</a></li>\r\n";
   stack1 = helpers.each.call(depth0, (depth0 != null ? depth0.item : depth0), (depth0 != null ? depth0['in'] : depth0), (depth0 != null ? depth0.visiblePages : depth0), {"name":"each","hash":{},"fn":this.program(1, data),"inverse":this.noop,"data":data});
   if (stack1 != null) { buffer += stack1; }
@@ -30,13 +30,13 @@
     'class': ("nextClassName")
   },"data":data})))
     + "><a "
-    + escapeExpression(((helpers.action || (depth0 && depth0.action) || helperMissing).call(depth0, (depth0 != null ? depth0.gotoPage : depth0), "Next", {"name":"action","hash":{},"data":data})))
+    + escapeExpression(((helpers.action || (depth0 && depth0.action) || helperMissing).call(depth0, "gotoPage", "Next", {"name":"action","hash":{},"data":data})))
     + " "
     + escapeExpression(((helpers['bind-attr'] || (depth0 && depth0['bind-attr']) || helperMissing).call(depth0, {"name":"bind-attr","hash":{
     'disabled': ((depth0 != null ? depth0.bNextDisabled : depth0))
   },"data":data})))
     + ">Next</a></li>\r\n        <li><a "
-    + escapeExpression(((helpers.action || (depth0 && depth0.action) || helperMissing).call(depth0, (depth0 != null ? depth0.gotoPage : depth0), "Last", {"name":"action","hash":{},"data":data})))
+    + escapeExpression(((helpers.action || (depth0 && depth0.action) || helperMissing).call(depth0, "gotoPage", "Last", {"name":"action","hash":{},"data":data})))
     + ">Last</a></li>\r\n    </ul>\r\n\r\n    <div class=\"pull-right m-right-sm\"><strong>Page "
     + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.pagination : depth0)) != null ? stack1.nCurrentPage : stack1), depth0))
     + " of "
