@@ -1,21 +1,21 @@
 ﻿{{page-header strPageTitle=strPageTitle strSubHeader=strSubHeader}}
 
-<div class="inbox-body jt76-padding-sides-md p-top-xs ">
-    <div class="row m-bottom-md">
-        <div class="col-sm-3 m-bottom-sm">
+<div class="inbox-body jt76-padding-sides-md p-top-xs">
+    <div class="row m-bottom-sm">
+        <div class="col-sm-2 col-md-2 m-bottom-sm">
             <h2 class="no-margin">
                 Errors
             </h2>
         </div>
 
-        <div class="col-sm-3">
+        <div class="col-sm-2 col-md-2 m-bottom-sm">
             <div class="search-input">
                 {{input value=strToSearchFor class="form-control input-sm inline-block"}}
                 <a class="input-icon text-normal" style="cursor:inherit;"><i class="ion-ios7-search-strong"></i></a>
             </div>
         </div>
 
-        <div class="col-sm-6 text-right text-left-sm">
+        <div class="col-sm-8 col-md-8 text-right text-left-sm">
             <div class="btn-group">
                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                     Order By <span class="caret"></span>
@@ -26,8 +26,8 @@
                     <li><a>Reset</a></li>
                 </ul>
             </div>
-            <a class="btn btn-primary">
-                <i class="fa fa-fire"></i>&nbsp;Inject New Error
+            <a class="btn btn-primary"  {{action "injectError"}}>
+                <i class="fa fa-fire"></i>&nbsp;Inject Error
             </a>
             <a class="btn btn-success">
                 <i class="fa fa-plus-circle"></i>&nbsp;Add Error

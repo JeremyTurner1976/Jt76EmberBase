@@ -4,7 +4,7 @@
     {{#if pagination.bInSearchMode}}
     <div class="pull-right"><strong>Search Mode &nbsp;<i class="ion-ios7-search-strong"></i></strong></div>
     {{else}}
-        <ul class="pagination pagination-sm pull-right" style="min-width:338px; margin-right:-16px">
+        <ul class="pagination pagination-sm pull-right" {{bind-attr style="paginationListStyle"}}>
             <li><a {{action "gotoPage" "First"}}>First</a></li>
             <li {{bind-attr class="prevClassName"}}><a {{action "gotoPage" "Prev"}}>Prev</a></li>
             {{#each item in visiblePages}}

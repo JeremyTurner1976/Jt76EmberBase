@@ -6,4 +6,6 @@ strErrorLevel: {{strErrorLevel}}<br />
 strAdditionalInformation: {{strAdditionalInformation}}<br /><br />
 strStackTrace: {{strStackTrace}}<br />
 <hr />
-{{#link-to "index.admin.errors" tagName="button" classNames="btn btn-info"}}Back{{/link-to}}
+{{#link-to "index.admin.errors"}}
+<span class="btn btn-info" {{bind-attr tagName="button"}}>Back</span>
+{{/link-to}}

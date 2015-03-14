@@ -1,7 +1,11 @@
 ﻿var pagination_display = Handlebars.template({"1":function(depth0,helpers,partials,data) {
   return "    <div class=\"pull-right\"><strong>Search Mode &nbsp;<i class=\"ion-ios7-search-strong\"></i></strong></div>\r\n";
   },"3":function(depth0,helpers,partials,data) {
-  var stack1, helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression, lambda=this.lambda, buffer = "        <ul class=\"pagination pagination-sm pull-right\" style=\"min-width:338px; margin-right:-16px\">\r\n            <li><a "
+  var stack1, helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression, lambda=this.lambda, buffer = "        <ul class=\"pagination pagination-sm pull-right\" "
+    + escapeExpression(((helpers['bind-attr'] || (depth0 && depth0['bind-attr']) || helperMissing).call(depth0, {"name":"bind-attr","hash":{
+    'style': ("paginationListStyle")
+  },"data":data})))
+    + ">\r\n            <li><a "
     + escapeExpression(((helpers.action || (depth0 && depth0.action) || helperMissing).call(depth0, "gotoPage", "First", {"name":"action","hash":{},"data":data})))
     + ">First</a></li>\r\n            <li "
     + escapeExpression(((helpers['bind-attr'] || (depth0 && depth0['bind-attr']) || helperMissing).call(depth0, {"name":"bind-attr","hash":{

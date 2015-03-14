@@ -2041,7 +2041,7 @@ a.list-group-item.active:focus {
 }
 .search-input input:hover,
 .search-input input:focus {
-  width: 150px;
+  width: 144px;
   transition: all 0.5s ease;
   -webkit-transition: all 0.5s ease;
   -moz-transition: all 0.5s ease;
@@ -2054,7 +2054,7 @@ a.list-group-item.active:focus {
 }
 .search-input:hover input,
 .search-input:focus input {
-  width: 150px;
+  width: 144px;
   transition: all 0.5s ease;
   -webkit-transition: all 0.5s ease;
   -moz-transition: all 0.5s ease;

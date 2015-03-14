@@ -89,6 +89,9 @@ textarea.ng-invalid {
 a {
   cursor: pointer;
 }
+.btn {
+  margin-bottom: 3px !important;
+}
 .btn-default:hover {
   background-position: 0 !important;
   background-color: #e6e6e6 !important;
@@ -97,12 +100,6 @@ a {
   background-position: 0 !important;
   background-color: #e6e6e6 !important;
 }
-.pagination li.active a,
-.pagination li.active a:hover,
-.pagination li.active a:focus {
-  background: #e6e6e6 !important;
-  border-color: #999999 !important;
-}
 .pagination li a {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -110,6 +107,12 @@ a {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+}
+.pagination li.active a,
+.pagination li.active a:hover,
+.pagination li.active a:focus {
+  background: #e6e6e6 !important;
+  border-color: #999999 !important;
 }
 /*fade animation*/
 .jt76-loading-fade {
@@ -124,11 +127,6 @@ a {
 }
 /*shuffle animation*/
 .jt76-loading-slide {
-  position: relative;
-  -moz-transition: ease-out all 0.3s 0.4s;
-  -o-transition: ease-out all 0.3s 0.4s;
-  -webkit-transition: ease-out all 0.3s 0.4s;
-  transition: ease-out all 0.3s 0.4s;
   left: 2em;
   opacity: 0;
 }

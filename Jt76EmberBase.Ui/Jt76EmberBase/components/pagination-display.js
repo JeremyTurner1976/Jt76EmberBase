@@ -11,6 +11,10 @@
             nListCap = nMaxPages;
             nStartDisplayPage = nMaxPages - nMaxPagesToDisplay + 1;
         }
+        if (nStartDisplayPage < 1) {
+            nListCap = nListCap + (1 - (nStartDisplayPage));
+            nStartDisplayPage = 1;
+        }
 
         for (var i = nStartDisplayPage; i <= nListCap; i++) {
             var pageInfo = {
@@ -20,15 +24,22 @@
             pages.push(pageInfo);
         }
         return pages;
-    }.property("pagination.nCurrentPage"),
+    }.property("pagination.nCurrentPage", "pagination.nMaxPages"),
 
     prevClassName: function () {
         return this.get("pagination.nCurrentPage") === 1 ? "disabled" : "";
-    }.property("pagination.nCurrentPage"),
+    }.property("pagination.nCurrentPage", "pagination.nMaxPages"),
 
     nextClassName: function () {
         return this.get("pagination.nCurrentPage") === this.get("pagination.nMaxPages") ? "disabled" : "";
-    }.property("pagination.nCurrentPage"),
+    }.property("pagination.nCurrentPage","pagination.nMaxPages"),
+
+    paginationListStyle: function () {
+        var nButtonWidth = 28;
+        var nDefaultButtonsWidth = 182;
+        var nMinWidth = nDefaultButtonsWidth + (nButtonWidth * this.get("pagination.nMaxPagesToDisplay"));
+        return "min-width:" + nMinWidth + "px;";
+    }.property("pagination.nMaxPagesToDisplay"),
 
     actions: {
         gotoPage: function (item) {
@@ -70,7 +81,7 @@
 //        nMaxPagesToDisplay: nMaxPages >= nMaxPagesToDisplay ? nMaxPagesToDisplay : nMaxPages,
 //        nMaxPageItemsToDisplay: nMaxPageItemsToDisplay,
 //        bInSearchMode: false,
-//        nCurrentPage: 1,
+//        nCurrentPage: nMaxPages >= 1 ? 1 : 0,
 //        nMaxPages: nMaxPages,
 //        nTotalCount: this.get("nTotalCount"),
 //        nFilteredCount: nMaxPageItemsToDisplay
