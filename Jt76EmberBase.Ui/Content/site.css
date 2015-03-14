@@ -59,6 +59,23 @@
 .jt76-verticalLine {
   border-left: 1px solid #e6e6e6;
 }
+.jt76-loading-overlay {
+  opacity: .9;
+  display: block;
+  position: relative;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: whitesmoke;
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#B2F0F0F0,endColorstr=#B2F0F0F0)";
+  /* IE8 */
+  zoom: 1;
+  background-image: url(../Content/Images/Jt76EmberBase/preloader.gif);
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 1000;
+}
 /*colors*/
 .jt76-bg-green {
   background-color: #51a351;

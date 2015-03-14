@@ -15,6 +15,7 @@
 Jt76EmberBase.IndexAdminErrorsRoute = Ember.Route.extend({
     model: function () {
         //call with this.modelFor("indexAdminErrors");
+        this.controllerFor("index").set("bIsLoaded", false);
 
         //var data = this.store.all("error");
         //return (data.get("content").length === 0) ? this.store.find("error") : data;
@@ -35,9 +36,10 @@ Jt76EmberBase.IndexAdminErrorsRoute = Ember.Route.extend({
     setupController: function (controller, model) {
         Ember.Logger.info(model);
         controller.set("model", model);
+        this.controllerFor("index").set("bIsLoaded", true);
 
         //give the dom time to set the jt76-loading class then switch it
-        setTimeout(function () { controller.set("bIsLoaded", true); }, 100);
+        setTimeout(function () { controller.set("bIsLoaded", true); }, 150);
     }
 });
 

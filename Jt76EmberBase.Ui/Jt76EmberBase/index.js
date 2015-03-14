@@ -3,7 +3,16 @@
 });
 
 Jt76EmberBase.IndexRoute = Ember.Route.extend({
-    model: function () {
+    //model: function () {
+    //},
+    //setupController: function (controller, model) {
+    //    controller.set("model", model);
+    //}
+});
+
+Jt76EmberBase.IndexController = Ember.ObjectController.extend({
+    bIsLoaded: true,
+    strHeightStyle: function() {
         var nFooterHeight = 32;
         var nHeaderHeight = 52;
         var nOverallPadding = 55;
@@ -13,19 +22,8 @@ Jt76EmberBase.IndexRoute = Ember.Route.extend({
         if (nDesiredHeight < 450)
             nDesiredHeight = 450;
 
-        var model = {
-            height: nDesiredHeight,
-            heightStyle: "min-height:" + nDesiredHeight + "px;"
-        };
-        return model;
-    },
-    setupController: function (controller, model) {
-        //Ember.Logger.info(model.height + "px to fill");
-        controller.set("model", model);
-    }
-});
-
-Jt76EmberBase.IndexController = Ember.ObjectController.extend({
-    actions: {
-    }
+        return "min-height:" + nDesiredHeight + "px;";
+    }.property(),
+    //actions: {
+    //}
 });

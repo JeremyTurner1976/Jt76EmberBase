@@ -2,17 +2,22 @@
 
     {{view "topNav"}}
     {{view "sidebarMenu"}}
-    
+
     <div class="main-container">
         <div class="padding-md">
-            <div class="row" {{bind-attr style="heightStyle"}} >
-
-                {{outlet}}
-
-            </div>
+            {{#if bIsLoaded}}
+                <div {{bind-attr style="strHeightStyle"}}>
+                    {{outlet}}
+                </div>
+            {{else}}
+                <div class="jt76-loading-overlay" {{bind-attr style="strHeightStyle"}}>
+                </div>
+            {{/if}}
         </div>
     </div>
-    {{view "footer"}}
 
+    {{view "footer"}}
 </div>
+
+
 <a href="#" class="scroll-to-top hidden-print"><i class="fa fa-chevron-up fa-lg"></i></a>

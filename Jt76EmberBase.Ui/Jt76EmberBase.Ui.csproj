@@ -208,8 +208,8 @@
     <Content Include="Content\Images\forward_disabled.png" />
     <Content Include="Content\Images\forward_enabled.png" />
     <Content Include="Content\Images\forward_enabled_hover.png" />
-    <Content Include="Content\Images\Jt76EmberBase\background.png" />
     <Content Include="Content\Images\Jt76EmberBase\developer.jpg" />
+    <Content Include="Content\Images\Jt76EmberBase\preloader.gif" />
     <Content Include="Content\Images\sort_asc.png" />
     <Content Include="Content\Images\sort_asc_disabled.png" />
     <Content Include="Content\Images\sort_both.png" />
