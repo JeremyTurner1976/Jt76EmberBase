@@ -10,8 +10,8 @@
 
         <div class="col-sm-3">
             <div class="search-input">
-                {{input value=strFilter class="form-control input-sm inline-block"}}
-                <a href="#" class="input-icon text-normal"><i class="ion-ios7-search-strong"></i></a>
+                {{input value=strToSearchFor class="form-control input-sm inline-block"}}
+                <a class="input-icon text-normal" style="cursor:inherit;"><i class="ion-ios7-search-strong"></i></a>
             </div>
         </div>
 
@@ -51,13 +51,13 @@
                 </tr>
             </thead>
             <tbody>
-                {{#each item in filteredModel}}
+                {{#each item in displayModel}}
                 <tr>
                     <td>
                         <div class="jt76-multiline">{{item.strCreated}}</div>
                     </td>
                     <td>
-                        {{#link-to "index.admin.customError" item}}<span class="jt76-title-link">{{item.strMessage}}</span>{{/link-to}}<br />
+                        {{#link-to "index.admin.customError" item}}<span class="jt76-title-link jt76-multiline">{{item.strMessage}}</span>{{/link-to}}<br />
                     </td>
                     <td>
                         <div class="jt76-multiline">{{item.strSource}} {{item.strErrorLevel}}</div>

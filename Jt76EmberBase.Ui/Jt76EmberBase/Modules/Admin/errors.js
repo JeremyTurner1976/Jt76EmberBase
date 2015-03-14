@@ -1,104 +1,134 @@
 ﻿Jt76EmberBase.IndexAdminErrorsView = Ember.View.extend({
+    /*__Template Name__*/
     templateName: "Modules/Admin/errors",
+    /*__End Template Name__*/
+
     className: ["jt76-loading-slide"],
     classNameBindings: ["bIsLoading"],
     bIsLoading: function () {
         return this.get("controller.bIsLoaded") ? "jt76-loaded-slide" : "jt76-loading-slide";
-    }.property("controller.bIsLoaded") //bind to the property change
-    //bIsLoading: function () {
-    //    //does not allow the dom time to set the jt76-loading-slide css
-    //    //return Ember.computed.equal(this.get("_state"), "inDOM") ? "jt76-loaded-slide" : "jt76-loading-slide";
-    //}.property()
-    //tag
+    }.property("controller.bIsLoaded")
 });
 
 Jt76EmberBase.IndexAdminErrorsRoute = Ember.Route.extend({
     model: function () {
-        //call with this.modelFor("indexAdminErrors");
         this.controllerFor("index").set("bIsLoaded", false);
+        var controller = this.get("controller");
 
-        //var data = this.store.all("error");
-        //return (data.get("content").length === 0) ? this.store.find("error") : data;
+        /*__Data Pull__*/;
+        if (controller && this.get("controller.bForceRefresh")) {
+            return this.store.all("error");
+        } else {
+            return this.store.find("error").then(function(response) {
+                var array = response.toArray();
+                var common = Jt76EmberBase.Common.create();
 
-        return this.store.find("error").then(function (data) {
-            var array = data.toArray();
-            var common = Jt76EmberBase.Common.create();
+                array.forEach(function(item) {
+                    item.set("numericId", parseInt(item.id));
+                    item.set("strCreated", common.longDateTimeFormat(item.get("dtCreated")));
 
-            array.forEach(function (item) {
-                //set properties that will not change
-                item.set("numericId", parseInt(item.id));
-                item.set("strCreated", common.longDateTimeFormat(item.get("dtCreated")));
+                    var strToSearchAgainst = (item.get("strMessage") +
+                            item.get("strSource") +
+                            item.get("strErrorLevel") +
+                            item.get("strAdditionalInformation") +
+                            item.get("strStackTrace") +
+                            item.get("strCreated"))
+                        .toUpperCase();
+                    item.set("strToSearchAgainst", strToSearchAgainst);
+                });
+
+                return array;
             });
-
-            return array;
-        });
+        }
+        /*__End Data Pull__*/
     },
     setupController: function (controller, model) {
         Ember.Logger.info(model);
         controller.set("model", model);
         this.controllerFor("index").set("bIsLoaded", true);
-
-        //give the dom time to set the jt76-loading class then switch it
-        setTimeout(function () { controller.set("bIsLoaded", true); }, 150);
+        setTimeout(function () { controller.set("bIsLoaded", true); }, 150); //give the dom time to set the jt76-loading class then switch it
+    },
+    deactivate: function() {
+        this._super();
+        this.set("controller.bIsLoaded", false);
     }
 });
 
 Jt76EmberBase.IndexAdminErrorsController = Ember.ArrayController.extend({
+    /*__Config__*/
     strPageTitle: "Admin Errors",
     strSubHeader: "Handle your business.",
-    bIsLoaded: false,
-
-    nTotalCount: Ember.computed.alias("length"), //this property observes changes in length
-    nFilteredCount: Ember.computed.alias("filteredModel.length"),
+    nMaxPagesToDisplay:5,
+    nMaxPageItemsToDisplay: 10,
     sortProperties: ["dtCreated:desc", "numericId:desc"],
-    strFilter: "",
+    /*__End Config__*/
+
+    bIsLoaded: false,
+    bForceRefresh: false,
+    strToSearchFor: "",
+    nTotalCount: Ember.computed.alias("length"),
+    sortedModel: Ember.computed.sort("model", "sortProperties"),
+
     paginationData: function () {
-        var nMaxPageItemsToDisplay = 5;
-        var bInSearchMode = this.get("strFilter").length === 0;
+        var nMaxPagesToDisplay = this.get("nMaxPagesToDisplay");
+        var nMaxPageItemsToDisplay = this.get("nMaxPageItemsToDisplay");
+        var nMaxPages = Math.ceil(this.get("nTotalCount") / nMaxPageItemsToDisplay);
         return {
-            nFilteredCount: bInSearchMode ? this.get("nFilteredCount") : nMaxPageItemsToDisplay,
-            nTotalCount: this.get("nTotalCount"),
-            nCurrentPage: 1,
-            nMaxPages: Math.ceil(this.get("nTotalCount") / nMaxPageItemsToDisplay),
-            nMaxPagesToDisplay: 5,
+            nMaxPagesToDisplay: nMaxPages >= nMaxPagesToDisplay ? nMaxPagesToDisplay : nMaxPages,
             nMaxPageItemsToDisplay: nMaxPageItemsToDisplay,
-            bInSearchMode: bInSearchMode
-        };
+            bInSearchMode: false,
+            nCurrentPage: 1,
+            nMaxPages: nMaxPages,
+            nTotalCount: this.get("nTotalCount"),
+            nFilteredCount: nMaxPageItemsToDisplay
+        }
     }.property(),
 
-    sortedModel: Ember.computed.sort("model", "sortProperties"),
-    filteredModel: function () {
-        var strFilter = this.get("strFilter").toUpperCase();
-        var bFilterActive = (strFilter.length !== 0);
-        return this.get("sortedModel").filter(function (item) {
-            if (bFilterActive) {
-                var strConcat = (item.get("strMessage") +
-                    item.get("strSource") +
-                    item.get("strErrorLevel") +
-                    item.get("strAdditionalInformation") +
-                    item.get("strStackTrace") +
-                    item.get("strCreated"));
-                return strConcat.toUpperCase().indexOf(strFilter) !== -1;
-            } else {
-                return true;
-            }
+    bInSearchMode: function () {
+        var bInSearchMode = this.get("strToSearchFor").length !== 0;
+        this.set("paginationData.bInSearchMode", bInSearchMode);
+        return bInSearchMode;
+    }.property("strToSearchFor"),
+
+    displayModel: function () {
+        return this.get("bInSearchMode") ? this.get("searchDisplay") : this.get("pagedDisplay"); 
+    }.property("paginationData.nCurrentPage", "bInSearchMode"),
+
+    searchDisplay: function() {
+        var self = this;
+        self.set("paginationData.nFilteredCount", 0);
+        var strToSearchFor = self.get("strToSearchFor").toUpperCase();
+        var nMatchCount = 0;
+        return self.get("sortedModel").filter(function (item) {
+            var bMatch = item.get("strToSearchAgainst").indexOf(strToSearchFor) !== -1;
+            if (bMatch) { self.set("paginationData.nFilteredCount", ++nMatchCount); }
+            return bMatch;
         });
-    }.property("strFilter", "sortProperties"),//set this to watch ui changes
-    //"@each.strMessage", "@each.strSource",
-    //"@each.strErrorLevel", "@each.strAdditionalInformation",
-    //"@each.strStackTrace"), //set this to watch model changes for properties that can change
+    }.property("bInSearchMode"),
+
+    pagedDisplay: function () {
+        var nCurrentPage = this.get("paginationData.nCurrentPage");
+        var nMaxPageItemsToDisplay = this.get("paginationData.nMaxPageItemsToDisplay");
+        var nStartItem = (nCurrentPage * nMaxPageItemsToDisplay) - nMaxPageItemsToDisplay;
+        var pagedArray = this.get("sortedModel").toArray().splice(nStartItem, nMaxPageItemsToDisplay);
+        this.set("paginationData.nFilteredCount", pagedArray.length);
+        return pagedArray;
+    }.property("paginationData.nCurrentPage"),
 
     actions: {
         refresh: function () {
-            this.get("target.router").refresh();
-        },
-        gotoPage: function () {
-            //update the model. pagination data updated by the component
-            var nCurrentPage = this.get("paginationData.nCurrentPage");
-            var nMaxPageItemsToDisplay = this.get("paginationData.nMaxPageItemsToDisplay");
-            var nStartItem = (nCurrentPage * nMaxPageItemsToDisplay) - nMaxPageItemsToDisplay;
-            var pagedArray = this.get("sortedModel").toArray().splice(nStartItem, nMaxPageItemsToDisplay);
-            this.set("filteredModel", pagedArray);
+            this.set("bForceRefresh", true);
+            this.get("target.router").refresh(); //get fresh data
+            this.set("strToSearchFor", ""); //reset default values
+            this.set("paginationData.nCurrentPage", 1);
+            this.set("paginationData.bInSearchMode", false);
+            this.set("paginationData.nTotalCount", this.get("nTotalCount"));
+            this.set("paginationData.nFilteredItems", this.get("paginationData.nMaxPageItemsToDisplay"));
+            this.set("bForceRefresh", false);
         }
     }
 });
+
+//"@each.strMessage", "@each.strSource",
+//"@each.strErrorLevel", "@each.strAdditionalInformation",
+//"@each.strStackTrace"), //set this to watch model changes for properties that can change

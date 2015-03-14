@@ -25,7 +25,7 @@ namespace Jt76EmberBase.Data.Factories
             var error = new Error
             {
                 StrMessage = e.Message + ((e.InnerException == null) ? "" : "     |Inner Exception| " + e.InnerException.Message),
-                StrSource = e.Source + "|Module| " + (e.TargetSite != null ? e.TargetSite.Module.Name : "Aggregate Exception") + "     |Class| " + ((e.TargetSite != null && e.TargetSite.ReflectedType != null) ? e.TargetSite.ReflectedType.Name : "No Reflected Name Found"),
+                StrSource = e.Source + Environment.NewLine + "|Module| " + (e.TargetSite != null ? e.TargetSite.Module.Name : "Aggregate Exception") + Environment.NewLine + "|Class| " + ((e.TargetSite != null && e.TargetSite.ReflectedType != null) ? e.TargetSite.ReflectedType.Name : "No Reflected Name Found"),
                 StrErrorLevel = Enum.GetName(typeof(ErrorLevels), errorLevel),
                 StrAdditionalInformation = strAdditionalInformation,
                 StrStackTrace = e.StackTrace + Environment.NewLine + (e.InnerException == null ? "             |No inner exception| " : "             |Inner Exception| " + GetErrorAsString(e.InnerException)),
@@ -154,7 +154,6 @@ namespace Jt76EmberBase.Data.Factories
             Task.WaitAll(task, taskTwo); //waits on all
             return Task.WhenAll(task, taskTwo);
         }
-
 
         private static IEnumerable<string> GetStackStraceStrings(string strStackTrace)
         {

@@ -1,18 +1,22 @@
 ﻿<div style="padding-top:3px;">
-    <div class="pull-left hidden-xs"><em>Showing {{pagination.nFilteredCount}} / {{pagination.nTotalCount}} items</em></div>
+    <span class="pull-left hidden-xs"><em>Showing {{pagination.nFilteredCount}} / {{pagination.nTotalCount}} items</em></span>
 
+    {{#if pagination.bInSearchMode}}
+    <div class="pull-right"><strong>Search Mode &nbsp;<i class="ion-ios7-search-strong"></i></strong></div>
+    {{else}}
+        <ul class="pagination pagination-sm pull-right" style="min-width:338px; margin-right:-16px">
+            <li><a {{action "gotoPage" "First"}}>First</a></li>
+            <li {{bind-attr class="prevClassName"}}><a {{action "gotoPage" "Prev"}}>Prev</a></li>
+            {{#each item in visiblePages}}
+            <li {{bind-attr class="item.className"}}>
+                <a {{action "gotoPage" item}} class="">{{item.nPageNumber}}</a>
+            </li>
+            {{/each}}
+            <li {{bind-attr class="nextClassName"}}><a {{action "gotoPage" "Next"}} {{bind-attr disabled=bNextDisabled}}>Next</a></li>
+            <li><a {{action "gotoPage" "Last"}}>Last</a></li>
+        </ul>
+        <span class="pull-right m-right-sm"><strong>Page {{pagination.nCurrentPage}} of {{pagination.nMaxPages}}</strong></span>
+    {{/if}}
 
-    <ul class="pagination pagination-sm pull-right" style="min-width:338px; margin-right:-16px">
-        <li><a {{action "gotoPage" "First"}}>First</a></li>
-        <li {{bind-attr class="prevClassName"}}><a {{action "gotoPage" "Prev"}}>Prev</a></li>
-        {{#each item in visiblePages}}
-        <li {{bind-attr class="item.className"}}>
-            <a {{action "gotoPage" item}}>{{item.nPageNumber}}</a>
-        </li>
-        {{/each}}
-        <li {{bind-attr class="nextClassName"}}><a {{action "gotoPage" "Next"}} {{bind-attr disabled=bNextDisabled}}>Next</a></li>
-        <li><a {{action "gotoPage" "Last"}}>Last</a></li>
-    </ul>
-
-    <div class="pull-right m-right-sm"><strong>Page {{pagination.nCurrentPage}} of {{pagination.nMaxPages}}</strong></div>
+    
 </div>

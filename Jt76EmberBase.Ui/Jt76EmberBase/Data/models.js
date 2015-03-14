@@ -29,7 +29,6 @@ Jt76EmberBase.WeatherService = DS.Model.extend({
     currentWeather: DS.attr(),
     dailyWeather: DS.attr()
 });
-
 //{ "summary": "Partly Cloudy", "icon": "partly-cloudy-day", "temperature": 28.76 }
 
 //{ "summary": "Mostly cloudy throughout the day.", "icon": "partly-cloudy-day", "temperatureMin": 21.34, "temperatureMinTime": 1425218400, "temperatureMax": 44.84, "temperatureMaxTime": 1425250800 }

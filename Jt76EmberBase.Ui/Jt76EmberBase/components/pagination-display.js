@@ -55,18 +55,24 @@
                 }
             }
 
-            this.set("parentView.controller.paginationData", this.get("pagination"));
-            this.get("parentView.controller").send("gotoPage"); //, item); //objects can be passed, as many as needed separated by commas
+            //controller will watch for changes in the current page in the object it passes and set the pagedDisplay
+            this.set("parentView.controller.paginationData.nCurrentPage", this.get("pagination.nCurrentPage"));
         }
     }
 });
 
-//pagination object
-
-//nFilteredCount: bInSearchMode ? this.get("nFilteredCount") : nMaxPageItemsToDisplay,
-//nTotalCount: this.get("nTotalCount"),
-//nCurrentPage: 1,
-//nMaxPages: Math.ceil(this.get("nTotalCount") / nMaxPageItemsToDisplay),
-//nMaxPagesToDisplay: 5,
-//nMaxPageItemsToDisplay: nMaxPageItemsToDisplay,
-//bInSearchMode: bInSearchMode
+//pagination object - sample in Modules\Admin\errors
+//paginationData: function () {
+//    var nMaxPagesToDisplay = this.get("nMaxPagesToDisplay");
+//    var nMaxPageItemsToDisplay = this.get("nMaxPageItemsToDisplay");
+//    var nMaxPages = Math.ceil(this.get("nTotalCount") / nMaxPageItemsToDisplay);
+//    return {
+//        nMaxPagesToDisplay: nMaxPages >= nMaxPagesToDisplay ? nMaxPagesToDisplay : nMaxPages,
+//        nMaxPageItemsToDisplay: nMaxPageItemsToDisplay,
+//        bInSearchMode: false,
+//        nCurrentPage: 1,
+//        nMaxPages: nMaxPages,
+//        nTotalCount: this.get("nTotalCount"),
+//        nFilteredCount: nMaxPageItemsToDisplay
+//    }
+//}.property(),
