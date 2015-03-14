@@ -309,8 +309,8 @@
     </Content>
     <Content Include="Jt76EmberBase\Layout\topNav.js" />
     <Content Include="Jt76EmberBase\Modules\About\about.js" />
-    <Content Include="Jt76EmberBase\Modules\Admin\customError.hbs.js">
-      <DependentUpon>customError.hbs</DependentUpon>
+    <Content Include="Jt76EmberBase\Modules\Admin\errorDetails.hbs.js">
+      <DependentUpon>errorDetails.hbs</DependentUpon>
     </Content>
     <Content Include="Jt76EmberBase\Modules\Admin\dashboard.js" />
     <Content Include="Jt76EmberBase\Modules\Admin\logMessage.hbs.js">
@@ -318,9 +318,9 @@
     </Content>
     <Content Include="Jt76EmberBase\Modules\Admin\logMessage.js" />
     <Content Include="Jt76EmberBase\Modules\Admin\error.hbs.js">
-      <DependentUpon>customError.hbs</DependentUpon>
+      <DependentUpon>errorDetails.hbs</DependentUpon>
     </Content>
-    <Content Include="Jt76EmberBase\Modules\Admin\customError.js" />
+    <Content Include="Jt76EmberBase\Modules\Admin\errorDetails.js" />
     <Content Include="Jt76EmberBase\Modules\Admin\errors.js" />
     <Content Include="Jt76EmberBase\Modules\Admin\logMessages.js" />
     <Content Include="Jt76EmberBase\Modules\Admin\userAdmin.js" />
@@ -480,7 +480,7 @@
     <Content Include="Jt76EmberBase\Modules\About\about.hbs" />
     <Content Include="Jt76EmberBase\application.hbs" />
     <Content Include="Jt76EmberBase\index.hbs" />
-    <Content Include="Jt76EmberBase\Modules\Admin\customError.hbs" />
+    <Content Include="Jt76EmberBase\Modules\Admin\errorDetails.hbs" />
     <Content Include="Jt76EmberBase\Modules\Admin\logMessage.hbs" />
     <Content Include="Jt76EmberBase\Modules\Dashboard\dashboard.hbs" />
     <Content Include="Jt76EmberBase\components\pagination-display.hbs" />

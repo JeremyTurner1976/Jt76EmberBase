@@ -26,7 +26,7 @@
                     <li><a>Reset</a></li>
                 </ul>
             </div>
-            <a class="btn btn-primary"  {{action "injectError"}}>
+            <a class="btn btn-primary" {{action "injectError"}}>
                 <i class="fa fa-fire"></i>&nbsp;Inject Error
             </a>
             <a class="btn btn-success">
@@ -57,7 +57,7 @@
                         <div class="jt76-multiline">{{item.strCreated}}</div>
                     </td>
                     <td>
-                        {{#link-to "index.admin.customError" item}}<span class="jt76-title-link jt76-multiline">{{item.strMessage}}</span>{{/link-to}}<br />
+                        {{#link-to "index.admin.errorDetails" item}}<span class="jt76-title-link jt76-multiline">{{item.strMessage}}</span>{{/link-to}}<br />
                     </td>
                     <td>
                         <div class="jt76-multiline">{{item.strSource}} {{item.strErrorLevel}}</div>
