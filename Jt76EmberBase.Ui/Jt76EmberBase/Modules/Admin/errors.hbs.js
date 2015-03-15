@@ -34,7 +34,7 @@
     'class': ("form-control input-sm inline-block"),
     'value': ((depth0 != null ? depth0.strToSearchFor : depth0))
   },"data":data})))
-    + "\r\n                <a class=\"input-icon text-normal\" style=\"cursor:inherit;\"><i class=\"ion-ios7-search-strong\"></i></a>\r\n            </div>\r\n        </div>\r\n\r\n        <div class=\"col-sm-8 col-md-8 text-right text-left-sm\">\r\n            <div class=\"btn-group\">\r\n                <button type=\"button\" class=\"btn btn-default dropdown-toggle\" data-toggle=\"dropdown\">\r\n                    Order By <span class=\"caret\"></span>\r\n                </button>\r\n                <ul class=\"dropdown-menu\" role=\"menu\">\r\n";
+    + "\r\n                <a class=\"input-icon text-normal\" style=\"cursor:inherit;\"><i class=\"ion-ios7-search-strong\"></i></a>\r\n            </div>\r\n        </div>\r\n\r\n        <div class=\"col-sm-8 col-md-8 text-right text-left-sm\">\r\n            <div class=\"btn-group\">\r\n                <button type=\"button\" class=\"btn btn-default dropdown-toggle\" data-toggle=\"dropdown\">\r\n                    Order By <span class=\"caret\"></span>\r\n                </button>\r\n                <ul class=\"dropdown-menu dropdown-menu-sort\" role=\"menu\">\r\n";
   stack1 = helpers.each.call(depth0, (depth0 != null ? depth0.item : depth0), (depth0 != null ? depth0['in'] : depth0), (depth0 != null ? depth0.displayProperties : depth0), {"name":"each","hash":{},"fn":this.program(1, data),"inverse":this.noop,"data":data});
   if (stack1 != null) { buffer += stack1; }
   buffer += "                    <li class=\"divider\"></li>\r\n                    <li><a "

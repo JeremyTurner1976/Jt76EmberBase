@@ -149,13 +149,31 @@ Jt76EmberBase.IndexAdminErrorsController = Ember.ArrayController.extend({
             });
         },
         toggleSort: function (item) {
+            var bReset = (item === "Reset");
             var newSortProperties = [];
+            var elements = $(".dropdown-menu-sort > li");
 
-            if (item !== "Reset") {
+            if (!bReset) {
                 var oldToggleSortProperty = this.get("sortProperties").toArray().splice(0, 1)[0];
                 var strNewSortProperty = (item.key + ":asc" !== oldToggleSortProperty) ? item.key + ":asc" : item.key + ":desc";
                 newSortProperties.pushObject(strNewSortProperty);
             }
+
+            elements.toArray().splice(0, elements.length - 2).forEach(function (element) {
+                var strArrowUp = "<span><i class=\"fa fa-arrow-circle-up\"></i><span>&nbsp;";
+                var strArrowDown = "<span><i class=\"fa fa-arrow-circle-down\"></i><span>&nbsp;";
+                var bActive = element.children[0].innerHTML.indexOf(item.value) !== -1;
+                var bDecorated = element.children[0].innerHTML.indexOf(strArrowDown) !== -1;
+                element.children[0].innerHTML = element.children[0].innerHTML.replace(strArrowUp, "");
+                element.children[0].innerHTML = element.children[0].innerHTML.replace(strArrowDown, "");
+
+                if (!bReset && bActive) {
+                    element.className = "active";
+                    element.children[0].innerHTML = ((bDecorated) ? strArrowUp : strArrowDown) + element.children[0].innerHTML;
+                } else {
+                    element.className = "";
+                }
+            });
 
             this.send("refresh", false, newSortProperties);
         },

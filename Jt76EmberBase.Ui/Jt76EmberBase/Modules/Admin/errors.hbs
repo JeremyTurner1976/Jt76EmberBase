@@ -20,7 +20,7 @@
                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                     Order By <span class="caret"></span>
                 </button>
-                <ul class="dropdown-menu" role="menu">
+                <ul class="dropdown-menu dropdown-menu-sort" role="menu">
                     {{#each item in displayProperties}}
                     <li><a {{action "toggleSort" item}}>{{item.value}}</a></li>
                     {{/each}}
