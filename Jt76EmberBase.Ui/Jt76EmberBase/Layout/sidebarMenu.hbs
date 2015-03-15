@@ -3,7 +3,7 @@
 
         <div class="main-menu">
             <ul class="accordion sidebar-accordion">
-                <li class="bg-palette-bluegreen active">
+                <li class="bg-palette-bluegreen active" {{action "toggleSidebar"}}>
                     {{#link-to "index.dashboard"}}
                     <span class="menu-content block">
                         <span class="menu-icon"><i class="block fa fa-cloud fa-lg"></i></span>
@@ -15,7 +15,7 @@
                     {{/link-to}}
                 </li>
 
-                <li class="openable bg-palette-light-green">
+                <li class="openable bg-palette-light-green" {{action "toggleSidebarOpenable" "Projects"}}>
                     <a>
                         <span class="menu-content block">
                             <span class="menu-icon"><i class="block fa fa-picture-o fa-lg"></i></span>
@@ -27,12 +27,12 @@
                         </span>
                     </a>
                     <ul class="submenu bg-palette-light-green">
-                        <li>
+                        <li {{action "toggleSidebar"}}>
                             {{#link-to "index.projects.projectOne"}}
                             <span class="submenu-label">Project One</span>
                             {{/link-to}}
                         </li>
-                        <li>
+                        <li {{action "toggleSidebar"}}>
                             {{#link-to "index.projects.projectTwo"}}
                             <span class="submenu-label">Project Two</span>
                             {{/link-to}}
@@ -40,7 +40,7 @@
                     </ul>
                 </li>
 
-                <li class="bg-palette-dark-blue">
+                <li class="bg-palette-dark-blue" {{action "toggleSidebar"}}>
                     {{#link-to "index.about"}}
                     <span class="menu-content block">
                         <span class="menu-icon"><i class="block fa fa-star fa-lg"></i></span>
@@ -52,7 +52,7 @@
                     {{/link-to}}
                 </li>
 
-                <li class="bg-palette-light-blue">
+                <li class="bg-palette-light-blue" {{action "toggleSidebar"}}>
                     {{#link-to "index.contact"}}
                     <span class="menu-content block">
                         <span class="menu-icon"><i class="block fa fa-envelope fa-lg"></i></span>
@@ -65,7 +65,7 @@
                 </li>
 
 
-                <li class="openable bg-palette-red">
+                <li class="openable bg-palette-red" {{action "toggleSidebarOpenable" "Admin"}}>
                     <a>
                         <span class="menu-content block">
                             <span class="menu-icon"><i class="block fa fa-bolt fa-lg"></i></span>
@@ -77,24 +77,24 @@
                         </span>
                     </a>
                     <ul class="submenu bg-palette4">
-                        <li>
+                        <li {{action "toggleSidebar"}}>
                             {{#link-to "index.admin.dashboard"}}
                             Dashboard
                             {{/link-to}}
                         </li>
-                        <li>
+                        <li {{action "toggleSidebar"}}>
                             {{#link-to "index.admin.errors"}}
                             <span class="badge badge-warning m-right-xs">{{vm.errorsCount}}</span>
                             Errors
                             {{/link-to}}
                         </li>
-                        <li>
+                        <li {{action "toggleSidebar"}}>
                             {{#link-to "index.admin.logMessages"}}
                             <span class="badge badge-info m-right-xs">{{vm.logMessagesCount}}</span>
                             Log Messages
                             {{/link-to}}
                         </li>
-                        <li>
+                        <li {{action "toggleSidebar"}}>
                             {{#link-to "index.admin.userAdmin"}}
                             <span class="badge badge-success m-right-xs">{{vm.usersCount}}</span>
                             User Admin

@@ -4479,12 +4479,12 @@ label.parsley-error {
 .inbox-wrapper .inbox-body .message-table table tbody tr td {
   vertical-align: middle;
 }
-.inbox-wrapper .inbox-body .message-table table tr th:first-child,
+/*.inbox-wrapper .inbox-body .message-table table tr th:first-child,
 .inbox-wrapper .inbox-body .message-table table tr td:first-child,
 .inbox-wrapper .inbox-body .message-table table tr th:nth-child(2),
 .inbox-wrapper .inbox-body .message-table table tr td:nth-child(2) {
   width: 30px;
-}
+}*/
 .inbox-wrapper .inbox-body .message-table table tr th .custom-checkbox,
 .inbox-wrapper .inbox-body .message-table table tr td .custom-checkbox {
   margin-right: 0;

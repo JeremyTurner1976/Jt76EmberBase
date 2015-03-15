@@ -12,97 +12,6 @@
     @Scripts.Render("~/bundles/jt76EmberBase/templates")
 
     <script type="text/javascript">
-
-        //handle layout
-        $(window).load(function () {
-            $("body").removeClass("overflow-hidden");
-
-            //Enable animation
-            $(".wrapper").removeClass("preload");
-
-            $("#sidebarToggleLG").click(function () {
-                if ($(".wrapper").hasClass("display-right")) {
-                    $(".wrapper").removeClass("display-right");
-                    $(".sidebar-right").removeClass("active");
-                }
-                else {
-                    //$('.nav-header').toggleClass('hide');
-                    $(".top-nav").toggleClass("sidebar-mini");
-                    $("aside").toggleClass("sidebar-mini");
-                    $("footer").toggleClass("sidebar-mini");
-                    $(".main-container").toggleClass("sidebar-mini");
-
-                    $(".main-menu").find(".openable").removeClass("open");
-                    $(".main-menu").find(".submenu").removeAttr("style");
-                }
-            });
-
-            $("#sidebarToggleSM").click(function () {
-                $("aside").toggleClass("active");
-                $(".wrapper").toggleClass("display-left");
-            });
-
-            //Collapsible Sidebar Menu
-            $(".sidebar-menu .openable > a").click(function () {
-
-                if (!$("aside").hasClass("sidebar-mini") || Modernizr.mq("(max-width: 991px)")) {
-                    if ($(this).parent().children(".submenu").is(":hidden")) {
-                        $(this).parent().siblings().removeClass("open").children(".submenu").slideUp(200);
-                        $(this).parent().addClass("open").children(".submenu").slideDown(200);
-                    }
-                    else {
-                        $(this).parent().removeClass("open").children(".submenu").slideUp(200);
-                    }
-                }
-
-                return true;
-            });
-
-            //Active sidebar icons
-            $(".sidebar-accordion > li").click(function () {
-                var self = $(this);
-
-                var sidebarElements = $(".sidebar-accordion > li");
-
-                sidebarElements.toArray().forEach(function (element) {
-                    $(element).removeClass("active");
-
-                    if (element !== self[0])
-                        $(element).removeClass("open").children(".submenu").slideUp(200);
-                });
-
-                $(self[0]).addClass("active");
-
-                return true;
-            });
-
-            //Open active menu
-            if (!$(".sidebar-menu").hasClass("sidebar-mini") || Modernizr.mq("(max-width: 767px)")) {
-                $(".openable.open").children(".submenu").slideDown(200);
-            }
-
-            //Scroll to Top
-            $(".scroll-to-top").click(function () {
-                $("html, body").animate({ scrollTop: 0 }, 600);
-                return false;
-            });
-
-            //dropdown menus
-            $(".dropdown-menu > li").click(function () {
-                var self = $(this);
-
-                var elements = $(".dropdown-menu > li");
-
-                elements.toArray().forEach(function (element) {
-                    $(element).removeClass("active");
-                });
-                $(self[0]).addClass("active");
-
-                return true;
-            });
-           
-        });
-
         // Toggle Scroll to Top button
         $(window).scroll(function () {
             var position = $(window).scrollTop();
@@ -113,6 +22,5 @@
                 $(".scroll-to-top").removeClass("active");
             }
         });
-
     </script>
 }

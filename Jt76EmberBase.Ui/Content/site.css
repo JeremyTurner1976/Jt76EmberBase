@@ -12,6 +12,9 @@
   color: #e6e6e6 !important;
   font-weight: 400;
 }
+/*.jt76-body-background{
+    //background-image: url("Images/Jt76EmberBase/background.png");
+}*/
 .jt76-brand-name {
   color: #1c2b36;
   font-size: x-large;
@@ -119,6 +122,11 @@ a {
 .pagination li.active a:focus {
   background: #e6e6e6 !important;
   border-color: #999999 !important;
+}
+/*simplify overrides*/
+.submenu > li > a.active {
+  color: white !important;
+  margin-left: 6px;
 }
 /*fade animation*/
 .jt76-loading-fade {

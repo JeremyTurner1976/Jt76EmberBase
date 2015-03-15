@@ -43,15 +43,17 @@ Jt76EmberBase.IndexAdminErrorsController = Ember.ArrayController.extend({
     strSubHeader: "Handle your business.",
     nMaxPagesToDisplay: 5,
     nMaxPageItemsToDisplay: 10,
-    sortProperties: ["dtCreated:desc", "numericId:desc"],
-    nSortPropertiesLength: 2,
     displayProperties: [{ key: "strMessage", value: "Message" },
-                        { key: "strCreated", value: "Date Created"  },
+                        { key: "dtCreated", value: "Date Created" },
                         { key: "strSource", value: "Source" },
                         { key: "strErrorLevel", value: "Error Level" },
-                        { key: "strAdditionalInformation", value: "Additional Information" },
-                        { key: "strStackTrace", value: "Stack Trace" }],
+                        { key: "strAdditionalInformation", value: "Additional Information" }],
+                        //{ key: "strStackTrace", value: "Stack Trace" }
     nSearchDelayInSeconds: .6,
+    sortProperties: ["dtCreated:desc", "numericId:desc"],
+    resetSortProperties: function () {
+        this.sortProperties = ["dtCreated:desc", "numericId:desc"];
+    },
     /*__End Config__*/
 
     bIsLoaded: false,
@@ -127,7 +129,6 @@ Jt76EmberBase.IndexAdminErrorsController = Ember.ArrayController.extend({
         var nCurrentPage = this.get("paginationData.nCurrentPage");
         var nMaxPageItemsToDisplay = this.get("paginationData.nMaxPageItemsToDisplay");
         var nStartItem = (nCurrentPage * nMaxPageItemsToDisplay) - nMaxPageItemsToDisplay;
-        //Ember.Logger.info(this.get("sortedModel"));
         var pagedArray = this.get("sortedModel").toArray().splice(nStartItem, nMaxPageItemsToDisplay);
         this.set("paginationData.nFilteredCount", pagedArray.length);
         return pagedArray;
@@ -145,20 +146,30 @@ Jt76EmberBase.IndexAdminErrorsController = Ember.ArrayController.extend({
             });
             newError.save().then(function (data) {
                 Ember.Logger.info(data);
-                self.send("refresh", false);
+                self.send("refresh", false, false);
             });
         },
         toggleSort: function (item) {
-            var bReset = (item === "Reset");
+            var bResetSort = (item === "Reset");
             var newSortProperties = [];
-            var elements = $(".dropdown-menu-sort > li");
 
-            if (!bReset) {
+            //set the sort
+            if (!bResetSort) {
                 var oldToggleSortProperty = this.get("sortProperties").toArray().splice(0, 1)[0];
+                Ember.run.once(this.resetSortProperties);
+
                 var strNewSortProperty = (item.key + ":asc" !== oldToggleSortProperty) ? item.key + ":asc" : item.key + ":desc";
                 newSortProperties.pushObject(strNewSortProperty);
+
+                this.get("sortProperties").forEach(function(innerItem) {
+                    if (innerItem.indexOf(item.key) !== 0)
+                        newSortProperties.pushObject(innerItem);
+                });
+                this.set("sortProperties", newSortProperties);
             }
 
+            //update the ui
+            var elements = $(".dropdown-menu-sort > li");
             elements.toArray().splice(0, elements.length - 2).forEach(function (element) {
                 var strArrowUp = "<span><i class=\"fa fa-arrow-circle-up\"></i><span>&nbsp;";
                 var strArrowDown = "<span><i class=\"fa fa-arrow-circle-down\"></i><span>&nbsp;";
@@ -167,7 +178,7 @@ Jt76EmberBase.IndexAdminErrorsController = Ember.ArrayController.extend({
                 element.children[0].innerHTML = element.children[0].innerHTML.replace(strArrowUp, "");
                 element.children[0].innerHTML = element.children[0].innerHTML.replace(strArrowDown, "");
 
-                if (!bReset && bActive) {
+                if (!bResetSort && bActive) {
                     element.className = "active";
                     element.children[0].innerHTML = ((bDecorated) ? strArrowUp : strArrowDown) + element.children[0].innerHTML;
                 } else {
@@ -175,9 +186,10 @@ Jt76EmberBase.IndexAdminErrorsController = Ember.ArrayController.extend({
                 }
             });
 
-            this.send("refresh", false, newSortProperties);
+            //refresh the view
+            this.send("refresh", false, bResetSort);
         },
-        refresh: function (bForceRefresh, paramSortProperties) {
+        refresh: function (bForceRefresh, bResetSort) {
             var self = this;
             var nMaxPagesToDisplay = this.get("nMaxPagesToDisplay");
             var nMaxPageItemsToDisplay = this.get("nMaxPageItemsToDisplay");
@@ -192,13 +204,8 @@ Jt76EmberBase.IndexAdminErrorsController = Ember.ArrayController.extend({
             self.set("paginationData.bInSearchMode", false);
             self.set("paginationData.nFilteredItems", nMaxPagesToDisplay);
 
-            var newSortProperties = paramSortProperties || [];
-            var oldSortProperties = this.get("sortProperties");
-            oldSortProperties = oldSortProperties.toArray().splice(oldSortProperties.length - this.get("nSortPropertiesLength"), oldSortProperties.length);
-            oldSortProperties.forEach(function (innerItem) {
-                newSortProperties.pushObject(innerItem);
-            });
-            this.set("sortProperties", newSortProperties);
+            if(bResetSort)
+                Ember.run.once(this.resetSortProperties);
 
             //refresh then reset array count specific properties
             self.get("target.router").refresh().then(function () {

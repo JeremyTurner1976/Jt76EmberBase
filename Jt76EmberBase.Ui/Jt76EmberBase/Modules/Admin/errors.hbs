@@ -34,7 +34,7 @@
             <a class="btn btn-success">
                 <i class="fa fa-plus-circle"></i>&nbsp;Add Error
             </a>
-            <a class="btn btn-info" {{action "refresh" true}}>
+            <a class="btn btn-info" {{action "refresh" true true}}>
                 <i class="fa fa-refresh"></i>&nbsp;Refresh
             </a>
         </div>
@@ -55,16 +55,16 @@
             <tbody>
                 {{#each item in displayModel}}
                 <tr>
-                    <td>
+                    <td class="col-sm-2">
                         <div class="jt76-multiline">{{item.strCreated}}</div>
                     </td>
-                    <td>
-                        {{#link-to "index.admin.errorDetails" item}}<span class="jt76-title-link jt76-multiline">{{item.strMessage}}</span>{{/link-to}}<br />
+                    <td class="col-sm-4">
+                        {{#link-to "index.admin.errorDetails" item}}<div class="jt76-title-link jt76-multiline">{{item.strMessage}}</div>{{/link-to}}<br />
                     </td>
-                    <td>
+                    <td class="col-sm-3">
                         <div class="jt76-multiline">{{item.strSource}} {{item.strErrorLevel}}</div>
                     </td>
-                    <td>
+                    <td class="col-sm-3">
                         <div class="jt76-multiline">{{item.strAdditionalInformation}}</div>
                     </td>
                 </tr>

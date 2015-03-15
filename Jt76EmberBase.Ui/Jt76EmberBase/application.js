@@ -38,12 +38,6 @@ Jt76EmberBase.ApplicationRoute = Ember.Route.extend({
         Ember.Logger.debug(Ember);
 
         Ember.Logger.log("Application Activated.");
-
-        //this.transitionTo("index.dashboard");
-        //can create an index.index view for base content, or set this as default in config.routes
-        //transition to loses window.load methods also
-        //will want to remove window.load methods and add these as actions in the controller
-        //lots of intermodule communication, but do not fight Ember
     }
 });
 

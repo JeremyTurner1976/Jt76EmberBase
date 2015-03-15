@@ -15,7 +15,7 @@
   },"data":data})))
     + ">\r\n                </div>\r\n";
 },"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
-  var stack1, helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression, buffer = "﻿<div class=\"wrapper preload\">\r\n\r\n    "
+  var stack1, helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression, buffer = "﻿<div class=\"wrapper\">\r\n\r\n    "
     + escapeExpression(((helpers.view || (depth0 && depth0.view) || helperMissing).call(depth0, "topNav", {"name":"view","hash":{},"data":data})))
     + "\r\n    "
     + escapeExpression(((helpers.view || (depth0 && depth0.view) || helperMissing).call(depth0, "sidebarMenu", {"name":"view","hash":{},"data":data})))
@@ -24,5 +24,7 @@
   if (stack1 != null) { buffer += stack1; }
   return buffer + "        </div>\r\n    </div>\r\n\r\n    "
     + escapeExpression(((helpers.view || (depth0 && depth0.view) || helperMissing).call(depth0, "footer", {"name":"view","hash":{},"data":data})))
-    + "\r\n</div>\r\n\r\n<a class=\"scroll-to-top hidden-print\"><i class=\"fa fa-chevron-up fa-lg\"></i></a>\r\n";
+    + "\r\n</div>\r\n\r\n<a class=\"scroll-to-top hidden-print\" "
+    + escapeExpression(((helpers.action || (depth0 && depth0.action) || helperMissing).call(depth0, "scrollToTop", {"name":"action","hash":{},"data":data})))
+    + "><i class=\"fa fa-chevron-up fa-lg\"></i></a>\r\n";
 },"useData":true});
