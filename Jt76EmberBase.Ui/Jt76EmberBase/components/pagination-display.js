@@ -66,7 +66,7 @@
                 }
             }
 
-            //controller will watch for changes in the current page in the object it passes and set the pagedDisplay
+            //controller will watch for changes in the current page in the object it passes and set the pagedDisplayModel
             this.set("parentView.controller.paginationData.nCurrentPage", this.get("pagination.nCurrentPage"));
         }
     }

@@ -11,7 +11,7 @@ http://emberjs.com/api/data/
 {{}} always looks first in the controller, then in the model
 
 {{bind-attr src="src" alt="title"}} for most other native html elements
-class inside of helpers - :class means always  variable:truthy:falsy  or variable::falsy
+class inside of helpers - :class means always  variable:truthy:falsy variable:truthy or variable::falsy
 tagName="li" inside of helpers - link-to as a <li>, etc
 
 //If the resource has a path with title, sending this will automatically choose title for url param. No need to send this.title specifically

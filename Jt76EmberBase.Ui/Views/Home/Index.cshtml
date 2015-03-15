@@ -86,6 +86,21 @@
                 $("html, body").animate({ scrollTop: 0 }, 600);
                 return false;
             });
+
+            //dropdown menus
+            $(".dropdown-menu > li").click(function () {
+                var self = $(this);
+
+                var elements = $(".dropdown-menu > li");
+
+                elements.toArray().forEach(function (element) {
+                    $(element).removeClass("active");
+                });
+                $(self[0]).addClass("active");
+
+                return true;
+            });
+           
         });
 
         // Toggle Scroll to Top button
