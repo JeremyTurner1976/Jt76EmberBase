@@ -24,5 +24,5 @@
   if (stack1 != null) { buffer += stack1; }
   return buffer + "        </div>\r\n    </div>\r\n\r\n    "
     + escapeExpression(((helpers.view || (depth0 && depth0.view) || helperMissing).call(depth0, "footer", {"name":"view","hash":{},"data":data})))
-    + "\r\n</div>\r\n\r\n\r\n<a href=\"#\" class=\"scroll-to-top hidden-print\"><i class=\"fa fa-chevron-up fa-lg\"></i></a>\r\n";
+    + "\r\n</div>\r\n\r\n<a class=\"scroll-to-top hidden-print\"><i class=\"fa fa-chevron-up fa-lg\"></i></a>\r\n";
 },"useData":true});

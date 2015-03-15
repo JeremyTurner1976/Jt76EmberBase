@@ -10,7 +10,11 @@ namespace Jt76EmberBase.Ui
         {
             Debug.WriteLine("RouteConfig.RegisterRoutes()");
 
-            routes.IgnoreRoute("{resource}.axd/{*pathInfo}");                            
+            routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+            routes.IgnoreRoute("{resource}.config/{*pathInfo}");
+            routes.IgnoreRoute("{resource}.js/{*pathInfo}");
+            routes.IgnoreRoute("{resource}.img/{*pathInfo}");
+            routes.IgnoreRoute("{resource}.css/{*pathInfo}");
 
             routes.MapRoute(
                 name: "Default",

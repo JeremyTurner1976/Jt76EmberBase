@@ -40,24 +40,33 @@ namespace Jt76EmberBase.Ui.Controllers.Api
 
             //_uiService.LogMessage(errors.Count() + " different errors loaded");
 
-            return new {errors};
+            return new { errors };
         }
 
         [Route("api/v1/errors")]
-        public HttpResponseMessage Post([FromBody] Error newError)
+        public HttpResponseMessage Post([FromBody] dynamic model)
         {
             Debug.WriteLine(GetType().FullName + "." + MethodBase.GetCurrentMethod().Name);
-
             //var requestUri = Request.RequestUri;
+            var jError = model["error"];
+            var error = new Error
+            {
+                DtCreated = jError.dtCreated == null ? DateTime.UtcNow : DateTime.Parse(model["error"].dtCreated),
+                StrAdditionalInformation = jError.strAdditionalInformation,
+                StrErrorLevel = jError.strErrorLevel,
+                StrMessage = jError.strMessage,
+                StrSource = jError.strSource,
+                StrStackTrace = jError.strStackTrace,
+            };
 
-            if (newError.DtCreated == default(DateTime))
-                newError.DtCreated = DateTime.UtcNow;
+            if (model["error"].id != null)
+                error.Id = Int32.Parse(model["error"].id);
 
-            if (_viewModel.AddError(newError)) //force valid datatype
+            if (_viewModel.AddError(error)) //force valid datatype
             {
                 //200 success
                 //_uiService.LogMessage(newError.StrMessage + " - Successfully saved");
-                return Request.CreateResponse(HttpStatusCode.Created, newError);
+                return Request.CreateResponse(HttpStatusCode.Created, new { error });
             }
 
             //400 error

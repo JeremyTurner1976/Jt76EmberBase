@@ -80,13 +80,17 @@
             if (!$(".sidebar-menu").hasClass("sidebar-mini") || Modernizr.mq("(max-width: 767px)")) {
                 $(".openable.open").children(".submenu").slideDown(200);
             }
+
+            //Scroll to Top
+            $(".scroll-to-top").click(function () {
+                $("html, body").animate({ scrollTop: 0 }, 600);
+                return false;
+            });
         });
 
         // Toggle Scroll to Top button
         $(window).scroll(function () {
-
             var position = $(window).scrollTop();
-
             if (position >= 200) {
                 $(".scroll-to-top").addClass("active");
             }
@@ -94,30 +98,6 @@
                 $(".scroll-to-top").removeClass("active");
             }
         });
-
-        //add logging
-        var GlobalDebug = (function () {
-            var savedConsole = console;
-            return function (debugOn, suppressAll) {
-                var suppress = suppressAll || false;
-                if (debugOn === false) {
-                    console = {};
-                    console.log = function () { };
-                    if (suppress) {
-                        console.info = function () { };
-                        console.warn = function () { };
-                        console.error = function () { };
-                    } else {
-                        console.info = savedConsole.info;
-                        console.warn = savedConsole.warn;
-                        console.error = savedConsole.error;
-                    }
-                } else {
-                    console = savedConsole;
-                }
-            }
-        })();
-        GlobalDebug(true);
 
     </script>
 }

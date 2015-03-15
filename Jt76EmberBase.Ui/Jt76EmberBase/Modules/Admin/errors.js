@@ -14,8 +14,10 @@ Jt76EmberBase.IndexAdminErrorsRoute = Ember.Route.extend({
     model: function () {
         /*__Data Pull__*/;
         if (this.get("controller.bForceRefresh") === false) {
-            return this.store.all("error");
+            Ember.Logger.info("Cached data pull");
+            return this.store.all("error").toArray();
         } else {
+            Ember.Logger.info("Network data pull");
             this.controllerFor("index").set("bIsLoaded", false);
             return this.store.find("error").then(function(response) {
                 return response.toArray();
@@ -27,10 +29,10 @@ Jt76EmberBase.IndexAdminErrorsRoute = Ember.Route.extend({
         Ember.Logger.info(model);
         controller.set("model", model);
         this.controllerFor("index").set("bIsLoaded", true);
-        setTimeout(function () { controller.set("bIsLoaded", true); }, 150); //give the dom time to set the jt76-loading class then switch it
+        setTimeout(function () { controller.set("bIsLoaded", true); }, 200); //give the dom time to set the jt76-loading class then switch it
     },
     deactivate: function() {
-        //this._super();
+        this._super();
         this.set("controller.bIsLoaded", false);
     }
 });
@@ -39,25 +41,33 @@ Jt76EmberBase.IndexAdminErrorsController = Ember.ArrayController.extend({
     /*__Config__*/
     strPageTitle: "Admin Errors",
     strSubHeader: "Handle your business.",
-    nMaxPagesToDisplay:5,
+    nMaxPagesToDisplay: 5,
     nMaxPageItemsToDisplay: 10,
-    sortProperties: ["dtCreated:asc", "numericId:desc"],
+    sortProperties: ["dtCreated:desc", "numericId:desc"],
     searchProperties: ["strCreated", "strMessage", "strSource", "strErrorLevel", "strAdditionalInformation", "strStackTrace"],
+    nSearchDelayInSeconds: 1,
     /*__End Config__*/
 
     bIsLoaded: false,
     bForceRefresh: false,
     strToSearchFor: "",
+    debouncedStrToSearchFor: "",
     nTotalCount: Ember.computed.alias("mappedArray.length"),
     sortedModel: Ember.computed.sort("mappedArray", "sortProperties"),
 
+    watchSearchString: function () {
+        Em.run.debounce(this, this.setSearchString, this.get("nSearchDelayInSeconds") * 1000);
+    }.observes("strToSearchFor"),
+    setSearchString: function () {
+        this.set("debouncedStrToSearchFor", this.get("strToSearchFor"));
+    },
     bInSearchMode: function () {
-        var bInSearchMode = this.get("strToSearchFor").length !== 0;
+        var bInSearchMode = this.get("debouncedStrToSearchFor").length !== 0;
         this.set("paginationData.bInSearchMode", bInSearchMode);
         return bInSearchMode;
-    }.property("strToSearchFor"),
+    }.property("debouncedStrToSearchFor"),
 
-    paginationData: function () {
+    paginationData: function() {
         var nMaxPagesToDisplay = this.get("nMaxPagesToDisplay");
         var nMaxPageItemsToDisplay = this.get("nMaxPageItemsToDisplay");
         var nMaxPages = Math.ceil(this.get("nTotalCount") / nMaxPageItemsToDisplay);
@@ -72,16 +82,16 @@ Jt76EmberBase.IndexAdminErrorsController = Ember.ArrayController.extend({
         }
     }.property(),
 
-    mappedArray: function () {
+    mappedArray: function() {
         var self = this;
-        var strToSearchAgainst = "";
         var mappedModel = self.get("model");
         var common = Jt76EmberBase.Common.create();
 
-        mappedModel.forEach(function (item) {
+        mappedModel.forEach(function(item) {
             item.set("numericId", parseInt(item.id));
             item.set("strCreated", common.longDateTimeFormat(item.get("dtCreated")));
-            self.get("searchProperties").forEach(function (innerItem) {
+            var strToSearchAgainst = "";
+            self.get("searchProperties").forEach(function(innerItem) {
                 strToSearchAgainst += item.get(innerItem);
             });
             item.set("strToSearchAgainst", strToSearchAgainst.toUpperCase());
@@ -89,23 +99,25 @@ Jt76EmberBase.IndexAdminErrorsController = Ember.ArrayController.extend({
         return mappedModel;
     }.property("model.@each"),
 
-    displayModel: function () {
-        return this.get("bInSearchMode") ? this.get("searchDisplay") : this.get("pagedDisplay"); 
+    displayModel: function() {
+        return this.get("bInSearchMode") ? this.get("searchDisplay") : this.get("pagedDisplay");
     }.property("paginationData.nCurrentPage", "bInSearchMode"),
 
     searchDisplay: function() {
         var self = this;
         self.set("paginationData.nFilteredCount", 0);
-        var strToSearchFor = self.get("strToSearchFor").toUpperCase();
+        var debouncedStrToSearchFor = self.get("debouncedStrToSearchFor").toUpperCase();
         var nMatchCount = 0;
-        return self.get("sortedModel").filter(function (item) {
-            var bMatch = item.get("strToSearchAgainst").indexOf(strToSearchFor) !== -1;
-            if (bMatch) { self.set("paginationData.nFilteredCount", ++nMatchCount); }
+        return self.get("sortedModel").filter(function(item) {
+            var bMatch = item.get("strToSearchAgainst").indexOf(debouncedStrToSearchFor) !== -1;
+            if (bMatch) {
+                self.set("paginationData.nFilteredCount", ++nMatchCount);
+            }
             return bMatch;
         });
     }.property("bInSearchMode"),
 
-    pagedDisplay: function () {
+    pagedDisplay: function() {
         var nCurrentPage = this.get("paginationData.nCurrentPage");
         var nMaxPageItemsToDisplay = this.get("paginationData.nMaxPageItemsToDisplay");
         var nStartItem = (nCurrentPage * nMaxPageItemsToDisplay) - nMaxPageItemsToDisplay;
@@ -115,41 +127,43 @@ Jt76EmberBase.IndexAdminErrorsController = Ember.ArrayController.extend({
     }.property("paginationData.nCurrentPage"),
 
     actions: {
-        refresh: function () {
-            this.set("bForceRefresh", true);
-            this.get("target.router").refresh(); //get fresh data
-            this.set("strToSearchFor", ""); //reset default values
-            this.set("paginationData.nCurrentPage", 1);
-            this.set("paginationData.bInSearchMode", false);
-            this.set("paginationData.nTotalCount", this.get("nTotalCount"));
-            this.set("paginationData.nFilteredItems", this.get("paginationData.nMaxPageItemsToDisplay"));
-            this.set("bForceRefresh", false);
+        refresh: function (bForceRefresh) {
+            var self = this;
+            var nMaxPagesToDisplay = this.get("nMaxPagesToDisplay");
+            var nMaxPageItemsToDisplay = this.get("nMaxPageItemsToDisplay");
+            var nPagePlaceHolder = self.get("paginationData.nCurrentPage");
+
+            //reset defaults
+            self.set("bForceRefresh", bForceRefresh);
+            self.set("bIsLoaded", false);
+            self.set("strToSearchFor", "");
+            self.set("debouncedStrToSearchFor", "");
+            self.set("paginationData.nCurrentPage", 0);
+            self.set("paginationData.bInSearchMode", false);
+            self.set("paginationData.nFilteredItems", nMaxPagesToDisplay);
+            self.get("target.router").refresh().then(function () {
+                //reset array count specific properties
+                var nTotalCount = self.get("nTotalCount");
+                var nMaxPages = Math.ceil(nTotalCount / nMaxPageItemsToDisplay);
+                self.set("paginationData.nTotalCount", nTotalCount);
+                self.set("paginationData.nMaxPages", nMaxPages);
+                self.set("paginationData.nCurrentPage", nPagePlaceHolder > nMaxPages ? nMaxPages : nPagePlaceHolder);
+                self.set("bForceRefresh", false);
+            });
         },
         injectError: function () {
-            var nTotalCount = this.get("nTotalCount");
-            this.get("store").createRecord("error", {
-                //temporary id and dtCreated until I get this posting to the server
-                id: (nTotalCount + 1).toString(),
-                dtCreated: moment(),
-
+            var self = this;
+            var newError = this.get("store").createRecord("error", {
                 strMessage: "This is a strMessage",
                 strSource: "This is a strSource",
                 strErrorLevel: "This is a strErrorLevel",
                 strAdditionalInformation: "This is a strAdditionalInformation",
                 strStackTrace: "This is a strStackTrace"
             });
-            //this.send("refresh");
-            this.set("model", this.get("store").all("error"));
-            this.set("strToSearchFor", ""); //reset default values
-            var nMaxPagesToDisplay = this.get("nMaxPagesToDisplay");
-            var nMaxPageItemsToDisplay = this.get("nMaxPageItemsToDisplay");
-            var nMaxPages = Math.ceil(this.get("nTotalCount") / nMaxPageItemsToDisplay);
-            this.set("paginationData.bInSearchMode", false);
-            this.set("paginationData.nTotalCount", this.get("nTotalCount"));
-            this.set("paginationData.nFilteredItems", this.get("paginationData.nMaxPageItemsToDisplay"));
-            this.set("paginationData.nMaxPages", nMaxPages);
-            this.set("paginationData.nMaxPagesToDisplay", nMaxPages >= nMaxPagesToDisplay ? nMaxPagesToDisplay : nMaxPages);
-            //this.set("paginationData.nCurrentPage", 1);
+            newError.save().then(function (data) {
+                Ember.Logger.info(data);
+                self.send("refresh", false);
+            });
         }
     }
 });

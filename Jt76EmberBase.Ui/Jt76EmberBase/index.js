@@ -3,11 +3,12 @@
 });
 
 Jt76EmberBase.IndexRoute = Ember.Route.extend({
-    //model: function () {
-    //},
-    //setupController: function (controller, model) {
-    //    controller.set("model", model);
-    //}
+    model: function () {
+        return {};
+    },
+    setupController: function (controller, model) {
+        controller.set("model", model);
+    }
 });
 
 Jt76EmberBase.IndexController = Ember.ObjectController.extend({
@@ -23,7 +24,7 @@ Jt76EmberBase.IndexController = Ember.ObjectController.extend({
             nDesiredHeight = 450;
 
         return "min-height:" + nDesiredHeight + "px;";
-    }.property(),
+    }.property()//,
     //actions: {
     //}
 });
