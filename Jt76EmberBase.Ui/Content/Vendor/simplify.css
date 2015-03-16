@@ -4476,9 +4476,9 @@ label.parsley-error {
   color: #fff;
   border-color: #333333;
 }
-.inbox-wrapper .inbox-body .message-table table tbody tr td {
+/*.inbox-wrapper .inbox-body .message-table table tbody tr td {
   vertical-align: middle;
-}
+}*/
 /*.inbox-wrapper .inbox-body .message-table table tr th:first-child,
 .inbox-wrapper .inbox-body .message-table table tr td:first-child,
 .inbox-wrapper .inbox-body .message-table table tr th:nth-child(2),

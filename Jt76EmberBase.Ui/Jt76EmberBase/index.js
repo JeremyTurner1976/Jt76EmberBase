@@ -10,7 +10,7 @@ Jt76EmberBase.IndexRoute = Ember.Route.extend({
         controller.set("model", model);
 
         //application shell loaded, goto the opening page
-        this.transitionTo("index.admin.errors");
+        this.transitionTo("index.admin.dashboard");
     }
 });
 

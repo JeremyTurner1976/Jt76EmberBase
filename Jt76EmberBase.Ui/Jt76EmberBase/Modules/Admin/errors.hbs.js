@@ -11,7 +11,7 @@
     + "</div>\r\n                    </td>\r\n                    <td class=\"col-sm-4\">\r\n                        ";
   stack1 = ((helpers['link-to'] || (depth0 && depth0['link-to']) || helperMissing).call(depth0, "index.admin.errorDetails", (depth0 != null ? depth0.item : depth0), {"name":"link-to","hash":{},"fn":this.program(4, data),"inverse":this.noop,"data":data}));
   if (stack1 != null) { buffer += stack1; }
-  return buffer + "<br />\r\n                    </td>\r\n                    <td class=\"col-sm-3\">\r\n                        <div class=\"jt76-multiline\">"
+  return buffer + "\r\n                    </td>\r\n                    <td class=\"col-sm-3\">\r\n                        <div class=\"jt76-multiline\">"
     + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.item : depth0)) != null ? stack1.strSource : stack1), depth0))
     + " "
     + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.item : depth0)) != null ? stack1.strErrorLevel : stack1), depth0))

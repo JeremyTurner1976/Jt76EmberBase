@@ -48,7 +48,6 @@ Jt76EmberBase.IndexAdminErrorsController = Ember.ArrayController.extend({
                         { key: "strSource", value: "Source" },
                         { key: "strErrorLevel", value: "Error Level" },
                         { key: "strAdditionalInformation", value: "Additional Information" }],
-                        //{ key: "strStackTrace", value: "Stack Trace" }
     nSearchDelayInSeconds: .6,
     sortProperties: ["dtCreated:desc", "numericId:desc"],
     resetSortProperties: function () {
