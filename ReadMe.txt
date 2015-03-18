@@ -38,10 +38,30 @@ renderTemplate: function() {
 
 this.modelFor("indexErrors") to get another model's data
 
+this.store.unloadAll("error") to clear the cache
+this.get('content').deleteRecord();        
+this.get('content.transaction').commit();
+
 Shorthand for function(){...}.property("controller.bIsLoaded")
 Ember.computed.alias("controller.bIsLoaded") to set a property that is bound to the controllers bIsLoaded property for change events 
 
 .property().volatile() means it is reloaded every time it is called
+
+willDestroyElement: function () {
+    var clone = this.$().clone();
+    this.$().parent().append(clone);
+    setTimeout(function () {
+        clone.removeClass("jt76-loaded-slide");
+        clone.addClass("jt76-unloaded-slide");
+    }, 50); //give the dom time to set the jt76-loading class then switch it
+    //clone.fadeOut();
+}
+
+    className: ["jt76-loading-slide"],
+    classNameBindings: ["bIsLoading"],
+    bIsLoading: function () {
+        return this.get("controller.bIsLoaded") ? "jt76-loaded-slide" : "jt76-loading-slide";
+    }.property("controller.bIsLoaded")
 
 http://stackoverflow.com/questions/15235574/ember-data-reloading-content-ui-not-updating
 https://github.com/heartsentwined/ember-auth

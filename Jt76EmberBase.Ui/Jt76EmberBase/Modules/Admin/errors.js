@@ -3,11 +3,17 @@
     templateName: "Modules/Admin/errors",
     /*__End Template Name__*/
 
-    className: ["jt76-loading-slide"],
-    classNameBindings: ["bIsLoading"],
-    bIsLoading: function () {
-        return this.get("controller.bIsLoaded") ? "jt76-loaded-slide" : "jt76-loading-slide";
-    }.property("controller.bIsLoaded")
+    willInsertElement: function(){
+        var self = this.$();
+        self.addClass("jt76-loading-slide");
+    },
+    didInsertElement: function () {
+        var self = this.$();
+        setTimeout(function () {
+            self.removeClass("jt76-loading-slide");
+            self.addClass("jt76-loaded-slide");
+        }, 50); //give the dom time to set the jt76-loading class then switch it
+    }
 });
 
 Jt76EmberBase.IndexAdminErrorsRoute = Ember.Route.extend({
@@ -29,11 +35,6 @@ Jt76EmberBase.IndexAdminErrorsRoute = Ember.Route.extend({
         Ember.Logger.info(model);
         controller.set("model", model);
         this.controllerFor("index").set("bIsLoaded", true);
-        setTimeout(function () { controller.set("bIsLoaded", true); }, 200); //give the dom time to set the jt76-loading class then switch it
-    },
-    deactivate: function () {
-        this._super();
-        this.set("controller.bIsLoaded", false);
     }
 });
 
@@ -55,7 +56,6 @@ Jt76EmberBase.IndexAdminErrorsController = Ember.ArrayController.extend({
     },
     /*__End Config__*/
 
-    bIsLoaded: false,
     bForceRefresh: false,
     strToSearchFor: "",
     debouncedStrToSearchFor: "",
@@ -117,9 +117,9 @@ Jt76EmberBase.IndexAdminErrorsController = Ember.ArrayController.extend({
         var nMatchCount = 0;
         return self.get("sortedModel").filter(function (item) {
             var bMatch = item.get("strToSearchAgainst").indexOf(debouncedStrToSearchFor) !== -1;
-            if (bMatch) {
+            if (bMatch)
                 self.set("paginationData.nFilteredCount", ++nMatchCount);
-            }
+
             return bMatch;
         });
     }.property("bInSearchMode"),
@@ -149,7 +149,7 @@ Jt76EmberBase.IndexAdminErrorsController = Ember.ArrayController.extend({
             });
         },
         toggleSort: function (item) {
-            var bResetSort = (item === "Reset");
+            var bResetSort = (item === "reset");
             var newSortProperties = [];
 
             //set the sort
@@ -180,12 +180,9 @@ Jt76EmberBase.IndexAdminErrorsController = Ember.ArrayController.extend({
                 if (!bResetSort && bActive) {
                     element.className = "active";
                     element.children[0].innerHTML = ((bDecorated) ? strArrowUp : strArrowDown) + element.children[0].innerHTML;
-                } else {
+                } else 
                     element.className = "";
-                }
             });
-
-            //refresh the view
             this.send("refresh", false, bResetSort);
         },
         refresh: function (bForceRefresh, bResetSort) {
@@ -196,10 +193,9 @@ Jt76EmberBase.IndexAdminErrorsController = Ember.ArrayController.extend({
 
             //reset defaults
             self.set("bForceRefresh", bForceRefresh);
-            self.set("bIsLoaded", false);
             self.set("strToSearchFor", "");
             self.set("debouncedStrToSearchFor", "");
-            self.set("paginationData.nCurrentPage", 0);
+            self.set("paginationData.nCurrentPage", 0); //force a pagination component refresh
             self.set("paginationData.bInSearchMode", false);
             self.set("paginationData.nFilteredItems", nMaxPagesToDisplay);
 

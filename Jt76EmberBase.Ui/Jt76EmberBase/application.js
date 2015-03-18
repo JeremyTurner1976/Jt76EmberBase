@@ -38,6 +38,7 @@ Jt76EmberBase.ApplicationRoute = Ember.Route.extend({
         Ember.Logger.debug(Ember);
 
         Ember.Logger.log("Application Activated.");
+        this.transitionTo("index.admin.dashboard");
     }
 });
 

@@ -8,9 +8,6 @@ Jt76EmberBase.IndexRoute = Ember.Route.extend({
     },
     setupController: function (controller, model) {
         controller.set("model", model);
-
-        //application shell loaded, goto the opening page
-        this.transitionTo("index.admin.dashboard");
     }
 });
 
@@ -30,7 +27,6 @@ Jt76EmberBase.IndexController = Ember.ObjectController.extend({
     }.property(),
     actions: {
         toggleSidebar: function () {
-            console.log("toggleSidebar");
             var strRoute = "href=\"#" + Jt76EmberBase.__container__.lookup('router:main').location.lastSetURL + "\"";
             $(".sidebar-accordion > li").toArray().forEach(function (element) {
                 if (element.innerHTML.indexOf(strRoute) === -1) {
@@ -60,7 +56,6 @@ Jt76EmberBase.IndexController = Ember.ObjectController.extend({
             });
         },
         scrollToTop: function () {
-            console.log("here");
             $("html, body").animate({ scrollTop: 0 }, 600);
             return false;
         },

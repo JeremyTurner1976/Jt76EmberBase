@@ -130,6 +130,10 @@ a {
 }
 /*fade animation*/
 .jt76-loading-fade {
+  -webkit-transition: cubic-bezier(0.25, 0.46, 0.45, 0.94) all 0.4s;
+  -moz-transition: cubic-bezier(0.25, 0.46, 0.45, 0.94) all 0.4s;
+  -o-transition: cubic-bezier(0.25, 0.46, 0.45, 0.94) all 0.4s;
+  transition: cubic-bezier(0.25, 0.46, 0.45, 0.94) all 0.4s;
   opacity: 0;
 }
 .jt76-loaded-fade {
@@ -141,6 +145,11 @@ a {
 }
 /*shuffle animation*/
 .jt76-loading-slide {
+  /*position: relative;
+    -moz-transition: ease-out all 0.3s 0.4s;
+    -o-transition: ease-out all 0.3s 0.4s;
+    -webkit-transition: ease-out all 0.3s 0.4s;
+    transition: ease-out all 0.3s 0.4s;*/
   left: 2em;
   opacity: 0;
 }
@@ -152,5 +161,14 @@ a {
   transition: 0.4s ease-out all;
   left: 0;
   opacity: 1;
+}
+.jt76-unloaded-slide {
+  position: relative;
+  -moz-transition: ease-out all 0.3s 0.4s;
+  -o-transition: ease-out all 0.3s 0.4s;
+  -webkit-transition: ease-out all 0.3s 0.4s;
+  transition: ease-out all 0.3s 0.4s;
+  left: 2em;
+  opacity: 0;
 }
 /*# sourceMappingURL=site.css.map */
