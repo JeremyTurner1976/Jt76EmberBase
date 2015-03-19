@@ -12,6 +12,20 @@
   color: #e6e6e6 !important;
   font-weight: 400;
 }
+jt76-visible {
+  -moz-transition: linear .2s;
+  -o-transition: linear .2s;
+  -webkit-transition: linear .2s;
+  transition: linear .2s;
+  opacity: 1;
+}
+jt76-hidden {
+  -moz-transition: linear .2s;
+  -o-transition: linear .2s;
+  -webkit-transition: linear .2s;
+  transition: linear .2s;
+  opacity: 0;
+}
 /*.jt76-body-background{
     //background-image: url("Images/Jt76EmberBase/background.png");
 }*/

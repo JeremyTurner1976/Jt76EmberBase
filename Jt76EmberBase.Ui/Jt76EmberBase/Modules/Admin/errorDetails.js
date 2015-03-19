@@ -30,14 +30,31 @@ Jt76EmberBase.IndexAdminErrorDetailsRoute = Ember.Route.extend({
     deactivate: function() {
         var model = this.get("controller.model");
         //model.get("isSaving");
-        //model.get("isDirty");
-        if (model.get("isNew")) {
+        //model.get("isDirty"); //true when new, and when altered as old item
+        if (model.get("isNew") && !model.get("isDirty")) {
             model.deleteRecord();
         }
     }
 });
 
 Jt76EmberBase.IndexAdminErrorDetailsController = Ember.ObjectController.extend({
+    bModelHasChanges: Ember.computed.alias("model.isDirty"),
     actions: {
+        goBack: function() {
+            alert("here");
+
+        },
+        cancel: function() {
+            alert("here");
+
+        },
+        save: function () {
+            alert("here");
+
+        },
+        deleteError: function () {
+            alert("here");
+
+        }
     }
 });

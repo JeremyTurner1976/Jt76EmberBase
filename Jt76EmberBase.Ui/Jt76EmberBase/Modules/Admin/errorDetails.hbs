@@ -6,9 +6,8 @@
                 Error
                 <span class="smart-widget-option">
 
-                    <button class="btn btn-info btn-sm jt76-padding-sides-sm dissolve-animation ng-hide"
-                            data-ng-show="!vm.hasChanges"
-                            data-ng-click="vm.goBack()">
+                    <button class="btn btn-info btn-sm jt76-padding-sides-sm"
+                            {{action "goBack"}} {{bind-attr class="bModelHasChanges:jt76-visible:jt76-hidden"}}>
                         <i class="fa fa-backward"></i>&nbsp;Back
                     </button>
                     <button class="btn btn-info btn-sm jt76-padding-sides-sm dissolve-animation ng-hide"
