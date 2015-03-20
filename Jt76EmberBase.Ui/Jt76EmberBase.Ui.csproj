@@ -393,6 +393,7 @@
     <Content Include="Content\Images\Touch\Thumbs.db" />
     <Content Include="Content\site.less" />
     <Content Include="Content\toastr.less" />
+    <None Include="Jt76EmberBase\_singleItemButtonSet.hbs" />
     <Content Include="Scripts\bootstrap-datetimepicker.js" />
     <Content Include="Scripts\bootstrap-slider.js" />
     <Content Include="Scripts\bootstrap.js" />

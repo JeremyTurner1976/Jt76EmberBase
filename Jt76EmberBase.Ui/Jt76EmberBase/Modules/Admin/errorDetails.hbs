@@ -5,30 +5,7 @@
             <div class="smart-widget-header">
                 Error
                 <span class="smart-widget-option">
-
-                    <button class="btn btn-info btn-sm jt76-padding-sides-sm"
-                            {{action "goBack"}} {{bind-attr class="bModelHasChanges:jt76-visible:jt76-hidden"}}>
-                        <i class="fa fa-backward"></i>&nbsp;Back
-                    </button>
-                    <button class="btn btn-info btn-sm jt76-padding-sides-sm dissolve-animation ng-hide"
-                            data-ng-show="vm.hasChanges"
-                            data-ng-click="vm.cancel()">
-                        <i class="fa fa-ban"></i>&nbsp;Cancel
-                    </button>
-                    <button class="btn btn-primary btn-sm jt76-padding-sides-sm"
-                            data-ng-click="vm.save()"
-                            data-ng-disabled="!vm.canSave">
-                        <i class="fa fa-save"></i>&nbsp;Save
-                    </button>
-                    <button class="btn btn-danger btn-sm jt76-padding-sides-sm"
-                            data-ng-show="vm.bShowDelete"
-                            data-ng-click="vm.deleteError()">
-                        <i class="fa fa-minus"></i>&nbsp;Delete
-                    </button>
-                    <span class="dissolve-animation ng-hide" data-ng-show="vm.hasChanges">
-                        <i class="fa fa-asterisk" data-ng-show="vm.bShowDelete"></i>
-                    </span>
-
+                    {{partial "singleItemButtonSet"}}
                 </span>
             </div>
             <div class="smart-widget-inner">
@@ -69,26 +46,7 @@
                         </div>
                     </form>
 
-                    <button class="btn btn-info btn-sm jt76-padding-sides-sm dissolve-animation ng-hide"
-                            data-ng-show="!vm.hasChanges"
-                            data-ng-click="vm.goBack()">
-                        <i class="fa fa-backward"></i>&nbsp;Back
-                    </button>
-                    <button class="btn btn-info btn-sm jt76-padding-sides-sm dissolve-animation ng-hide"
-                            data-ng-show="vm.hasChanges"
-                            data-ng-click="vm.cancel()">
-                        <i class="fa fa-ban"></i>&nbsp;Cancel
-                    </button>
-                    <button class="btn btn-primary btn-sm jt76-padding-sides-sm"
-                            data-ng-click="vm.save()"
-                            data-ng-disabled="!vm.canSave">
-                        <i class="fa fa-save"></i>&nbsp;Save
-                    </button>
-                    <button class="btn btn-danger btn-sm jt76-padding-sides-sm"
-                            data-ng-show="vm.bShowDelete"
-                            data-ng-click="vm.deleteError()">
-                        <i class="fa fa-minus"></i>&nbsp;Delete
-                    </button>
+                    {{partial "singleItemButtonSet"}}
                 </div>
             </div>
         </div>
