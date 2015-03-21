@@ -1,17 +1,11 @@
-﻿Jt76EmberBase.IndexAdminDashboardView = Ember.View.extend({
+﻿Jt76EmberBase.IndexAdminDashboardView = Jt76EmberBase.SlidingView.extend({
     templateName: "Modules/Admin/dashboard"
 });
 
 Jt76EmberBase.IndexAdminDashboardRoute = Ember.Route.extend({
-    model: function () {
-
-    }
 });
 
 Jt76EmberBase.IndexAdminDashboardController = Ember.ObjectController.extend({
-    actions: {
-        refresh: function () {
-            this.loadAdminDashboard();
-        }
-    }
+    strPageTitle: "Admin Dashboard",
+    strSubHeader: "Placeholder for future content."
 });

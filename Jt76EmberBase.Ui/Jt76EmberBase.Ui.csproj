@@ -280,7 +280,9 @@
     </Content>
     <Content Include="Jt76EmberBase\application.js" />
     <Content Include="Jt76EmberBase\Common\common.js" />
-    <Content Include="Jt76EmberBase\Common\emberExtensions.js" />
+    <Content Include="Jt76EmberBase\Common\emberControllerExtensions.js" />
+    <Content Include="Jt76EmberBase\Common\emberRouteExtensions.js" />
+    <Content Include="Jt76EmberBase\Common\emberViewExtensions.js" />
     <Content Include="Jt76EmberBase\Common\helpers.js" />
     <Content Include="Jt76EmberBase\components\page-header.hbs.js">
       <DependentUpon>page-header.hbs</DependentUpon>

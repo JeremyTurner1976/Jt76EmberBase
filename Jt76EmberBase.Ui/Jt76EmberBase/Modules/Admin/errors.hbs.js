@@ -8,16 +8,16 @@
 },"3":function(depth0,helpers,partials,data) {
   return "                <i class=\"fa fa-plus-circle\"></i>&nbsp;Add Error\r\n";
   },"5":function(depth0,helpers,partials,data) {
-  var stack1, lambda=this.lambda, escapeExpression=this.escapeExpression, helperMissing=helpers.helperMissing, buffer = "                <tr>\r\n                    <td class=\"col-sm-2\">\r\n                        <div class=\"jt76-multiline\">"
+  var stack1, lambda=this.lambda, escapeExpression=this.escapeExpression, helperMissing=helpers.helperMissing, buffer = "                <tr>\r\n                    <td class=\"col-sm-2 col-md-2\">\r\n                        <div class=\"jt76-multiline\">"
     + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.item : depth0)) != null ? stack1.strCreated : stack1), depth0))
-    + "</div>\r\n                    </td>\r\n                    <td class=\"col-sm-4\">\r\n                        ";
+    + "</div>\r\n                    </td>\r\n                    <td class=\"col-sm-4 col-md-4\">\r\n                        ";
   stack1 = ((helpers['link-to'] || (depth0 && depth0['link-to']) || helperMissing).call(depth0, "index.admin.errorDetails", (depth0 != null ? depth0.item : depth0), {"name":"link-to","hash":{},"fn":this.program(6, data),"inverse":this.noop,"data":data}));
   if (stack1 != null) { buffer += stack1; }
-  return buffer + "\r\n                    </td>\r\n                    <td class=\"col-sm-3\">\r\n                        <div class=\"jt76-multiline\">"
+  return buffer + "\r\n                    </td>\r\n                    <td class=\"col-sm-3 col-md-3 hidden-xs\">\r\n                        <div class=\"jt76-multiline\">"
     + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.item : depth0)) != null ? stack1.strSource : stack1), depth0))
     + " "
     + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.item : depth0)) != null ? stack1.strErrorLevel : stack1), depth0))
-    + "</div>\r\n                    </td>\r\n                    <td class=\"col-sm-3\">\r\n                        <div class=\"jt76-multiline\">"
+    + "</div>\r\n                    </td>\r\n                    <td class=\"col-sm-3 col-md-3 hidden-xs hidden-sm hidden-md\">\r\n                        <div class=\"jt76-multiline\">"
     + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.item : depth0)) != null ? stack1.strAdditionalInformation : stack1), depth0))
     + "</div>\r\n                    </td>\r\n                </tr>\r\n";
 },"6":function(depth0,helpers,partials,data) {
@@ -55,7 +55,7 @@
     'pagination': ((depth0 != null ? depth0.paginationData : depth0)),
     'classNames': ("pagination-row clearfix m-bottom-sm")
   },"data":data})))
-    + "\r\n\r\n    <div class=\"message-table table-responsive bg-light\">\r\n        <table class=\"table table-bordereds\">\r\n            <thead>\r\n                <tr class=\"bg-dark\">\r\n                    <th class=\"col-sm-2\">Created</th>\r\n                    <th class=\"col-sm-4\">Message</th>\r\n                    <th class=\"col-sm-3\">Source and Level</th>\r\n                    <th class=\"col-sm-3\">Additional Information</th>\r\n                </tr>\r\n            </thead>\r\n            <tbody>\r\n";
+    + "\r\n\r\n    <div class=\"message-table table-responsive bg-light\">\r\n        <table class=\"table table-bordereds\">\r\n            <thead>\r\n                <tr class=\"bg-dark\">\r\n                    <th class=\"col-sm-2 col-md-2\">Created</th>\r\n                    <th class=\"col-sm-4 col-md-4\">Message</th>\r\n                    <th class=\"col-sm-3 col-md-3 hidden-xs\">Source and Level</th>\r\n                    <th class=\"col-lg-3 hidden-xs hidden-sm hidden-md\">Additional Information</th>\r\n                </tr>\r\n            </thead>\r\n            <tbody>\r\n";
   stack1 = helpers.each.call(depth0, (depth0 != null ? depth0.item : depth0), (depth0 != null ? depth0['in'] : depth0), (depth0 != null ? depth0.displayModel : depth0), {"name":"each","hash":{},"fn":this.program(5, data),"inverse":this.noop,"data":data});
   if (stack1 != null) { buffer += stack1; }
   return buffer + "            </tbody>\r\n        </table>\r\n    </div>\r\n\r\n    "

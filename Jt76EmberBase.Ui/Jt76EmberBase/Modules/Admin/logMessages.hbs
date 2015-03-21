@@ -53,11 +53,16 @@
             <tbody>
                 {{#each item in displayModel}}
                 <tr>
-                    <td class="col-sm-3">
+                    <td class="col-sm-2">
                         <div class="jt76-multiline">{{item.strCreated}}</div>
                     </td>
-                    <td class="col-sm-9">
-                        {{#link-to "index.admin.logMessage" item}}<div class="jt76-title-link jt76-multiline">{{item.strLogMessage}}</div>{{/link-to}}
+                    <td class="col-sm-10 jt76-no-select">
+                        {{#view Jt76EmberBase.ExpandingSingleItemView strText=item.strLogMessage nMaxLength=160}}
+                        {{#link-to "index.admin.logMessage" item}}<div class="jt76-title-link">{{view.formattedText}}</div>{{/link-to}}
+                        {{#if view.jt76ReadMore}}
+                        <span class="text-success">Read{{#if view.jt76IsExpanded}} Less {{else}} More {{/if}}</span>
+                        {{/if}}
+                        {{/view}}
                     </td>
                 </tr>
                 {{/each}}

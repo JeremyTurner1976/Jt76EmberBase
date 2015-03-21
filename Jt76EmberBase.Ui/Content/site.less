@@ -30,7 +30,7 @@
     border-bottom: 2px solid @light-grey;
 }
 .jt76-multiline{
-    white-space: pre-line;
+    white-space: pre-line !important;
 }
 .jt76-padding-sides-sm{
     padding-left:10px !important;
@@ -66,7 +66,24 @@
 .jt76-bg-green{
     background-color: @green;
 }
-
+.jt76-read-more {
+    height: 65px !important;
+    cursor: pointer;
+}
+.jt76-is-expanded {
+    height: 100% !important;
+    white-space: pre-line !important;
+}
+.jt76-no-select{
+    /*TODO use this in other css classes*/
+    margin-bottom: 3px !important;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
 
 
 /*IMAGES*/

@@ -8,18 +8,38 @@
 },"3":function(depth0,helpers,partials,data) {
   return "            <i class=\"fa fa-plus-circle\"></i>&nbsp;Add Log Message\r\n";
   },"5":function(depth0,helpers,partials,data) {
-  var stack1, lambda=this.lambda, escapeExpression=this.escapeExpression, helperMissing=helpers.helperMissing, buffer = "                <tr>\r\n                    <td class=\"col-sm-3\">\r\n                        <div class=\"jt76-multiline\">"
+  var stack1, lambda=this.lambda, escapeExpression=this.escapeExpression, helperMissing=helpers.helperMissing, buffer = "                <tr>\r\n                    <td class=\"col-sm-2\">\r\n                        <div class=\"jt76-multiline\">"
     + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.item : depth0)) != null ? stack1.strCreated : stack1), depth0))
-    + "</div>\r\n                    </td>\r\n                    <td class=\"col-sm-9\">\r\n                        ";
-  stack1 = ((helpers['link-to'] || (depth0 && depth0['link-to']) || helperMissing).call(depth0, "index.admin.logMessage", (depth0 != null ? depth0.item : depth0), {"name":"link-to","hash":{},"fn":this.program(6, data),"inverse":this.noop,"data":data}));
+    + "</div>\r\n                    </td>\r\n                    <td class=\"col-sm-10 jt76-no-select\">\r\n";
+  stack1 = ((helpers.view || (depth0 && depth0.view) || helperMissing).call(depth0, ((stack1 = (depth0 != null ? depth0.Jt76EmberBase : depth0)) != null ? stack1.ExpandingSingleItemView : stack1), {"name":"view","hash":{
+    'nMaxLength': (160),
+    'strText': (((stack1 = (depth0 != null ? depth0.item : depth0)) != null ? stack1.strLogMessage : stack1))
+  },"fn":this.program(6, data),"inverse":this.noop,"data":data}));
   if (stack1 != null) { buffer += stack1; }
-  return buffer + "\r\n                    </td>\r\n                </tr>\r\n";
+  return buffer + "                    </td>\r\n                </tr>\r\n";
 },"6":function(depth0,helpers,partials,data) {
+  var stack1, helperMissing=helpers.helperMissing, buffer = "                        ";
+  stack1 = ((helpers['link-to'] || (depth0 && depth0['link-to']) || helperMissing).call(depth0, "index.admin.logMessage", (depth0 != null ? depth0.item : depth0), {"name":"link-to","hash":{},"fn":this.program(7, data),"inverse":this.noop,"data":data}));
+  if (stack1 != null) { buffer += stack1; }
+  buffer += "\r\n";
+  stack1 = helpers['if'].call(depth0, ((stack1 = (depth0 != null ? depth0.view : depth0)) != null ? stack1.jt76ReadMore : stack1), {"name":"if","hash":{},"fn":this.program(9, data),"inverse":this.noop,"data":data});
+  if (stack1 != null) { buffer += stack1; }
+  return buffer;
+},"7":function(depth0,helpers,partials,data) {
   var stack1, lambda=this.lambda, escapeExpression=this.escapeExpression;
-  return "<div class=\"jt76-title-link jt76-multiline\">"
-    + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.item : depth0)) != null ? stack1.strLogMessage : stack1), depth0))
+  return "<div class=\"jt76-title-link\">"
+    + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.view : depth0)) != null ? stack1.formattedText : stack1), depth0))
     + "</div>";
-},"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
+},"9":function(depth0,helpers,partials,data) {
+  var stack1, buffer = "                        <span class=\"text-success\">Read";
+  stack1 = helpers['if'].call(depth0, ((stack1 = (depth0 != null ? depth0.view : depth0)) != null ? stack1.jt76IsExpanded : stack1), {"name":"if","hash":{},"fn":this.program(10, data),"inverse":this.program(12, data),"data":data});
+  if (stack1 != null) { buffer += stack1; }
+  return buffer + "</span>\r\n";
+},"10":function(depth0,helpers,partials,data) {
+  return " Less ";
+  },"12":function(depth0,helpers,partials,data) {
+  return " More ";
+  },"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
   var stack1, helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression, buffer = "﻿"
     + escapeExpression(((helpers['page-header'] || (depth0 && depth0['page-header']) || helperMissing).call(depth0, {"name":"page-header","hash":{
     'strSubHeader': ((depth0 != null ? depth0.strSubHeader : depth0)),

@@ -1,4 +1,6 @@
-﻿<div class="inbox-body jt76-padding-sides-xlg p-top-xs">
+﻿{{page-header strPageTitle=strPageTitle strSubHeader=strSubHeader}}
+
+<div class="inbox-body jt76-padding-sides-xlg p-top-xs">
     <div class="row jt76-padding-sides-md">
 
         <div class="smart-widget m-top-sm widget-dark-blue">
@@ -39,7 +41,7 @@
                         </div>
                         <div class="form-group">
                             <label aria-for="strStackTrace">Stack Trace</label>
-                            {{input value=strStackTrace class="form-control" placeHolder="Enter Stack Trace"}}
+                            {{textarea valueBinding="strStackTrace" class="form-control" placeHolder="Enter Stack Trace" rows="6"}}
                             <span class="jt76-error" data-ng-show="Form.strStackTrace.$error.required">Required</span>
                             <span class="jt76-error" data-ng-show="Form.strStackTrace.$error.minlength">Minimum 5 Characters</span>
                             <span class="jt76-error" data-ng-show="Form.strStackTrace.$error.maxlength">Maximum 4000 Characters</span>

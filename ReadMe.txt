@@ -45,6 +45,7 @@ this.get('content.transaction').commit();
 
 Shorthand for function(){...}.property("controller.bIsLoaded")
 Ember.computed.alias("controller.bIsLoaded") to set a property that is bound to the controllers bIsLoaded property for change events 
+Ember.computed -> gt >, lt <, gte >=, lte <=, map, any, filter, max, min
 
 .property().volatile() means it is reloaded every time it is called
 
@@ -68,6 +69,7 @@ jt76LoadedSlide: Ember.computed.alias("controller.bIsLoaded"), //will give the h
 jt76LoadingSlide: !Ember.computed.alias("controller.bIsLoaded"), //will give the hyphenated class based on caps of jt76-slow-slide
 
 {{view App.TextField value=model.searchValue placeholder=model.searchHint classBinding="isSearchFormValid::invalid" tabindex="1" type="text" id="search-value" aria-label="Search For" maxlength=60 }}
+{{view Ember.Select value=selectedRating content=ratings}}
 
 partials are components with nothing needed to be passed in, holds access to the parent controller
 Partials must be named with an underscore ie, _singleItemButtonSet.hbs and placed at the index level
@@ -78,6 +80,33 @@ components are for encapsulating and creating reuseable code for more complex it
 
 Renders are views that do not need a route or view defined, but still get a controller {{render}}
 
+Ember views have many ui event handlers such as click, submit, change, mouseDown, keyDown, and keyUp
+
 http://stackoverflow.com/questions/15235574/ember-data-reloading-content-ui-not-updating
 https://github.com/heartsentwined/ember-auth
 http://stackoverflow.com/questions/18863710/how-do-i-call-an-action-method-on-controller-from-the-outside-with-the-same-beh
+
+
+      {{#view App.ReviewView length=text.length tag="li"}}
+              {{text}}
+      <span class="expand text-success">
+        Read  {{#if view.isExpanded}}
+        	Less
+        {{else}}
+        	More
+        {{/if}}
+      </span>
+      {{/view}}
+
+	  App.ReviewView = Ember.View.extend({
+		  isExpanded: false,
+		  classNameBindings: ["isExpanded", "readMore"],
+		  readMore: Ember.computed.gt("length", 140),
+		  click: function(){
+  			return this.set("isExpanded", !this.get("isExpanded"));
+		  }
+		});
+
+
+		Accounting.js
+		Markdown.js

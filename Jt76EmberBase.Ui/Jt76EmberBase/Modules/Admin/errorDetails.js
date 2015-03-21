@@ -7,5 +7,7 @@ Jt76EmberBase.IndexAdminErrorDetailsRoute = Jt76EmberBase.SingleItemRoute.extend
 });
 
 Jt76EmberBase.IndexAdminErrorDetailsController = Jt76EmberBase.SingleItemController.extend({
-    strParentRoute: "index.admin.errors"
+    strParentRoute: "index.admin.errors",
+    strPageTitle: "Admin Error",
+    strSubHeader: "Handle your business."
 });

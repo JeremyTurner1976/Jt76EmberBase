@@ -1,4 +1,4 @@
-﻿Jt76EmberBase.IndexDashboardView = Ember.View.extend({
+﻿Jt76EmberBase.IndexDashboardView = Jt76EmberBase.SlidingView.extend({
     templateName: "Modules/Dashboard/dashboard"
 });
 
@@ -16,6 +16,8 @@ Jt76EmberBase.IndexDashboardRoute = Ember.Route.extend({
 });
 
 Jt76EmberBase.IndexDashboardController = Ember.ObjectController.extend({
+    strPageTitle: "Dashboard",
+    strSubHeader: "Welcome Back, Jeremy Turner , <i class='fa fa-map-marker text-danger'></i> Cheney",
     actions: {
         refresh: function () {
             var model = this.get("model");

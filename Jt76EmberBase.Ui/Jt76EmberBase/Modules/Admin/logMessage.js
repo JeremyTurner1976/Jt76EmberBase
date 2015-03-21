@@ -7,5 +7,7 @@ Jt76EmberBase.IndexAdminLogMessageRoute = Jt76EmberBase.SingleItemRoute.extend({
 });
 
 Jt76EmberBase.IndexAdminLogMessageController = Jt76EmberBase.SingleItemController.extend({
-    strParentRoute: "index.admin.logMessages"
+    strParentRoute: "index.admin.logMessages",
+    strPageTitle: "Admin Log Message",
+    strSubHeader: "Handle your business."
 });

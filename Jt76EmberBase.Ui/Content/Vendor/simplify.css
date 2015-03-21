@@ -3508,7 +3508,7 @@ table tbody td.text-right {
 .smart-widget .smart-widget-header {
   background-color: #fff;
   padding: 15px;
-  border-bottom: 1px solid #e6e6e6;
+  border: 1px solid #e6e6e6;
   border-radius: 2px 2px 0 0;
   -moz-border-radius: 2px 2px 0 0;
   -webkit-border-radius: 2px 2px 0 0;

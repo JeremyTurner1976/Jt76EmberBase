@@ -1,17 +1,11 @@
-﻿Jt76EmberBase.IndexAdminUserAdminView = Ember.View.extend({
+﻿Jt76EmberBase.IndexAdminUserAdminView = Jt76EmberBase.SlidingView.extend({
     templateName: "Modules/Admin/userAdmin"
 });
 
 Jt76EmberBase.IndexAdminUserAdminRoute = Ember.Route.extend({
-    model: function () {
-
-    }
 });
 
 Jt76EmberBase.IndexAdminUserAdminController = Ember.ObjectController.extend({
-    actions: {
-        refresh: function () {
-            this.loadAdminUserAdmin();
-        }
-    }
+    strPageTitle: "Admin User Admin",
+    strSubHeader: "Placeholder for future content."
 });
