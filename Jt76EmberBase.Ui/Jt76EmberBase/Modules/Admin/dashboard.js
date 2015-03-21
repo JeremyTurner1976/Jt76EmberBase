@@ -3,6 +3,9 @@
 });
 
 Jt76EmberBase.IndexAdminDashboardRoute = Ember.Route.extend({
+    setupController: function (controller, model) {
+        this.controllerFor("index").set("bIsLoaded", true);
+    }
 });
 
 Jt76EmberBase.IndexAdminDashboardController = Ember.ObjectController.extend({

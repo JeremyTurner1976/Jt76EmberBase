@@ -38,6 +38,11 @@ Jt76EmberBase.ApplicationRoute = Ember.Route.extend({
         Ember.Logger.debug(Ember);
 
         Ember.Logger.log("Application Activated.");
+
+        var self = this;
+        setTimeout(function () {
+            self.transitionTo("index.dashboard");
+        }, 250); //give the dom time to set then transition to the landing page
     }
 });
 
