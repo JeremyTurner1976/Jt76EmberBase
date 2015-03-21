@@ -139,7 +139,7 @@ Jt76EmberBase.ArrayController = Ember.ArrayController.extend({
 
             return bMatch;
         });
-    }.property("debouncedStrToSearchFor"),
+    }.property("debouncedStrToSearchFor", "sortedModel"),
 
     pagedDisplayModel: function () {
         var nCurrentPage = this.get("paginationData.nCurrentPage");
@@ -248,7 +248,6 @@ Jt76EmberBase.SingleItemController = Ember.ObjectController.extend({
                      var strErrorRoute = self.get("strParentRoute");
                      var controller = self.controllerFor(strErrorRoute);
                      controller.set("bForceRefresh", true);
-                     debugger;
                      self.transitionToRoute(strErrorRoute);
                  }
                  else {

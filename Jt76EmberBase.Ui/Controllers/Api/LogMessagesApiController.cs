@@ -57,8 +57,8 @@ namespace Jt76EmberBase.Ui.Controllers.Api
             logMessage.Id = id;
 
             return _viewModel.UpdateLogMessage(logMessage) ?
-                Request.CreateResponse(HttpStatusCode.Created, new { logMessage }) :
-                Request.CreateResponse(HttpStatusCode.BadRequest);
+                Request.CreateResponse(HttpStatusCode.Created, true) :
+                Request.CreateResponse(HttpStatusCode.BadRequest, true);
         }
 
 

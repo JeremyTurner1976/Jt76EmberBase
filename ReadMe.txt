@@ -76,6 +76,8 @@ partials are for common controls, tightly linked to their parent view
 Components will be like partials, but they will have their own controller as a Ember.Component
 components are for encapsulating and creating reuseable code for more complex items in a parent view
 
+Renders are views that do not need a route or view defined, but still get a controller {{render}}
+
 http://stackoverflow.com/questions/15235574/ember-data-reloading-content-ui-not-updating
 https://github.com/heartsentwined/ember-auth
 http://stackoverflow.com/questions/18863710/how-do-i-call-an-action-method-on-controller-from-the-outside-with-the-same-beh
