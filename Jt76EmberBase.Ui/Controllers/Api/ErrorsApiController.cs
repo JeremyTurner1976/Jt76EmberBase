@@ -33,10 +33,7 @@ namespace Jt76EmberBase.Ui.Controllers.Api
             //var requestUri = Request.RequestUri;
 
             var errors = _viewModel.GetErrors();
-
-            //errors = errors
-            //    .OrderByDescending(x => x.DtCreated)
-            //    .ThenByDescending(x => x.Id);
+            //errors = errors.OrderByDescending(x => x.DtCreated).ThenByDescending(x => x.Id);
 
             //_uiService.LogMessage(errors.Count() + " different errors loaded");
 
@@ -65,13 +62,31 @@ namespace Jt76EmberBase.Ui.Controllers.Api
             if (_viewModel.AddError(error)) //force valid datatype
             {
                 //200 success
-                //_uiService.LogMessage(newError.StrMessage + " - Successfully saved");
+                //_uiService.LogMessage(error.StrMessage + " - Successfully saved");
                 return Request.CreateResponse(HttpStatusCode.Created, new { error });
             }
 
             //400 error
-            //_uiService.LogMessage(newError.StrMessage + " - Was unable to save");
+            //_uiService.LogMessage(error.StrMessage + " - Was unable to save");
             return Request.CreateResponse(HttpStatusCode.BadRequest);
+        }
+
+        [Route("api/v1/errors/{id}")]
+        public HttpResponseMessage Delete(int id)
+        {
+            Debug.WriteLine(GetType().FullName + "." + MethodBase.GetCurrentMethod().Name);
+            //var requestUri = Request.RequestUri;
+
+            if (_viewModel.DeleteError(id))
+            {
+                //200 success
+                //_uiService.LogMessage(error.StrMessage + " - Successfully deleted");
+                return Request.CreateResponse(HttpStatusCode.Accepted, true);
+            }
+
+            //400 error
+            //_uiService.LogMessage(error.StrMessage + " - Was unable to delete");
+            return Request.CreateResponse(HttpStatusCode.BadRequest, false);
         }
     }
 }

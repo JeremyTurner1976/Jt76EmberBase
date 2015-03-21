@@ -3500,7 +3500,6 @@ table tbody td.text-right {
   -webkit-border-radius: 3px;
   margin-bottom: 20px;
   border-color: #e4e4e4;
-  border-top-width: 4px;
   background-color: #fff;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
   -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
@@ -3510,9 +3509,9 @@ table tbody td.text-right {
   background-color: #fff;
   padding: 15px;
   border-bottom: 1px solid #e6e6e6;
-  border-radius: 3px 3px 0 0;
-  -moz-border-radius: 3px 3px 0 0;
-  -webkit-border-radius: 3px 3px 0 0;
+  border-radius: 2px 2px 0 0;
+  -moz-border-radius: 2px 2px 0 0;
+  -webkit-border-radius: 2px 2px 0 0;
 }
 .smart-widget .smart-widget-header .smart-widget-option {
   float: right;

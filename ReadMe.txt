@@ -51,25 +51,29 @@ willDestroyElement: function () {
     var clone = this.$().clone();
     this.$().parent().append(clone);
     setTimeout(function () {
-        clone.removeClass("jt76-loaded-slide");
+        clone.removeClass("jt76-slow-slide-in");
         clone.addClass("jt76-unloaded-slide");
     }, 50); //give the dom time to set the jt76-loading class then switch it
     //clone.fadeOut();
 }
 
-    className: ["jt76-loading-slide"],
-    classNameBindings: ["bIsLoading"],
-    bIsLoading: function () {
-        return this.get("controller.bIsLoaded") ? "jt76-loaded-slide" : "jt76-loading-slide";
-    }.property("controller.bIsLoaded")
-	also
-	jt76LoadedSlide: Ember.computed.alias("controller.bIsLoaded"), //will give the hyphenated class based on caps of jt76-loaded-slide
-	jt76LoadingSlide: !Ember.computed.alias("controller.bIsLoaded"), //will give the hyphenated class based on caps of jt76-loading-slide
+className: ["jt76-slow-slide"],
+classNameBindings: ["bIsLoading"],
+bIsLoading: function () {
+    return this.get("controller.bIsLoaded") ? "jt76-slow-slide-in" : "jt76-slow-slide";
+}.property("controller.bIsLoaded")
+also
+jt76LoadedSlide: Ember.computed.alias("controller.bIsLoaded"), //will give the hyphenated class based on caps of jt76-slow-slide-in
+jt76LoadingSlide: !Ember.computed.alias("controller.bIsLoaded"), //will give the hyphenated class based on caps of jt76-slow-slide
 
-	{{view App.TextField value=model.searchValue placeholder=model.searchHint classBinding="isSearchFormValid::invalid" tabindex="1" type="text" id="search-value" aria-label="Search For" maxlength=60 }}
+{{view App.TextField value=model.searchValue placeholder=model.searchHint classBinding="isSearchFormValid::invalid" tabindex="1" type="text" id="search-value" aria-label="Search For" maxlength=60 }}
 
-	partials are components with nothing needed to be passed in, holds access to the parent controller
-	Partials must be named with an _ ie, _singleItemButtonSet.hbs
+partials are components with nothing needed to be passed in, holds access to the parent controller
+Partials must be named with an underscore ie, _singleItemButtonSet.hbs and placed at the index level
+partials are for common controls, tightly linked to their parent view
+
+Components will be like partials, but they will have their own controller as a Ember.Component
+components are for encapsulating and creating reuseable code for more complex items in a parent view
 
 http://stackoverflow.com/questions/15235574/ember-data-reloading-content-ui-not-updating
 https://github.com/heartsentwined/ember-auth

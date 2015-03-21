@@ -1,35 +1,4 @@
-﻿*::-webkit-input-placeholder {
-  color: #e6e6e6 !important;
-  font-weight: 400;
-}
-*::-moz-placeholder {
-  /* FF 19+ */
-  color: #e6e6e6 !important;
-  font-weight: 400;
-}
-*:-ms-input-placeholder {
-  /* IE 10+ */
-  color: #e6e6e6 !important;
-  font-weight: 400;
-}
-jt76-visible {
-  -moz-transition: linear .2s;
-  -o-transition: linear .2s;
-  -webkit-transition: linear .2s;
-  transition: linear .2s;
-  opacity: 1;
-}
-jt76-hidden {
-  -moz-transition: linear .2s;
-  -o-transition: linear .2s;
-  -webkit-transition: linear .2s;
-  transition: linear .2s;
-  opacity: 0;
-}
-/*.jt76-body-background{
-    //background-image: url("Images/Jt76EmberBase/background.png");
-}*/
-.jt76-brand-name {
+﻿.jt76-brand-name {
   color: #1c2b36;
   font-size: x-large;
 }
@@ -76,6 +45,10 @@ jt76-hidden {
 .jt76-verticalLine {
   border-left: 1px solid #e6e6e6;
 }
+.jt76-bg-green {
+  background-color: #51a351;
+}
+/*IMAGES*/
 .jt76-loading-overlay {
   opacity: .9;
   display: block;
@@ -94,10 +67,7 @@ jt76-hidden {
   background-repeat: no-repeat;
   z-index: 1000;
 }
-/*colors*/
-.jt76-bg-green {
-  background-color: #51a351;
-}
+/*FORM AND INPUT OVERRIDES*/
 input.ng-invalid,
 select.ng-invalid,
 textarea.ng-invalid {
@@ -106,6 +76,21 @@ textarea.ng-invalid {
 a {
   cursor: pointer;
 }
+*::-webkit-input-placeholder {
+  color: #e6e6e6 !important;
+  font-weight: 400;
+}
+*::-moz-placeholder {
+  /* FF 19+ */
+  color: #e6e6e6 !important;
+  font-weight: 400;
+}
+*:-ms-input-placeholder {
+  /* IE 10+ */
+  color: #e6e6e6 !important;
+  font-weight: 400;
+}
+/*BOOTSTRAP OVERRIDES*/
 .btn {
   margin-bottom: 3px !important;
   -webkit-touch-callout: none;
@@ -137,37 +122,29 @@ a {
   background: #e6e6e6 !important;
   border-color: #999999 !important;
 }
-/*simplify overrides*/
+/*SIMPLIFY OVERRIDES*/
 .submenu > li > a.active {
   color: white !important;
   margin-left: 6px;
 }
+/*VIEW ANIMATIONS*/
 /*fade animation*/
-.jt76-loading-fade {
-  -webkit-transition: cubic-bezier(0.25, 0.46, 0.45, 0.94) all 0.4s;
-  -moz-transition: cubic-bezier(0.25, 0.46, 0.45, 0.94) all 0.4s;
-  -o-transition: cubic-bezier(0.25, 0.46, 0.45, 0.94) all 0.4s;
-  transition: cubic-bezier(0.25, 0.46, 0.45, 0.94) all 0.4s;
-  opacity: 0;
-}
-.jt76-loaded-fade {
+.jt76-slow-fade-in {
   -webkit-transition: cubic-bezier(0.25, 0.46, 0.45, 0.94) all 0.4s;
   -moz-transition: cubic-bezier(0.25, 0.46, 0.45, 0.94) all 0.4s;
   -o-transition: cubic-bezier(0.25, 0.46, 0.45, 0.94) all 0.4s;
   transition: cubic-bezier(0.25, 0.46, 0.45, 0.94) all 0.4s;
   opacity: 1;
 }
-/*shuffle animation*/
-.jt76-loading-slide {
-  /*position: relative;
-    -moz-transition: ease-out all 0.3s 0.4s;
-    -o-transition: ease-out all 0.3s 0.4s;
-    -webkit-transition: ease-out all 0.3s 0.4s;
-    transition: ease-out all 0.3s 0.4s;*/
-  left: 2em;
+.jt76-slow-fade-out {
+  -webkit-transition: cubic-bezier(0.25, 0.46, 0.45, 0.94) all 0.4s;
+  -moz-transition: cubic-bezier(0.25, 0.46, 0.45, 0.94) all 0.4s;
+  -o-transition: cubic-bezier(0.25, 0.46, 0.45, 0.94) all 0.4s;
+  transition: cubic-bezier(0.25, 0.46, 0.45, 0.94) all 0.4s;
   opacity: 0;
 }
-.jt76-loaded-slide {
+/*shuffle animation*/
+.jt76-slow-slide-in {
   position: relative;
   -moz-transition: 0.4s ease-out all;
   -o-transition: 0.4s ease-out all;
@@ -176,7 +153,7 @@ a {
   left: 0;
   opacity: 1;
 }
-.jt76-unloaded-slide {
+.jt76-slow-slide-out {
   position: relative;
   -moz-transition: ease-out all 0.3s 0.4s;
   -o-transition: ease-out all 0.3s 0.4s;
@@ -184,5 +161,30 @@ a {
   transition: ease-out all 0.3s 0.4s;
   left: 2em;
   opacity: 0;
+}
+/*FORMCONTROL ANIMATIONS*/
+.jt76-visible {
+  opacity: 1 !important;
+  display: inline-block !important;
+}
+.jt76-hidden {
+  opacity: 0 !important;
+  display: none !important;
+}
+.jt76-quick-fade-in {
+  -webkit-transition: cubic-bezier(0.25, 0.46, 0.45, 0.94) all 0.4s;
+  -moz-transition: cubic-bezier(0.25, 0.46, 0.45, 0.94) all 0.4s;
+  -o-transition: cubic-bezier(0.25, 0.46, 0.45, 0.94) all 0.4s;
+  transition: cubic-bezier(0.25, 0.46, 0.45, 0.94) all 0.4s;
+  opacity: 1;
+  display: inline-block;
+}
+.jt76-quick-fade-out {
+  -webkit-transition: cubic-bezier(0.25, 0.46, 0.45, 0.94) all 0.4s;
+  -moz-transition: cubic-bezier(0.25, 0.46, 0.45, 0.94) all 0.4s;
+  -o-transition: cubic-bezier(0.25, 0.46, 0.45, 0.94) all 0.4s;
+  transition: cubic-bezier(0.25, 0.46, 0.45, 0.94) all 0.4s;
+  opacity: 0;
+  display: none;
 }
 /*# sourceMappingURL=site.css.map */

@@ -15,6 +15,7 @@ namespace Jt76EmberBase.Data.Database.ModelRepositories
         bool Save();
         IQueryable<Error> GetErrors();
         bool AddError(Error newError, bool bSave);
+        bool DeleteError(int id, bool bSave);
     }
 
     public class ErrorRepository : ModelRepositoryBase, IErrorRepository
@@ -58,11 +59,20 @@ namespace Jt76EmberBase.Data.Database.ModelRepositories
             newError = (Error) newError.ForceValidData();
 
             _context.Errors.Add(newError);
+            return !bSave || Save();
+        }
 
-            if (bSave)
-                Save();
-
-            return true;
+        public bool DeleteError(int id, bool bSave)
+        {
+            Debug.WriteLine(GetType().FullName + "." + MethodBase.GetCurrentMethod().Name);
+            var error = _context.Errors.FirstOrDefault(x => x.Id == id);
+            if (error != null && error.Id != default(int))
+            {
+                _context.Errors.Remove(error);
+                return !bSave || Save();
+            }
+            else 
+                return false;
         }
     }
 }

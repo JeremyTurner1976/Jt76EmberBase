@@ -1,22 +1,20 @@
-﻿    <button class="btn btn-info btn-sm jt76-padding-sides-sm"
-            {{action "goBack"}} {{bind-attr class="bModelHasChanges:jt76-visible:jt76-hidden"}}>
-        <i class="fa fa-backward"></i>&nbsp;Back
-    </button>
-    <button class="btn btn-info btn-sm jt76-padding-sides-sm dissolve-animation ng-hide"
-            data-ng-show="vm.hasChanges"
-            data-ng-click="vm.cancel()">
-        <i class="fa fa-ban"></i>&nbsp;Cancel
-    </button>
-    <button class="btn btn-primary btn-sm jt76-padding-sides-sm"
-            data-ng-click="vm.save()"
-            data-ng-disabled="!vm.canSave">
-        <i class="fa fa-save"></i>&nbsp;Save
-    </button>
-    <button class="btn btn-danger btn-sm jt76-padding-sides-sm"
-            data-ng-show="vm.bShowDelete"
-            data-ng-click="vm.deleteError()">
-        <i class="fa fa-minus"></i>&nbsp;Delete
-    </button>
-    <span class="dissolve-animation ng-hide" data-ng-show="vm.hasChanges">
-        <i class="fa fa-asterisk" data-ng-show="vm.bShowDelete"></i>
-    </span>
+﻿
+<button {{action "goBack"}}
+        {{bind-attr class="bChanged:jt76-quick-fade-out:jt76-quick-fade-in bNew:jt76-visible :btn :btn-info :btn-sm :jt76-padding-sides-sm :form-inline"}}>
+    <i class="fa fa-backward"></i>&nbsp;Back
+</button>
+<button {{action "cancel"}}
+        {{bind-attr class="bChanged:jt76-quick-fade-in:jt76-quick-fade-out bNew:jt76-hidden :btn :btn-info :btn-sm :jt76-padding-sides-sm :form-inline"}}>
+    <i class="fa fa-ban"></i>&nbsp;Cancel
+</button>
+<button {{action "save"}}
+        {{bind-attr class="bChanged:jt76-quick-fade-in:jt76-quick-fade-out :btn :btn-primary :btn-sm :jt76-padding-sides-sm :form-inline"}}>
+    <i class="fa fa-save"></i>&nbsp;Save
+</button>
+<button {{action "deleteItem"}}
+        {{bind-attr class="bNew:jt76-quick-fade-out :btn :btn-danger :btn-sm :jt76-padding-sides-sm :form-inline"}}>
+    <i class="fa fa-minus"></i>&nbsp;Delete
+</button>
+<span {{bind-attr class="bChanged:jt76-quick-fade-in:jt76-quick-fade-out :form-inline"}}>
+    <i class="fa fa-asterisk"></i>
+</span>

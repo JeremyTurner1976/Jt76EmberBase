@@ -3,15 +3,15 @@
     templateName: "Modules/Admin/errors",
     /*__End Template Name__*/
 
-    willInsertElement: function(){
+    willInsertElement: function () {
         var self = this.$();
-        self.addClass("jt76-loading-slide");
+        self.addClass("jt76-slow-slide-out");
     },
     didInsertElement: function () {
         var self = this.$();
         setTimeout(function () {
-            self.removeClass("jt76-loading-slide");
-            self.addClass("jt76-loaded-slide");
+            self.removeClass("jt76-slow-slide-out");
+            self.addClass("jt76-slow-slide-in");
         }, 50); //give the dom time to set the jt76-loading class then switch it
     }
 });
@@ -35,6 +35,7 @@ Jt76EmberBase.IndexAdminErrorsRoute = Ember.Route.extend({
         Ember.Logger.info(model);
         controller.set("model", model);
         this.controllerFor("index").set("bIsLoaded", true);
+        controller.set("bForceRefresh", false);
     }
 });
 
@@ -87,7 +88,7 @@ Jt76EmberBase.IndexAdminErrorsController = Ember.ArrayController.extend({
             nTotalCount: this.get("nTotalCount"),
             nFilteredCount: nMaxPageItemsToDisplay
         }
-    }.property(),
+    }.property("bForceRefresh"),
 
     mappedModel: function () {
         var self = this;
@@ -108,7 +109,7 @@ Jt76EmberBase.IndexAdminErrorsController = Ember.ArrayController.extend({
 
     displayModel: function () {
         return this.get("bInSearchMode") ? this.get("searchDisplayModel") : this.get("pagedDisplayModel");
-    }.property("paginationData.nCurrentPage", "bInSearchMode"),
+    }.property("paginationData.nCurrentPage", "debouncedStrToSearchFor"),
 
     searchDisplayModel: function () {
         var self = this;
@@ -122,7 +123,7 @@ Jt76EmberBase.IndexAdminErrorsController = Ember.ArrayController.extend({
 
             return bMatch;
         });
-    }.property("bInSearchMode"),
+    }.property("debouncedStrToSearchFor"),
 
     pagedDisplayModel: function () {
         var nCurrentPage = this.get("paginationData.nCurrentPage");
@@ -131,7 +132,8 @@ Jt76EmberBase.IndexAdminErrorsController = Ember.ArrayController.extend({
         var pagedArray = this.get("sortedModel").toArray().splice(nStartItem, nMaxPageItemsToDisplay);
         this.set("paginationData.nFilteredCount", pagedArray.length);
         return pagedArray;
-    }.property("paginationData.nCurrentPage"),
+    }.property("paginationData.nCurrentPage", "bInSearchMode"),
+
 
     actions: {
         injectError: function () {
@@ -151,8 +153,6 @@ Jt76EmberBase.IndexAdminErrorsController = Ember.ArrayController.extend({
         toggleSort: function (item) {
             var bResetSort = (item === "reset");
             var newSortProperties = [];
-
-            //set the sort
             if (!bResetSort) {
                 var oldToggleSortProperty = this.get("sortProperties").toArray().splice(0, 1)[0];
                 Ember.run.once(this.resetSortProperties);
@@ -165,14 +165,38 @@ Jt76EmberBase.IndexAdminErrorsController = Ember.ArrayController.extend({
                         newSortProperties.pushObject(innerItem);
                 });
                 this.set("sortProperties", newSortProperties);
+
+
             }
 
+            this.send("decorateSortSelect", bResetSort ? "reset" : item.value, bResetSort);
+            this.send("refresh", false, bResetSort);
+
+        },
+        refresh: function (bForceRefresh, bResetSort) {
+            var self = this;
+            var nSavedPage = this.get("paginationData.nCurrentPage");
+            this.set("paginationData.nCurrentPage", 0);
+            self.set("bForceRefresh", bForceRefresh);
+
+            if(bResetSort)
+                Ember.run.once(this.resetSortProperties);
+
+            //refresh
+            self.get("target.router").refresh().then(function () {
+                //update the pagination display if a new item was added and no refresh is wanted
+                self.set("paginationData.nTotalCount", self.get("nTotalCount"));
+                self.set("paginationData.nCurrentPage", nSavedPage);
+            });
+        },
+
+        decorateSortSelect: function (strItemValue, bResetSort) {
             //update the ui
             var elements = $(".dropdown-menu-sort > li");
             elements.toArray().splice(0, elements.length - 2).forEach(function (element) {
                 var strArrowUp = "<span><i class=\"fa fa-arrow-circle-up\"></i><span>&nbsp;";
                 var strArrowDown = "<span><i class=\"fa fa-arrow-circle-down\"></i><span>&nbsp;";
-                var bActive = element.children[0].innerHTML.indexOf(item.value) !== -1;
+                var bActive = element.children[0].innerHTML.indexOf(strItemValue) !== -1;
                 var bDecorated = element.children[0].innerHTML.indexOf(strArrowDown) !== -1;
                 element.children[0].innerHTML = element.children[0].innerHTML.replace(strArrowUp, "");
                 element.children[0].innerHTML = element.children[0].innerHTML.replace(strArrowDown, "");
@@ -180,36 +204,8 @@ Jt76EmberBase.IndexAdminErrorsController = Ember.ArrayController.extend({
                 if (!bResetSort && bActive) {
                     element.className = "active";
                     element.children[0].innerHTML = ((bDecorated) ? strArrowUp : strArrowDown) + element.children[0].innerHTML;
-                } else 
+                } else
                     element.className = "";
-            });
-            this.send("refresh", false, bResetSort);
-        },
-        refresh: function (bForceRefresh, bResetSort) {
-            var self = this;
-            var nMaxPagesToDisplay = this.get("nMaxPagesToDisplay");
-            var nMaxPageItemsToDisplay = this.get("nMaxPageItemsToDisplay");
-            var nPagePlaceHolder = self.get("paginationData.nCurrentPage");
-
-            //reset defaults
-            self.set("bForceRefresh", bForceRefresh);
-            self.set("strToSearchFor", "");
-            self.set("debouncedStrToSearchFor", "");
-            self.set("paginationData.nCurrentPage", 0); //force a pagination component refresh
-            self.set("paginationData.bInSearchMode", false);
-            self.set("paginationData.nFilteredItems", nMaxPagesToDisplay);
-
-            if(bResetSort)
-                Ember.run.once(this.resetSortProperties);
-
-            //refresh then reset array count specific properties
-            self.get("target.router").refresh().then(function () {
-                var nTotalCount = self.get("nTotalCount");
-                var nMaxPages = Math.ceil(nTotalCount / nMaxPageItemsToDisplay);
-                self.set("paginationData.nTotalCount", nTotalCount);
-                self.set("paginationData.nMaxPages", nMaxPages);
-                self.set("paginationData.nCurrentPage", nPagePlaceHolder > nMaxPages ? nMaxPages : nPagePlaceHolder);
-                self.set("bForceRefresh", false);
             });
         }
     }

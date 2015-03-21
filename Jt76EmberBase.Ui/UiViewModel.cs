@@ -43,6 +43,13 @@ namespace Jt76EmberBase.Ui
             return _errorRepository.GetErrors();
         }
 
+        public IQueryable<LogMessage> GetLogMessages()
+        {
+            Debug.WriteLine(GetType().FullName + "." + MethodBase.GetCurrentMethod().Name);
+
+            return _logMessageRepository.GetLogMessages();
+        }
+
         public bool AddError(Error newError)
         {
             Debug.WriteLine(GetType().FullName + "." + MethodBase.GetCurrentMethod().Name);
@@ -51,18 +58,19 @@ namespace Jt76EmberBase.Ui
             return true;
         }
 
-        public IQueryable<LogMessage> GetLogMessages()
-        {
-            Debug.WriteLine(GetType().FullName + "." + MethodBase.GetCurrentMethod().Name);
-
-            return _logMessageRepository.GetLogMessages();
-        }
-
         public bool AddLogMessage(string stringLogMessage = "", LogMessage logMessage = null, bool bSave = true)
         {
             Debug.WriteLine(GetType().FullName + "." + MethodBase.GetCurrentMethod().Name);
 
             return _uiService.LogMessage(stringLogMessage);
+        }
+
+        public bool DeleteError(int id)
+        {
+            Debug.WriteLine(GetType().FullName + "." + MethodBase.GetCurrentMethod().Name);
+
+            _errorRepository.DeleteError(id, true);
+            return true;
         }
     }
 }
