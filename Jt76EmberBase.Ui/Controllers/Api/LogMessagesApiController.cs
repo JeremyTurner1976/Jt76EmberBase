@@ -49,6 +49,16 @@ namespace Jt76EmberBase.Ui.Controllers.Api
         }
 
         [Route("api/v1/logMessages/{id}")]
+        public Object Get(int id)
+        {
+            Debug.WriteLine(GetType().FullName + "." + MethodBase.GetCurrentMethod().Name);
+            //var requestUri = Request.RequestUri;
+
+            var logMessage = _viewModel.GetLogMessages().FirstOrDefault(x => x.Id == id);
+            return new { logMessage };
+        }
+
+        [Route("api/v1/logMessages/{id}")]
         public HttpResponseMessage Put([FromBody] dynamic model, int id)
         {
             Debug.WriteLine(GetType().FullName + "." + MethodBase.GetCurrentMethod().Name);

@@ -49,6 +49,17 @@ namespace Jt76EmberBase.Ui.Controllers.Api
         }
 
         [Route("api/v1/errors/{id}")]
+        public Object Get(int id)
+        {
+            Debug.WriteLine(GetType().FullName + "." + MethodBase.GetCurrentMethod().Name);
+            //var requestUri = Request.RequestUri;
+
+            var error = _viewModel.GetErrors().FirstOrDefault(x => x.Id == id);
+            return new { error };
+        }
+
+
+        [Route("api/v1/errors/{id}")]
         public HttpResponseMessage Put([FromBody] dynamic model, int id)
         {
             Debug.WriteLine(GetType().FullName + "." + MethodBase.GetCurrentMethod().Name);

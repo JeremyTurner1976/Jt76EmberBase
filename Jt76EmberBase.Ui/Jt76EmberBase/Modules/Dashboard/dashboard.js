@@ -17,7 +17,7 @@ Jt76EmberBase.IndexDashboardRoute = Ember.Route.extend({
 
 Jt76EmberBase.IndexDashboardController = Ember.ObjectController.extend({
     strPageTitle: "Dashboard",
-    strSubHeader: "Welcome Back, Jeremy Turner , <i class='fa fa-map-marker text-danger'></i> Cheney",
+    strSubHeader: "Welcome Back, <strong>Jeremy Turner</strong> , <i class='fa fa-map-marker text-danger'></i> Cheney",
     actions: {
         refresh: function () {
             var model = this.get("model");

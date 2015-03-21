@@ -3,12 +3,6 @@
 });
 
 Jt76EmberBase.IndexRoute = Ember.Route.extend({
-    model: function () {
-        return {};
-    },
-    setupController: function (controller, model) {
-        controller.set("model", model);
-    }
 });
 
 Jt76EmberBase.IndexController = Ember.ObjectController.extend({

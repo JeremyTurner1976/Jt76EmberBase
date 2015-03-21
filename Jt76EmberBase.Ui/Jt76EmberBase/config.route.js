@@ -7,7 +7,7 @@
 //:[itemname]_id if only doing a find by id (no need to create the route, ember does this)
 Jt76EmberBase.Router.map(function () {
     this.route("index", { path: "" }, function() {
-        this.route("dashboard"), //default page set in index.js
+        this.route("dashboard"),
         this.route("projects", { path: "projects/" }, function () {
             this.route("projectOne");
             this.route("projectTwo");

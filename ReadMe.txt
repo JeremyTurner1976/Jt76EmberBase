@@ -9,6 +9,7 @@ http://emberjs.com/api/
 http://emberjs.com/api/data/
 
 {{}} always looks first in the controller, then in the model
+{{{}}} for raw html
 
 {{bind-attr src="src" alt="title"}} for most other native html elements
 class inside of helpers - :class means always  variable:truthy:falsy variable:truthy or variable::falsy
