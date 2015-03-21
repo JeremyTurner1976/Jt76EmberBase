@@ -27,6 +27,7 @@ Jt76EmberBase.ArrayRoute = Ember.Route.extend({
         } else {
             Ember.Logger.info("Network data pull");
             this.controllerFor("index").set("bIsLoaded", false);
+            this.store.unloadAll(this.get("strModel"));
             return this.store.find(this.get("strModel")).then(function (response) {
                 return response.toArray();
             });
@@ -56,7 +57,7 @@ Jt76EmberBase.SingleItemRoute = Ember.Route.extend({
         var model = this.get("controller.model");
         //model.get("isSaving");
         //model.get("isDirty"); //true when new, and when altered as old item
-        if (model.get("isNew")) {
+        if (model && model.get("isNew")) {
             model.deleteRecord();
         }
     }
@@ -231,6 +232,7 @@ Jt76EmberBase.SingleItemController = Ember.ObjectController.extend({
                      var controller = self.controllerFor(self.get("strParentRoute"));
                      controller.set("bForceRefresh", true);
                      self.transitionToRoute(self.get("strParentRoute"));
+
                  }
                  else {
                      Ember.Logger.error("Unable to save record. " + model);

@@ -15,12 +15,12 @@ namespace Jt76EmberBase.Data.Database.ModelRepositories
         bool Save();
         IQueryable<LogMessage> GetLogMessages();
         bool AddLogMessage(LogMessage logMessage, bool bSave);
+        bool UpdateLogMessage(LogMessage logMessage, bool bSave);
+        bool DeleteLogMessage(int id, bool bSave);
     }
 
     public class LogMessageRepository : ModelRepositoryBase, ILogMessageRepository
     {
-        private const int MaxLogMessageCount = 50;
-
         private readonly Jt76DbContext _context;
 
         public LogMessageRepository(Jt76DbContext context)
@@ -33,12 +33,6 @@ namespace Jt76EmberBase.Data.Database.ModelRepositories
         public bool Save()
         {
             Debug.WriteLine(GetType().FullName + "." + MethodBase.GetCurrentMethod().Name);
-
-            //no reason to save more than MaxCount
-            if (_context.LogMessages.Count() > MaxLogMessageCount)
-                _context.LogMessages =
-                    _context.LogMessages.OrderByDescending(x => x.DtCreated).Take(MaxLogMessageCount) as
-                        DbSet<LogMessage>;
 
             //return that a change was made
             return (_context.SaveChanges() > 0);
@@ -59,11 +53,38 @@ namespace Jt76EmberBase.Data.Database.ModelRepositories
             logMessage = (LogMessage) logMessage.ForceValidData();
 
             _context.LogMessages.Add(logMessage);
+            return !bSave || Save();
+        }
 
-            if (bSave)
-                Save();
+        public bool UpdateLogMessage(LogMessage item, bool bSave)
+        {
+            Debug.WriteLine(GetType().FullName + "." + MethodBase.GetCurrentMethod().Name);
 
-            return true;
+            //want to force this to hit the db if the model is invalid
+            item = (LogMessage)item.ForceValidData();
+
+            var oldItem = _context.LogMessages.FirstOrDefault(x => x.Id == item.Id);
+            if (oldItem != null && oldItem.Id != default(int))
+            {
+                _context.LogMessages.Remove(oldItem);
+                _context.LogMessages.Add(item);
+                return !bSave || Save();
+            }
+            else
+                return false;
+        }
+
+        public bool DeleteLogMessage(int id, bool bSave)
+        {
+            Debug.WriteLine(GetType().FullName + "." + MethodBase.GetCurrentMethod().Name);
+            var item = _context.LogMessages.FirstOrDefault(x => x.Id == id);
+            if (item != null && item.Id != default(int))
+            {
+                _context.LogMessages.Remove(item);
+                return !bSave || Save();
+            }
+            else
+                return false;
         }
     }
 }

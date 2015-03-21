@@ -15,30 +15,23 @@ namespace Jt76EmberBase.Data.Database.ModelRepositories
         bool Save();
         IQueryable<Error> GetErrors();
         bool AddError(Error newError, bool bSave);
+        bool UpdateError(Error error, bool bSave);
         bool DeleteError(int id, bool bSave);
     }
 
     public class ErrorRepository : ModelRepositoryBase, IErrorRepository
     {
-        private const int MaxErrorCount = 50;
-
         private readonly Jt76DbContext _context;
 
         public ErrorRepository(Jt76DbContext context)
         {
             Debug.WriteLine(GetType().FullName + "." + MethodBase.GetCurrentMethod().Name);
-
             _context = context;
         }
 
         public bool Save()
         {
             Debug.WriteLine(GetType().FullName + "." + MethodBase.GetCurrentMethod().Name);
-
-            //no reason to save more than MaxCount
-            if (_context.Errors.Count() > MaxErrorCount)
-                _context.Errors =
-                    _context.Errors.OrderByDescending(x => x.DtCreated).Take(MaxErrorCount) as DbSet<Error>;
 
             //return that a change was made
             return (_context.SaveChanges() > 0);
@@ -47,7 +40,6 @@ namespace Jt76EmberBase.Data.Database.ModelRepositories
         public IQueryable<Error> GetErrors()
         {
             Debug.WriteLine(GetType().FullName + "." + MethodBase.GetCurrentMethod().Name);
-
             return _context.Errors;
         }
 
@@ -62,13 +54,25 @@ namespace Jt76EmberBase.Data.Database.ModelRepositories
             return !bSave || Save();
         }
 
+        public bool UpdateError(Error item, bool bSave)
+        {
+            Debug.WriteLine(GetType().FullName + "." + MethodBase.GetCurrentMethod().Name);
+
+            //want to force this to hit the db if the model is invalid
+            item = (Error)item.ForceValidData();
+
+            DeleteError(item.Id, false);
+            _context.Errors.Add(item);
+            return !bSave || Save();
+        }
+
         public bool DeleteError(int id, bool bSave)
         {
             Debug.WriteLine(GetType().FullName + "." + MethodBase.GetCurrentMethod().Name);
-            var error = _context.Errors.FirstOrDefault(x => x.Id == id);
-            if (error != null && error.Id != default(int))
+            var item = _context.Errors.FirstOrDefault(x => x.Id == id);
+            if (item != null && item.Id != default(int))
             {
-                _context.Errors.Remove(error);
+                _context.Errors.Remove(item);
                 return !bSave || Save();
             }
             else 

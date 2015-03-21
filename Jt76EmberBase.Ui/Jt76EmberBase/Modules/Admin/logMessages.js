@@ -22,7 +22,7 @@ Jt76EmberBase.IndexAdminLogMessagesController = Jt76EmberBase.ArrayController.ex
         },
         injectItem: function () {
             var self = this;
-            var newItem = this.get("store").createRecord(this.get("strModel"), {
+            var newItem = this.get("store").createRecord("logMessage", {
                 strLogMessage: "This is a strLogMessage"
             });
             newItem.save().then(function (data) {

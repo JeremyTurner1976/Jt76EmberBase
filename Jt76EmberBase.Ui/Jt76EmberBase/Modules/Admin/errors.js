@@ -25,7 +25,7 @@ Jt76EmberBase.IndexAdminErrorsController = Jt76EmberBase.ArrayController.extend(
         },
         injectItem: function () {
             var self = this;
-            var newItem = this.get("store").createRecord(this.get("strModel"), {
+            var newItem = this.get("store").createRecord("error", {
                 strMessage: "This is a strMessage",
                 strSource: "This is a strSource",
                 strErrorLevel: "This is a strErrorLevel",

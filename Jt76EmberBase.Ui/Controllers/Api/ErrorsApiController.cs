@@ -29,14 +29,9 @@ namespace Jt76EmberBase.Ui.Controllers.Api
         public Object Get()
         {
             Debug.WriteLine(GetType().FullName + "." + MethodBase.GetCurrentMethod().Name);
-
             //var requestUri = Request.RequestUri;
 
             var errors = _viewModel.GetErrors();
-            //errors = errors.OrderByDescending(x => x.DtCreated).ThenByDescending(x => x.Id);
-
-            //_uiService.LogMessage(errors.Count() + " different errors loaded");
-
             return new { errors };
         }
 
@@ -45,30 +40,25 @@ namespace Jt76EmberBase.Ui.Controllers.Api
         {
             Debug.WriteLine(GetType().FullName + "." + MethodBase.GetCurrentMethod().Name);
             //var requestUri = Request.RequestUri;
-            var jError = model["error"];
-            var error = new Error
-            {
-                DtCreated = jError.dtCreated == null ? DateTime.UtcNow : DateTime.Parse(model["error"].dtCreated),
-                StrAdditionalInformation = jError.strAdditionalInformation,
-                StrErrorLevel = jError.strErrorLevel,
-                StrMessage = jError.strMessage,
-                StrSource = jError.strSource,
-                StrStackTrace = jError.strStackTrace,
-            };
 
-            if (model["error"].id != null)
-                error.Id = Int32.Parse(model["error"].id);
+            var error = CreateJItem(model["error"]);
 
-            if (_viewModel.AddError(error)) //force valid datatype
-            {
-                //200 success
-                //_uiService.LogMessage(error.StrMessage + " - Successfully saved");
-                return Request.CreateResponse(HttpStatusCode.Created, new { error });
-            }
+            return _viewModel.AddError(error) ? 
+                Request.CreateResponse(HttpStatusCode.Created, new { error }) : 
+                Request.CreateResponse(HttpStatusCode.BadRequest);
+        }
 
-            //400 error
-            //_uiService.LogMessage(error.StrMessage + " - Was unable to save");
-            return Request.CreateResponse(HttpStatusCode.BadRequest);
+        [Route("api/v1/errors/{id}")]
+        public HttpResponseMessage Put([FromBody] dynamic model, int id)
+        {
+            Debug.WriteLine(GetType().FullName + "." + MethodBase.GetCurrentMethod().Name);
+            //var requestUri = Request.RequestUri;
+            var error = CreateJItem(model["error"]);
+            error.Id = id;
+
+            return _viewModel.UpdateError(error) ?
+                Request.CreateResponse(HttpStatusCode.Created, true) :
+                Request.CreateResponse(HttpStatusCode.BadRequest, false);
         }
 
         [Route("api/v1/errors/{id}")]
@@ -77,16 +67,25 @@ namespace Jt76EmberBase.Ui.Controllers.Api
             Debug.WriteLine(GetType().FullName + "." + MethodBase.GetCurrentMethod().Name);
             //var requestUri = Request.RequestUri;
 
-            if (_viewModel.DeleteError(id))
-            {
-                //200 success
-                //_uiService.LogMessage(error.StrMessage + " - Successfully deleted");
-                return Request.CreateResponse(HttpStatusCode.Accepted, true);
-            }
+            return _viewModel.DeleteError(id) ? 
+                Request.CreateResponse(HttpStatusCode.Accepted, true) : 
+                Request.CreateResponse(HttpStatusCode.BadRequest, false);
+        }
 
-            //400 error
-            //_uiService.LogMessage(error.StrMessage + " - Was unable to delete");
-            return Request.CreateResponse(HttpStatusCode.BadRequest, false);
+
+        private static Error CreateJItem(dynamic jItem)
+        {
+            var error = new Error
+            {
+                DtCreated = jItem.dtCreated == null ? DateTime.UtcNow : DateTime.Parse(jItem.dtCreated.ToString()),
+                StrAdditionalInformation = jItem.strAdditionalInformation,
+                StrErrorLevel = jItem.strErrorLevel,
+                StrMessage = jItem.strMessage,
+                StrSource = jItem.strSource,
+                StrStackTrace = jItem.strStackTrace
+            };
+
+            return error;
         }
     }
 }

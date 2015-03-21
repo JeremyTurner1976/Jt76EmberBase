@@ -72,7 +72,7 @@
     }
 });
 
-//pagination object - sample in Modules\Admin\errors
+//pagination object - sample in Ember Extensions Jt76EmberBase.ArrayController
 //paginationData: function () {
 //    var nMaxPagesToDisplay = this.get("nMaxPagesToDisplay");
 //    var nMaxPageItemsToDisplay = this.get("nMaxPageItemsToDisplay");

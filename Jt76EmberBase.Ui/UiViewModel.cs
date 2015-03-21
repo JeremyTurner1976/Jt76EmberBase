@@ -54,23 +54,42 @@ namespace Jt76EmberBase.Ui
         {
             Debug.WriteLine(GetType().FullName + "." + MethodBase.GetCurrentMethod().Name);
 
-            _errorRepository.AddError(newError, true);
-            return true;
+            return _errorRepository.AddError(newError, true);
         }
 
-        public bool AddLogMessage(string stringLogMessage = "", LogMessage logMessage = null, bool bSave = true)
+        public bool AddLogMessage(LogMessage logMessage)
         {
             Debug.WriteLine(GetType().FullName + "." + MethodBase.GetCurrentMethod().Name);
 
-            return _uiService.LogMessage(stringLogMessage);
+            return _logMessageRepository.AddLogMessage(logMessage, true);
         }
 
         public bool DeleteError(int id)
         {
             Debug.WriteLine(GetType().FullName + "." + MethodBase.GetCurrentMethod().Name);
 
-            _errorRepository.DeleteError(id, true);
-            return true;
+            return _errorRepository.DeleteError(id, true);
+        }
+
+        public bool DeleteLogMessage(int id)
+        {
+            Debug.WriteLine(GetType().FullName + "." + MethodBase.GetCurrentMethod().Name);
+
+            return _logMessageRepository.DeleteLogMessage(id, true);
+        }
+
+        public bool UpdateError(Error error)
+        {
+            Debug.WriteLine(GetType().FullName + "." + MethodBase.GetCurrentMethod().Name);
+
+            return _errorRepository.UpdateError(error, true);
+        }
+
+        public bool UpdateLogMessage(LogMessage logMessage)
+        {
+            Debug.WriteLine(GetType().FullName + "." + MethodBase.GetCurrentMethod().Name);
+
+            return _logMessageRepository.UpdateLogMessage(logMessage, true);
         }
     }
 }

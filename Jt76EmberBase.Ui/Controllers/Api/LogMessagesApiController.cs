@@ -7,6 +7,7 @@ using System.Net.Http;
 using System.Reflection;
 using System.Web.Http;
 using Jt76EmberBase.Data.Models;
+using Newtonsoft.Json;
 
 namespace Jt76EmberBase.Ui.Controllers.Api
 {
@@ -28,40 +29,60 @@ namespace Jt76EmberBase.Ui.Controllers.Api
         public Object Get()
         {
             Debug.WriteLine(GetType().FullName + "." + MethodBase.GetCurrentMethod().Name);
-
             //var requestUri = Request.RequestUri;
 
-            IQueryable<LogMessage> logMessages = _viewModel.GetLogMessages();
-
-            //logMessages = logMessages
-            //    .OrderByDescending(x => x.DtCreated)
-            //    .ThenByDescending(x => x.Id);
-
-            //_uiService.LogMessage(logMessages.Count() + " different LogMessages loaded");
-
+            var logMessages = _viewModel.GetLogMessages();
             return new { logMessages };
         }
 
         [Route("api/v1/logMessages")]
-        public HttpResponseMessage Post([FromBody] LogMessage newLogMessage)
+        public HttpResponseMessage Post([FromBody] dynamic model)
         {
             Debug.WriteLine(GetType().FullName + "." + MethodBase.GetCurrentMethod().Name);
+            //var requestUri = Request.RequestUri;
+            var logMessage = CreateJItem(model["logMessage"]);
 
+            return _viewModel.AddLogMessage(logMessage) ? 
+                Request.CreateResponse(HttpStatusCode.Created, new { logMessage }) : 
+                Request.CreateResponse(HttpStatusCode.BadRequest);
+
+        }
+
+        [Route("api/v1/logMessages/{id}")]
+        public HttpResponseMessage Put([FromBody] dynamic model, int id)
+        {
+            Debug.WriteLine(GetType().FullName + "." + MethodBase.GetCurrentMethod().Name);
+            //var requestUri = Request.RequestUri;
+            var logMessage = CreateJItem(model["logMessage"]);
+            logMessage.Id = id;
+
+            return _viewModel.UpdateLogMessage(logMessage) ?
+                Request.CreateResponse(HttpStatusCode.Created, new { logMessage }) :
+                Request.CreateResponse(HttpStatusCode.BadRequest);
+        }
+
+
+        [Route("api/v1/logMessages/{id}")]
+        public HttpResponseMessage Delete(int id)
+        {
+            Debug.WriteLine(GetType().FullName + "." + MethodBase.GetCurrentMethod().Name);
             //var requestUri = Request.RequestUri;
 
-            if (newLogMessage.DtCreated == default(DateTime))
-                newLogMessage.DtCreated = DateTime.UtcNow;
+            return _viewModel.DeleteLogMessage(id) ? 
+                Request.CreateResponse(HttpStatusCode.Accepted, true) : 
+                Request.CreateResponse(HttpStatusCode.BadRequest, false);;
+        }
 
-            if (_viewModel.AddLogMessage(newLogMessage.StrLogMessage)) //force valid datatype
+
+        private static LogMessage CreateJItem(dynamic jItem)
+        {
+            var logMessage = new LogMessage()
             {
-                //200 success
-                //_uiService.LogMessage(newLogMessage.StrLogMessage + " - Successfully saved");
-                return Request.CreateResponse(HttpStatusCode.Created, newLogMessage);
-            }
+                DtCreated = jItem.dtCreated == null ? DateTime.UtcNow : DateTime.Parse(jItem.dtCreated.ToString()),
+                StrLogMessage = jItem.strLogMessage
+            };
 
-            //400 LogMessage
-            //_uiService.LogMessage(newLogMessage.StrLogMessage + " - Was unable to save");
-            return Request.CreateResponse(HttpStatusCode.BadRequest);
+            return logMessage;
         }
     }
 }
