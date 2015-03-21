@@ -27,6 +27,7 @@ data.forEach(function(item){
 });
 data.findBy("paramName", key);
 data.slice(0,3);
+"@each.strStackTrace" //set this to watch model changes for properties that can change
 
 renderTemplate: function() {
 	this.render('favoritePost', {   // the template to render

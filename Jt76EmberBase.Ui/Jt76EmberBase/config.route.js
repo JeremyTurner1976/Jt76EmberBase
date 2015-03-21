@@ -18,9 +18,8 @@ Jt76EmberBase.Router.map(function () {
             this.route("dashboard");
             this.route("errors");
             this.route("errorDetails", { path: "errors/:id" });
-            this.route("logMessages", { path: "logMessages/" }, function () {
-                this.route("logMessage", { path: "logMessage/:id" });
-            });
+            this.route("logMessages");
+            this.route("logMessage", { path: "logMessage/:id" });
             this.route("userAdmin");
         });
     });

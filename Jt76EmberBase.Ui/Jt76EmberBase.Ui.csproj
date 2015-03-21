@@ -280,8 +280,8 @@
     </Content>
     <Content Include="Jt76EmberBase\application.js" />
     <Content Include="Jt76EmberBase\Common\common.js" />
+    <Content Include="Jt76EmberBase\Common\emberExtensions.js" />
     <Content Include="Jt76EmberBase\Common\helpers.js" />
-    <Content Include="Jt76EmberBase\Common\partialViews.js" />
     <Content Include="Jt76EmberBase\components\page-header.hbs.js">
       <DependentUpon>page-header.hbs</DependentUpon>
     </Content>

@@ -1,21 +1,11 @@
-﻿Jt76EmberBase.IndexAdminLogMessagesLogMessageView = Ember.View.extend({
+﻿Jt76EmberBase.IndexAdminLogMessageView = Jt76EmberBase.SlidingView.extend({
     templateName: "Modules/Admin/logMessage"
 });
 
-Jt76EmberBase.IndexAdminLogMessagesLogMessageRoute = Ember.Route.extend({
-    model: function (params) {
-        return this.store.find("logMessage", params.id);
-    },
-    setupController: function (controller, model) {
-        Ember.Logger.info(model);
-        controller.set("model", model);
-    }
+Jt76EmberBase.IndexAdminLogMessageRoute = Jt76EmberBase.SingleItemRoute.extend({
+    strModel: "logMessage"
 });
 
-Jt76EmberBase.IndexAdminLogMessagesLogMessageController = Ember.ObjectController.extend({
-    actions: {
-        refresh: function () {
-            this.loadAdminLogMessage();
-        }
-    }
+Jt76EmberBase.IndexAdminLogMessageController = Jt76EmberBase.SingleItemController.extend({
+    strParentRoute: "index.admin.logMessages"
 });

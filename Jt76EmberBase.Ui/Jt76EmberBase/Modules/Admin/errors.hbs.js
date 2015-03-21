@@ -42,7 +42,7 @@
   buffer += "                    <li class=\"divider\"></li>\r\n                    <li><a "
     + escapeExpression(((helpers.action || (depth0 && depth0.action) || helperMissing).call(depth0, "toggleSort", "reset", {"name":"action","hash":{},"data":data})))
     + ">Reset</a></li>\r\n                </ul>\r\n            </div>\r\n            <a class=\"btn btn-primary\" "
-    + escapeExpression(((helpers.action || (depth0 && depth0.action) || helperMissing).call(depth0, "injectError", {"name":"action","hash":{},"data":data})))
+    + escapeExpression(((helpers.action || (depth0 && depth0.action) || helperMissing).call(depth0, "injectItem", {"name":"action","hash":{},"data":data})))
     + ">\r\n                <i class=\"fa fa-fire\"></i>&nbsp;Inject Error\r\n            </a>\r\n";
   stack1 = ((helpers['link-to'] || (depth0 && depth0['link-to']) || helperMissing).call(depth0, "index.admin.errorDetails", "new", {"name":"link-to","hash":{
     'classNames': ("btn btn-success")

@@ -4,5 +4,5 @@
     + escapeExpression(((helper = (helper = helpers.strPageTitle || (depth0 != null ? depth0.strPageTitle : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"strPageTitle","hash":{},"data":data}) : helper)))
     + "\r\n        </div>\r\n        <div class=\"page-sub-header\">"
     + escapeExpression(((helper = (helper = helpers.strSubHeader || (depth0 != null ? depth0.strSubHeader : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"strSubHeader","hash":{},"data":data}) : helper)))
-    + "</div>\r\n    </div>\r\n    <div class=\"text-right p-top-sm pull-right col-xs-3 col-sm-2 col-lg-2\">\r\n        <a href=\"#/\" class=\"btn btn-default\"><i class=\"fa fa-home\"></i></a>\r\n    </div>\r\n</div>\r\n\r\n<hr class=\"jt76-hr-md\" />\r\n";
+    + "</div>\r\n    </div>\r\n    <div class=\"text-right p-top-sm pull-right col-xs-3 col-sm-2 col-lg-2\">\r\n        <a href=\"#/dashboard\" class=\"btn btn-default\"><i class=\"fa fa-home\"></i></a>\r\n    </div>\r\n</div>\r\n\r\n<hr class=\"jt76-hr-md\" />\r\n";
 },"useData":true});

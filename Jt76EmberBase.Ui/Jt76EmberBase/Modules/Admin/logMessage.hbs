@@ -1,4 +1,32 @@
-﻿<p>TEST ADMIN LOG MESSAGE</p>
-id: {{id}}<br />
-strLogMessage: {{strLogMessage}}<br />
-dtCreated: {{dtCreated}}<br />
+﻿<div class="inbox-body jt76-padding-sides-xlg p-top-xs">
+    <div class="row jt76-padding-sides-md">
+
+        <div class="smart-widget m-top-sm widget-dark-blue">
+            <div class="smart-widget-header">
+                Log
+                <span class="smart-widget-option" style="margin-top:-6px">
+                    {{partial "singleItemButtonSet"}}
+                </span>
+            </div>
+            <div class="smart-widget-inner">
+                <div class="smart-widget-body">
+                    <form name="Form" novalidate>
+                        <div class="form-group">
+                            <label aria-for="strMessage">Message</label>
+                            {{input value=strLogMessage class="form-control" placeHolder="Enter Message"}}
+                            <span class="jt76-error" data-ng-show="Form.strMessage.$error.required">Required</span>
+                            <span class="jt76-error" data-ng-show="Form.strMessage.$error.minlength">Minimum 10 Characters</span>
+                            <span class="jt76-error" data-ng-show="Form.strMessage.$error.maxlength">Maximum 255 Characters</span>
+                        </div>
+                    </form>
+
+                    {{partial "singleItemButtonSet"}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
