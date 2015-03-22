@@ -9,6 +9,7 @@ Jt76EmberBase.IndexAdminErrorsRoute = Jt76EmberBase.ArrayRoute.extend({
 Jt76EmberBase.IndexAdminErrorsController = Jt76EmberBase.ArrayController.extend({
     strPageTitle: "Admin Errors",
     strSubHeader: "Handle your business.",
+    strDisplayType: "Error",
     nMaxPagesToDisplay: 5,
     nMaxPageItemsToDisplay: 10,
     displayProperties: [{ key: "strMessage", value: "Message" },

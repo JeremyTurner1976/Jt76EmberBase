@@ -1,44 +1,8 @@
-﻿{{page-header strPageTitle=strPageTitle strSubHeader=strSubHeader}}
+﻿{{partial "pageHeader"}}
 
 <div class="inbox-body jt76-padding-sides-md p-top-xs">
-    <div class="row m-bottom-sm">
-        <div class="col-sm-2 col-md-2 m-bottom-sm">
-            <h2 class="no-margin">
-                Logs
-            </h2>
-        </div>
 
-        <div class="col-sm-2 col-md-2 m-bottom-sm">
-            <div class="search-input">
-                {{input value=strToSearchFor class="form-control input-sm inline-block"}}
-                <a class="input-icon text-normal" style="cursor:inherit;"><i class="ion-ios7-search-strong"></i></a>
-            </div>
-        </div>
-
-        <div class="col-sm-8 col-md-8 text-right text-left-sm">
-            <div class="btn-group">
-                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                    Order By <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu dropdown-menu-sort" role="menu">
-                    {{#each item in displayProperties}}
-                    <li><a {{action "toggleSort" item}}>{{item.value}}</a></li>
-                    {{/each}}
-                    <li class="divider"></li>
-                    <li><a {{action "toggleSort" "reset"}}>Reset</a></li>
-                </ul>
-            </div>
-            <a class="btn btn-primary" {{action "injectItem"}}>
-                <i class="fa fa-fire"></i>&nbsp;Inject Log Message
-            </a>
-            {{#link-to "index.admin.logMessage" "new" classNames="btn btn-success"}}
-            <i class="fa fa-plus-circle"></i>&nbsp;Add Log Message
-            {{/link-to}}
-            <a class="btn btn-info" {{action "refresh" true true}}>
-                <i class="fa fa-refresh"></i>&nbsp;Refresh
-            </a>
-        </div>
-    </div>
+    {{partial "arrayButtonSet"}}
 
     {{pagination-display classNames="pagination-row clearfix m-bottom-sm" pagination=paginationData}}
 

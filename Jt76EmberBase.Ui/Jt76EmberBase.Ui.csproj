@@ -284,9 +284,14 @@
     <Content Include="Jt76EmberBase\Common\emberRouteExtensions.js" />
     <Content Include="Jt76EmberBase\Common\emberViewExtensions.js" />
     <Content Include="Jt76EmberBase\Common\helpers.js" />
-    <Content Include="Jt76EmberBase\components\page-header.hbs.js">
-      <DependentUpon>page-header.hbs</DependentUpon>
+    <None Include="Jt76EmberBase\components\canvas-skycon.hbs" />
+    <Content Include="Jt76EmberBase\components\canvas-skycon.hbs.js">
+      <DependentUpon>canvas-skycon.hbs</DependentUpon>
     </Content>
+    <Content Include="Jt76EmberBase\_pageHeader.hbs.js">
+      <DependentUpon>_pageHeader.hbs</DependentUpon>
+    </Content>
+    <Content Include="Jt76EmberBase\components\canvas-skycon.js" />
     <Content Include="Jt76EmberBase\components\pagination-display.hbs.js">
       <DependentUpon>pagination-display.hbs</DependentUpon>
     </Content>
@@ -395,6 +400,7 @@
     <Content Include="Content\Images\Touch\Thumbs.db" />
     <Content Include="Content\site.less" />
     <Content Include="Content\toastr.less" />
+    <Content Include="Jt76EmberBase\_arrayButtonSet.hbs" />
     <None Include="Jt76EmberBase\_singleItemButtonSet.hbs" />
     <Content Include="Scripts\bootstrap-datetimepicker.js" />
     <Content Include="Scripts\bootstrap-slider.js" />
@@ -484,7 +490,7 @@
     <Content Include="Jt76EmberBase\Modules\Admin\logMessage.hbs" />
     <Content Include="Jt76EmberBase\Modules\Dashboard\dashboard.hbs" />
     <Content Include="Jt76EmberBase\components\pagination-display.hbs" />
-    <Content Include="Jt76EmberBase\components\page-header.hbs" />
+    <Content Include="Jt76EmberBase\_pageHeader.hbs" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\ember-data-1.14.js.map" />
     <Content Include="Views\Home\LockScreen.cshtml" />

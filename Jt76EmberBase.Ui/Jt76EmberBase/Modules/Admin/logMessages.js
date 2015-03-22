@@ -9,8 +9,9 @@ Jt76EmberBase.IndexAdminLogMessagesRoute = Jt76EmberBase.ArrayRoute.extend({
 Jt76EmberBase.IndexAdminLogMessagesController = Jt76EmberBase.ArrayController.extend({
     strPageTitle: "Admin Log Messages",
     strSubHeader: "Handle your business.",
-    nMaxPagesToDisplay: 5,
-    nMaxPageItemsToDisplay: 10,
+    strDisplayType: "Log",
+    nMaxPagesToDisplay: 3,
+    nMaxPageItemsToDisplay: 15,
     displayProperties: [{ key: "strLogMessage", value: "Message" },
                         { key: "dtCreated", value: "Date Created" }],
     sortProperties: ["dtCreated:desc", "numericId:desc"],
