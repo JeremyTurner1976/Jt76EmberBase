@@ -68,7 +68,7 @@ namespace Jt76EmberBase.Ui.Controllers.Api
 
             return _viewModel.UpdateLogMessage(logMessage) ?
                 Request.CreateResponse(HttpStatusCode.Created, true) :
-                Request.CreateResponse(HttpStatusCode.BadRequest, true);
+                Request.CreateResponse(HttpStatusCode.BadRequest);
         }
 
 
@@ -80,7 +80,7 @@ namespace Jt76EmberBase.Ui.Controllers.Api
 
             return _viewModel.DeleteLogMessage(id) ? 
                 Request.CreateResponse(HttpStatusCode.Accepted, true) : 
-                Request.CreateResponse(HttpStatusCode.BadRequest, false);;
+                Request.CreateResponse(HttpStatusCode.BadRequest);
         }
 
 

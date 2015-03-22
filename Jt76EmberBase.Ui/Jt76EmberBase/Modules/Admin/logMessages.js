@@ -27,8 +27,12 @@ Jt76EmberBase.IndexAdminLogMessagesController = Jt76EmberBase.ArrayController.ex
                 strLogMessage: "This is a strLogMessage"
             });
             newItem.save().then(function (data) {
-                Ember.Logger.info(data);
-                self.send("refresh", false, false);
+                if (data) {
+                    Jt76EmberBase.Common.create().log("This item has been saved.", data, "info", true);
+                    self.send("refresh", false, false);
+                } else {
+                    Jt76EmberBase.Common.create().log("There was an error processing this data.", data, "error", true);
+                }
             });
         }
     }

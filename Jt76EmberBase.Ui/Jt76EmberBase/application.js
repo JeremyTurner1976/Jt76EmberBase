@@ -18,7 +18,7 @@ Ember.Application.initializer({
         application.register('function:logger', function (message) {
             alert(message);
         });
-        Ember.Logger.log("Application Initialized.");
+        Ember.Logger.info("Application Initialized.");
     }
 });
 
@@ -28,16 +28,10 @@ Jt76EmberBase.ApplicationRoute = Ember.Route.extend({
         //prime the application here, called on refresh also
         //can get application required data here like dropdownlist content from Web API
 
-        Ember.Logger.log("Test logger");
-        Ember.Logger.debug("Test debug logger");
-        Ember.Logger.error("Test error logger", "testCause", "testStack");
-        Ember.Logger.info("Test info logger");
-        Ember.Logger.warn("Test warning logger");
-
         Ember.Logger.debug(Jt76EmberBase);
         Ember.Logger.debug(Ember);
 
-        Ember.Logger.log("Application Activated.");
+        Ember.Logger.info("Application Activated.");
 
         var self = this;
         setTimeout(function () {

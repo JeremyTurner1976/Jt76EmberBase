@@ -69,7 +69,7 @@ namespace Jt76EmberBase.Ui.Controllers.Api
 
             return _viewModel.UpdateError(error) ?
                 Request.CreateResponse(HttpStatusCode.Created, true) :
-                Request.CreateResponse(HttpStatusCode.BadRequest, false);
+                Request.CreateResponse(HttpStatusCode.BadRequest);
         }
 
         [Route("api/v1/errors/{id}")]
@@ -80,7 +80,7 @@ namespace Jt76EmberBase.Ui.Controllers.Api
 
             return _viewModel.DeleteError(id) ? 
                 Request.CreateResponse(HttpStatusCode.Accepted, true) : 
-                Request.CreateResponse(HttpStatusCode.BadRequest, false);
+                Request.CreateResponse(HttpStatusCode.BadRequest);
         }
 
 

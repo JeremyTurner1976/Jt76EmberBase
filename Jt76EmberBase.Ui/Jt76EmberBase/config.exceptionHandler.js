@@ -24,14 +24,14 @@
 //    // TODO log error to server
 //});
 
-Ember.RSVP.on('onerror', function (e) {
-    var debug = Jt76EmberBase.CONFIG.create().get("debug");
-    //Ember.Logger.log("Debug is set to: " + debug);
+//Ember.RSVP.on('onerror', function (e) {
+//    var debug = Jt76EmberBase.CONFIG.create().get("debug");
+//    //Ember.Logger.log("Debug is set to: " + debug);
 
-    if (debug) {
-        Ember.Logger.info(e);
-        Ember.Logger.error(e, "Jt76EmberBase", e.stack);
-        alert("Ember..RSVP.OnError: ");
-    }
-    // TODO log error to server
-});
+//    if (debug) {
+//        Ember.Logger.info(e);
+//        Ember.Logger.error(e, "Jt76EmberBase", e.stack);
+//        alert("Ember..RSVP.OnError: ");
+//    }
+//    // TODO log error to server
+//});

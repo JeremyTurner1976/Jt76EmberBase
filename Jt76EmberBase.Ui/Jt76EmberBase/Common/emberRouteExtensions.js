@@ -2,10 +2,8 @@
 Jt76EmberBase.ArrayRoute = Ember.Route.extend({
     model: function () {
         if (this.get("controller.bForceRefresh") === false) {
-            Ember.Logger.info("Cached data pull");
             return this.store.all(this.get("strModel")).toArray();
         } else {
-            Ember.Logger.info("Network data pull");
             this.controllerFor("index").set("bIsLoaded", false);
             this.store.unloadAll(this.get("strModel"));
             return this.store.find(this.get("strModel")).then(function (response) {
@@ -14,7 +12,8 @@ Jt76EmberBase.ArrayRoute = Ember.Route.extend({
         }
     },
     setupController: function (controller, model) {
-        Ember.Logger.info(model);
+        Jt76EmberBase.Common.create().log("Data pull.", model, "info");
+
         controller.set("model", model);
         this.controllerFor("index").set("bIsLoaded", true);
         controller.set("bForceRefresh", false);
@@ -30,7 +29,8 @@ Jt76EmberBase.SingleItemRoute = Ember.Route.extend({
             return this.store.find(this.get("strModel"), params.id);
     },
     setupController: function (controller, model) {
-        Ember.Logger.info(model);
+        Jt76EmberBase.Common.create().log("Data pull.", model, "info");
+
         controller.set("model", model);
     },
     deactivate: function () {

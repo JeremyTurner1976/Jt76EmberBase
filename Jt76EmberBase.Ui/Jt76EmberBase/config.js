@@ -1,8 +1,8 @@
 ﻿Jt76EmberBase.CONFIG = Ember.Object.extend({
-    title: "Jt76EmberBase", //other app constants available here
-    debug: true,
+    strAppTitle: "Jt76EmberBase", //other app constants available here
+    bDebug: false,
     init: function () {
         //var config = Jt76EmberBase.CONFIG.create();
-        //Ember.Logger.log(config.get("title"));
+        //Jt76EmberBase.Common.create().log(config.get("strAppTitle"), config, "success", true);
     }
 });

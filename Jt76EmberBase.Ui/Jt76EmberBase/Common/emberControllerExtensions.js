@@ -161,12 +161,11 @@ Jt76EmberBase.SingleItemController = Ember.ObjectController.extend({
                 if (response) {
                     var controller = self.controllerFor(self.get("strParentRoute"));
                     controller.set("bForceRefresh", true);
+                    Jt76EmberBase.Common.create().log("This item has been saved.", model, "info", true);
                     self.transitionToRoute(self.get("strParentRoute"));
-
                 }
                 else {
-                    Ember.Logger.error("Unable to save record. " + model);
-                    alert("Unable to save this item.");
+                    Jt76EmberBase.Common.create().log("Unable to save record: ", model, "error", true);
                 }
             });
         },
@@ -178,10 +177,11 @@ Jt76EmberBase.SingleItemController = Ember.ObjectController.extend({
                     var strErrorRoute = self.get("strParentRoute");
                     var controller = self.controllerFor(strErrorRoute);
                     controller.set("bForceRefresh", true);
+                    Jt76EmberBase.Common.create().log("This item has been deleted.", model, "info", true);
                     self.transitionToRoute(strErrorRoute);
                 }
                 else {
-                    Ember.Logger.error("Unable to delete record. " + model);
+                    Jt76EmberBase.Common.create().log("Unable to delete record.", model, "error", true);
                     alert("Unable to save this item.");
                 }
             });

@@ -4,8 +4,8 @@
         //common.testFunction();
 
         var config = Jt76EmberBase.CONFIG.create();
-        var title = config.get('title');
-        alert(title + ", reporting for duty!");
+        var strAppTitle = config.get("strAppTitle");
+        alert(strAppTitle + ", reporting for duty!");
     },
 
     //helper methods
@@ -44,5 +44,32 @@
         var localValue = moment.utc(dtInput).toDate();
         var formattedValue = moment(localValue).format("h:mm a");
         return formattedValue;
+    },
+    
+    log: function (strMessage, data, strType, bForceToast) {
+        var config = Jt76EmberBase.CONFIG.create();
+        strType = strType || "info";
+
+        if (bForceToast || config.get("bDebug") === true) {
+            if (strType === "error") {
+                toastr.error(strMessage);
+            } else if (strType === "warning") {
+                toastr.warning(strMessage);
+            } else if (strType === "success") {
+                toastr.success(strMessage);
+            } else {
+                toastr.info(strMessage);
+            }
+        }
+
+        if (strType === "error") {
+            Ember.Logger.error(strMessage, data);
+        } else if (strType === "warning") {
+            Ember.Logger.warn(strMessage, data);
+        } else if (strType === "success") {
+            Ember.Logger.info(strMessage, data);
+        } else {
+            Ember.Logger.debug(strMessage, data);
+        }
     }
 });

@@ -34,7 +34,14 @@ namespace Jt76EmberBase.Data.Database.ModelRepositories
             Debug.WriteLine(GetType().FullName + "." + MethodBase.GetCurrentMethod().Name);
 
             //return that a change was made
-            return (_context.SaveChanges() > 0);
+            try
+            {
+                return (_context.SaveChanges() > 0);
+            }
+            catch (System.Data.Entity.Validation.DbEntityValidationException)
+            {
+                return false;
+            }
         }
 
         public IQueryable<Error> GetErrors()
