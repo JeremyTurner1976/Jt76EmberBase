@@ -86,7 +86,7 @@ Ember views have many ui event handlers such as click, submit, change, mouseDown
 http://stackoverflow.com/questions/15235574/ember-data-reloading-content-ui-not-updating
 https://github.com/heartsentwined/ember-auth
 http://stackoverflow.com/questions/18863710/how-do-i-call-an-action-method-on-controller-from-the-outside-with-the-same-beh
-
+http://stackoverflow.com/questions/17434350/handling-server-side-validation-with-ember-data
 
       {{#view App.ReviewView length=text.length tag="li"}}
               {{text}}

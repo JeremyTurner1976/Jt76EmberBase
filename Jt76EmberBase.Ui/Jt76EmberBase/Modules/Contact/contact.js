@@ -2,10 +2,7 @@
     templateName: "Modules/Contact/contact"
 });
 
-Jt76EmberBase.IndexContactRoute = Ember.Route.extend({
-    setupController: function (controller, model) {
-        this.controllerFor("index").set("bIsLoaded", true);
-    }
+Jt76EmberBase.IndexContactRoute = Jt76EmberBase.BaseRoute.extend({
 });
 
 Jt76EmberBase.IndexContactController = Ember.ObjectController.extend({

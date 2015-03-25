@@ -29,33 +29,33 @@ Jt76EmberBase.IndexDashboardController = Jt76EmberBase.ArrayController.extend({
 
             dailyWeather[i].temperatureMax = Math.floor(dailyWeather[i].temperatureMax);
             dailyWeather[i].temperatureMin = Math.floor(dailyWeather[i].temperatureMin);
-
-            function getBackgroundColor(index) {
-                switch (index) {
-                    case 0:
-                        return "bg-primary";
-                    case 1:
-                        return "bg-blue";
-                    case 2:
-                        return "bg-light-green";
-                    case 3:
-                        return "bg-success";
-                    case 4:
-                        return "bg-purple";
-                    case 5:
-                        return "bg-info";
-                    case 6:
-                        return "bg-dark-green";
-                    case 7:
-                        return "bg-green";
-                    case 8:
-                        return "bg-dark-blue";
-                    default:
-                        return "bg-success";
-                }
-            }
         }
         model.dailyWeather = dailyWeather;
         return model;
+
+        function getBackgroundColor(index) {
+            switch (index) {
+                case 0:
+                    return "bg-primary";
+                case 1:
+                    return "bg-blue";
+                case 2:
+                    return "bg-light-green";
+                case 3:
+                    return "bg-success";
+                case 4:
+                    return "bg-purple";
+                case 5:
+                    return "bg-info";
+                case 6:
+                    return "bg-dark-green";
+                case 7:
+                    return "bg-green";
+                case 8:
+                    return "bg-dark-blue";
+                default:
+                    return "bg-success";
+            }
+        }
     }.property("model")
 });

@@ -42,3 +42,10 @@ Jt76EmberBase.SingleItemRoute = Ember.Route.extend({
         }
     }
 });
+
+/*_____________BASE ROUTE_____________*/
+Jt76EmberBase.BaseRoute = Ember.Route.extend({
+    setupController: function (controller, model) {
+        this.controllerFor("index").set("bIsLoaded", true);
+    }
+});

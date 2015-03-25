@@ -2,10 +2,7 @@
     templateName: "Modules/Admin/dashboard"
 });
 
-Jt76EmberBase.IndexAdminDashboardRoute = Ember.Route.extend({
-    setupController: function (controller, model) {
-        this.controllerFor("index").set("bIsLoaded", true);
-    }
+Jt76EmberBase.IndexAdminDashboardRoute = Jt76EmberBase.BaseRoute.extend({
 });
 
 Jt76EmberBase.IndexAdminDashboardController = Ember.ObjectController.extend({
