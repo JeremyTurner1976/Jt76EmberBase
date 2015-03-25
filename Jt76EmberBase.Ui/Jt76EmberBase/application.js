@@ -12,12 +12,12 @@ window.Jt76EmberBase = Ember.Application.create({
 //App load begins
 Ember.Application.initializer({
     //register application dependencies here (Not implemented, just stubbed)
-    //name: 'logger',
+    name: 'logger',
 
     initialize: function (container, application) {
-        //application.register('function:logger', function (message) {
-        //    alert(message);
-        //});
+        application.register('function:logger', function(message) {
+            alert(message);
+        });
         Ember.Logger.info("Application Initialized.");
     }
 });
