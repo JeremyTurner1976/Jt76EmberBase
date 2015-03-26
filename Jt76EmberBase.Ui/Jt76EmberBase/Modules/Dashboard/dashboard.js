@@ -3,7 +3,7 @@
 });
 
 Jt76EmberBase.IndexDashboardRoute = Jt76EmberBase.ArrayRoute.extend({
-    strModel: "weatherService"
+    strModel: "weatherItem"
 });
 
 Jt76EmberBase.IndexDashboardController = Jt76EmberBase.ArrayController.extend({

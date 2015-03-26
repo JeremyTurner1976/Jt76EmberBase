@@ -24,7 +24,7 @@ Jt76EmberBase.LogMessage = DS.Model.extend({
     dtCreated: DS.attr("date")
 });
 
-Jt76EmberBase.WeatherService = DS.Model.extend({
+Jt76EmberBase.WeatherItem = DS.Model.extend({
     strSummary: DS.attr("string"),
     currentWeather: DS.attr(),
     dailyWeather: DS.attr()

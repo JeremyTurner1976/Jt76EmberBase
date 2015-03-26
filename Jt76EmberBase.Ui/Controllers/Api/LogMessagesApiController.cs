@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Net;
@@ -7,7 +6,6 @@ using System.Net.Http;
 using System.Reflection;
 using System.Web.Http;
 using Jt76EmberBase.Data.Models;
-using Newtonsoft.Json;
 
 namespace Jt76EmberBase.Ui.Controllers.Api
 {

@@ -9,15 +9,12 @@ Jt76EmberBase.IndexProjectsProjectOneController = Ember.ObjectController.extend(
     strPageTitle: "Project One",
     strSubHeader: "A placeholder for future content.",
     iframe: function () {
-        this.controllerFor("index").set("bIsLoaded", false);
         var iframe = document.createElement("iframe");
 
-        var self = this;
-        iframe.onload = (function () {
-            self.controllerFor("index").set("bIsLoaded", true);
-        });
-
-        iframe.src = "GetPdfResponse";
+        //inline
+        iframe.src = "api/v1/getPdf";
+        //download
+        //iframe.src = "Home/getPdf";
 
         var nFooterHeight = 32;
         var nHeaderHeight = 52;
@@ -30,48 +27,12 @@ Jt76EmberBase.IndexProjectsProjectOneController = Ember.ObjectController.extend(
             nDesiredHeight = 450;
 
         $(iframe).attr("style", "width:100%;height:" + nDesiredHeight + "px;");
-
-
-        //this.controllerFor("index").set("bIsLoaded", true);
         return iframe;
     }.property(),
 
     actions: {
         printPdf: function() {
-            //pdf.print();
-            //document.getElementById("contentIframe").contentWindow.print();
             this.get("iframe").contentWindow.print();
         }
     }
 });
-
-var pdf = new PdfUtil("GetPdfResponse");
-
-function PdfUtil(url) {
-
-    var iframe;
-
-    var construct = function (url) {
-        iframe = getContentIframe(url);
-    }
-
-    var getContentIframe = function (url) {
-        var iframe = document.createElement('iframe');
-        iframe.src = url;
-        return iframe;
-    }
-
-    this.display = function (parentDomElement) {
-        parentDomElement.appendChild(iframe);
-    }
-
-    this.print = function () {
-        try {
-            iframe.contentWindow.print();
-        } catch (e) {
-            throw new Error("Printing failed.");
-        }
-    }
-
-    construct(url);
-}

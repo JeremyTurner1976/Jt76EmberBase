@@ -148,7 +148,9 @@
       <HintPath>..\packages\YUICompressor.NET.2.3.0.0\lib\NET20\Yahoo.Yui.Compressor.dll</HintPath>
     </Reference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\AutofacConfig.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -185,7 +187,7 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\Api\ErrorsApiController.cs" />
     <Compile Include="Controllers\Api\LogMessagesApiController.cs" />
-    <Compile Include="Controllers\Api\WeatherServiceApiController.cs" />
+    <Compile Include="Controllers\Api\SampleDataApiController.cs" />
     <Compile Include="Controllers\ErrorsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -282,7 +284,9 @@
     <Content Include="Jt76EmberBase\Common\emberRouteExtensions.js" />
     <Content Include="Jt76EmberBase\Common\emberViewExtensions.js" />
     <Content Include="Jt76EmberBase\Common\helpers.js" />
-    <Content Include="App_Data\sample.pdf" />
+    <Content Include="Content\Files\sample.pdf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="Jt76EmberBase\components\canvas-skycon.hbs" />
     <Content Include="Jt76EmberBase\components\canvas-skycon.hbs.js">
       <DependentUpon>canvas-skycon.hbs</DependentUpon>

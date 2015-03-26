@@ -56,8 +56,8 @@ namespace Jt76EmberBase.Ui
             //    new { controller = "LogMessagesApi", id = RouteParameter.Optional }
             //);
 
-            //config.Routes.MapHttpRoute("WeatherServiceRoute", "api/v1/weatherService/{id}",
-            //     new { controller = "WeatherServiceApi", id = RouteParameter.Optional }
+            //config.Routes.MapHttpRoute("SampleDataRoute", "api/v1/sampleData/{id}",
+            //     new { controller = "SampleDataApi", id = RouteParameter.Optional }
             //);
 
             //config.Routes.MapHttpRoute(

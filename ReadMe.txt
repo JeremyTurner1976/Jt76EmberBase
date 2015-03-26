@@ -94,47 +94,21 @@ File Work
 		window.location.href = "GetPdfResponse";
 	}
 
-	//Web Api Controller
-	[System.Web.Http.Route("GetPdfResponse")]
-	public HttpResponseMessage GetPdfResponse()
-	{
-
-		Debug.WriteLine(GetType().FullName + "." + MethodBase.GetCurrentMethod().Name);
-
-		byte[] bytes = System.IO.File.ReadAllBytes(@"C:\Users\JTurner\Desktop\testpdf.pdf");
-
-		try
-		{
-			var result = new HttpResponseMessage(HttpStatusCode.OK)
-			{
-				Content = new ByteArrayContent(bytes)
-			};
-			result.Content.Headers.ContentType = new MediaTypeHeaderValue("application/pdf");
-			//"attachment" to force download, "inline" to force open
-			result.Content.Headers.ContentDisposition = new ContentDispositionHeaderValue("attachment")
-			{
-				FileName = "testpdf.pdf"
-			};
-			return result;
-		}
-		catch (Exception ex)
-		{
-			throw new HttpResponseException(HttpStatusCode.InternalServerError);
-		}
-	}
-
-	//MVC Controller
-	public FileStreamResult GetPdfResponse()
-	{
-		Debug.WriteLine(GetType().FullName + "." + MethodBase.GetCurrentMethod().Name);
-
-		var filestream = System.IO.File.ReadAllBytes(@"C:\Users\JTurner\Desktop\testpdf.pdf");
-		var stream = new MemoryStream(filestream);
-
-		return new FileStreamResult(stream, "application/pdf")
-		{
-			FileDownloadName = "testpdf.pdf"
-		};
-	}
 
 
+
+
+
+
+	todo
+
+	get this to handle data errors - client and server side
+	validations	- throw exceptions on validation error - get this to bubble up
+	get error checking in place for responses and in the app for logging
+	
+	
+	should probably clean up the sort select - content = displayProperties
+	draw in admin dashboard
+	return 422 and get the validation errors (ModelState.isValid)
+	Controller#controllerFor is deprecated, please use Controller#needs instead
+	Loading image for the pdf load

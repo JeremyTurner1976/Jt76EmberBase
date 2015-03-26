@@ -22,12 +22,14 @@ namespace Jt76EmberBase.Ui.Controllers
             return View();
         }
 
-        public FileStreamResult GetPdfResponse()
+        //MVC Controller download file sample
+        public FileStreamResult GetPdf()
         {
             Debug.WriteLine(GetType().FullName + "." + MethodBase.GetCurrentMethod().Name);
 
-            var filestream = System.IO.File.ReadAllBytes(@"C:\Users\JTurner\Desktop\testpdf.pdf");
-            var stream = new MemoryStream(filestream);
+            var strFileName = HttpContext.Server.MapPath(@"\Content\Files\sample.pdf");
+            var bytes = System.IO.File.ReadAllBytes(strFileName);
+            var stream = new MemoryStream(bytes);
 
             return new FileStreamResult(stream, "application/pdf")
             {

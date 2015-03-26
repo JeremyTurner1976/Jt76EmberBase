@@ -358,7 +358,7 @@ Jt76EmberBase.LogMessage.FIXTURES = [
    }
 ];
 
-Jt76EmberBase.WeatherService.FIXTURES = [
+Jt76EmberBase.WeatherItem.FIXTURES = [
     {
         "id": 1,
         "strSummary": "Light rain on Wednesday and Thursday, with temperatures rising to 63°F on Tuesday.",
