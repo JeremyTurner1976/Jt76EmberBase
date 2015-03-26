@@ -148,9 +148,7 @@
       <HintPath>..\packages\YUICompressor.NET.2.3.0.0\lib\NET20\Yahoo.Yui.Compressor.dll</HintPath>
     </Reference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Compile Include="App_Start\AutofacConfig.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -284,6 +282,7 @@
     <Content Include="Jt76EmberBase\Common\emberRouteExtensions.js" />
     <Content Include="Jt76EmberBase\Common\emberViewExtensions.js" />
     <Content Include="Jt76EmberBase\Common\helpers.js" />
+    <Content Include="App_Data\sample.pdf" />
     <None Include="Jt76EmberBase\components\canvas-skycon.hbs" />
     <Content Include="Jt76EmberBase\components\canvas-skycon.hbs.js">
       <DependentUpon>canvas-skycon.hbs</DependentUpon>

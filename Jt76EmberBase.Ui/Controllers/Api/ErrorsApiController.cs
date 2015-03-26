@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Reflection;
 using System.Web.Http;
+using System.Web.Mvc;
 using Jt76EmberBase.Data.Models;
 using Newtonsoft.Json;
 
@@ -25,7 +28,7 @@ namespace Jt76EmberBase.Ui.Controllers.Api
         }
 
         //map verbs
-        [Route("api/v1/errors")]
+        [System.Web.Http.Route("api/v1/errors")]
         public Object Get()
         {
             Debug.WriteLine(GetType().FullName + "." + MethodBase.GetCurrentMethod().Name);
@@ -35,7 +38,38 @@ namespace Jt76EmberBase.Ui.Controllers.Api
             return new { errors };
         }
 
-        [Route("api/v1/errors")]
+
+        [System.Web.Http.Route("GetPdfResponse")]
+        public HttpResponseMessage GetPdfResponse()
+        {
+
+            Debug.WriteLine(GetType().FullName + "." + MethodBase.GetCurrentMethod().Name);
+
+            //Web Api
+            byte[] bytes = System.IO.File.ReadAllBytes(@"C:\Users\JTurner\Desktop\testpdf.pdf");
+
+            try
+            {
+                var result = new HttpResponseMessage(HttpStatusCode.OK)
+                {
+                    Content = new ByteArrayContent(bytes)
+                };
+                result.Content.Headers.ContentType = new MediaTypeHeaderValue("application/pdf");
+                result.Content.Headers.ContentDisposition = new ContentDispositionHeaderValue("inline")
+                {
+                    FileName = "testpdf.pdf"
+                };
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw new HttpResponseException(HttpStatusCode.InternalServerError);
+            }
+
+        }
+
+
+        [System.Web.Http.Route("api/v1/errors")]
         public HttpResponseMessage Post([FromBody] dynamic model)
         {
             Debug.WriteLine(GetType().FullName + "." + MethodBase.GetCurrentMethod().Name);
@@ -48,7 +82,7 @@ namespace Jt76EmberBase.Ui.Controllers.Api
                 Request.CreateResponse(HttpStatusCode.BadRequest);
         }
 
-        [Route("api/v1/errors/{id}")]
+        [System.Web.Http.Route("api/v1/errors/{id}")]
         public Object Get(int id)
         {
             Debug.WriteLine(GetType().FullName + "." + MethodBase.GetCurrentMethod().Name);
@@ -59,7 +93,7 @@ namespace Jt76EmberBase.Ui.Controllers.Api
         }
 
 
-        [Route("api/v1/errors/{id}")]
+        [System.Web.Http.Route("api/v1/errors/{id}")]
         public HttpResponseMessage Put([FromBody] dynamic model, int id)
         {
             Debug.WriteLine(GetType().FullName + "." + MethodBase.GetCurrentMethod().Name);
@@ -72,7 +106,7 @@ namespace Jt76EmberBase.Ui.Controllers.Api
                 Request.CreateResponse(HttpStatusCode.BadRequest);
         }
 
-        [Route("api/v1/errors/{id}")]
+        [System.Web.Http.Route("api/v1/errors/{id}")]
         public HttpResponseMessage Delete(int id)
         {
             Debug.WriteLine(GetType().FullName + "." + MethodBase.GetCurrentMethod().Name);

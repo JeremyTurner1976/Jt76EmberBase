@@ -88,26 +88,53 @@ https://github.com/heartsentwined/ember-auth
 http://stackoverflow.com/questions/18863710/how-do-i-call-an-action-method-on-controller-from-the-outside-with-the-same-beh
 http://stackoverflow.com/questions/17434350/handling-server-side-validation-with-ember-data
 
-      {{#view App.ReviewView length=text.length tag="li"}}
-              {{text}}
-      <span class="expand text-success">
-        Read  {{#if view.isExpanded}}
-        	Less
-        {{else}}
-        	More
-        {{/if}}
-      </span>
-      {{/view}}
 
-	  App.ReviewView = Ember.View.extend({
-		  isExpanded: false,
-		  classNameBindings: ["isExpanded", "readMore"],
-		  readMore: Ember.computed.gt("length", 140),
-		  click: function(){
-  			return this.set("isExpanded", !this.get("isExpanded"));
-		  }
-		});
+File Work
+	getPdf: function () {
+		window.location.href = "GetPdfResponse";
+	}
+
+	//Web Api Controller
+	[System.Web.Http.Route("GetPdfResponse")]
+	public HttpResponseMessage GetPdfResponse()
+	{
+
+		Debug.WriteLine(GetType().FullName + "." + MethodBase.GetCurrentMethod().Name);
+
+		byte[] bytes = System.IO.File.ReadAllBytes(@"C:\Users\JTurner\Desktop\testpdf.pdf");
+
+		try
+		{
+			var result = new HttpResponseMessage(HttpStatusCode.OK)
+			{
+				Content = new ByteArrayContent(bytes)
+			};
+			result.Content.Headers.ContentType = new MediaTypeHeaderValue("application/pdf");
+			//"attachment" to force download, "inline" to force open
+			result.Content.Headers.ContentDisposition = new ContentDispositionHeaderValue("attachment")
+			{
+				FileName = "testpdf.pdf"
+			};
+			return result;
+		}
+		catch (Exception ex)
+		{
+			throw new HttpResponseException(HttpStatusCode.InternalServerError);
+		}
+	}
+
+	//MVC Controller
+	public FileStreamResult GetPdfResponse()
+	{
+		Debug.WriteLine(GetType().FullName + "." + MethodBase.GetCurrentMethod().Name);
+
+		var filestream = System.IO.File.ReadAllBytes(@"C:\Users\JTurner\Desktop\testpdf.pdf");
+		var stream = new MemoryStream(filestream);
+
+		return new FileStreamResult(stream, "application/pdf")
+		{
+			FileDownloadName = "testpdf.pdf"
+		};
+	}
 
 
-		Accounting.js
-		Markdown.js
