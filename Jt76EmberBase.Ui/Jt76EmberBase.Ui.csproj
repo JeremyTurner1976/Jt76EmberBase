@@ -491,7 +491,6 @@
     <Content Include="Jt76EmberBase\Modules\Dashboard\dashboard.hbs" />
     <Content Include="Jt76EmberBase\components\pagination-display.hbs" />
     <Content Include="Jt76EmberBase\_pageHeader.hbs" />
-    <None Include="Project_Readme.html" />
     <Content Include="Scripts\ember-data-1.14.js.map" />
     <Content Include="Views\Home\LockScreen.cshtml" />
   </ItemGroup>

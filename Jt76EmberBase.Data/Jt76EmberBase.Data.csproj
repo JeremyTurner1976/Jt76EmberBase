@@ -56,7 +56,6 @@
   <ItemGroup>
     <Compile Include="Abstract\ModelBase.cs" />
     <Compile Include="Abstract\ModelRepositoryBase.cs" />
-    <Compile Include="Database\BreezeRepository.cs" />
     <Compile Include="Database\Jt76DbContext.cs" />
     <Compile Include="Database\Jt76MigrationsContext.cs" />
     <Compile Include="Database\ModelRepositories\ErrorRepository.cs" />

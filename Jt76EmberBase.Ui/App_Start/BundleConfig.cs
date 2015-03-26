@@ -20,8 +20,6 @@ namespace Jt76EmberBase.Ui
             //this must be true to get the template bundle handlebars helper creates
             BundleTable.EnableOptimizations = true;
 
-            //PRODUCTION: Install WebEssentials VS tool to minify all files, and include only the minified versions here
-
             bundles.Add(new StyleBundle("~/Content/css").Include(
                 "~/Content/bootstrap.css",
                 "~/Content/bootstrap-theme.css",
