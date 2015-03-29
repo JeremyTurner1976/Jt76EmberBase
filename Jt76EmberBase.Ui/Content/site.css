@@ -1,4 +1,18 @@
-﻿.jt76-brand-name {
+﻿.jt76-modal-dialog {
+  background-color: whitesmoke;
+  border-radius: 10px;
+  border-width: 5px;
+  border-color: AppWorkspace;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 50px;
+  position: absolute;
+  display: block;
+  z-index: 10000;
+}
+.jt76-brand-name {
   color: #1c2b36;
   font-size: x-large;
 }

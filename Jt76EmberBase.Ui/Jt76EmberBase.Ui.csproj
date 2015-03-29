@@ -275,6 +275,7 @@
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\ionicons.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Jt76EmberBase\modal.js" />
     <Content Include="Jt76EmberBase\application.hbs.js">
       <DependentUpon>application.hbs</DependentUpon>
     </Content>
@@ -290,6 +291,14 @@
     <None Include="Jt76EmberBase\components\canvas-skycon.hbs" />
     <Content Include="Jt76EmberBase\components\canvas-skycon.hbs.js">
       <DependentUpon>canvas-skycon.hbs</DependentUpon>
+    </Content>
+    <None Include="Jt76EmberBase\components\modal-dialog.hbs" />
+    <Content Include="Jt76EmberBase\components\modal-dialog.hbs.js">
+      <DependentUpon>modal-dialog.hbs</DependentUpon>
+    </Content>
+    <Content Include="Jt76EmberBase\components\modal-dialog.js" />
+    <Content Include="Jt76EmberBase\modal.hbs.js">
+      <DependentUpon>modal.hbs</DependentUpon>
     </Content>
     <Content Include="Jt76EmberBase\_pageHeader.hbs.js">
       <DependentUpon>_pageHeader.hbs</DependentUpon>
@@ -405,6 +414,7 @@
     <Content Include="Content\toastr.less" />
     <Content Include="Jt76EmberBase\_arrayButtonSet.hbs" />
     <None Include="Jt76EmberBase\_singleItemButtonSet.hbs" />
+    <None Include="Jt76EmberBase\modal.hbs" />
     <Content Include="Scripts\bootstrap-datetimepicker.js" />
     <Content Include="Scripts\bootstrap-slider.js" />
     <Content Include="Scripts\bootstrap.js" />

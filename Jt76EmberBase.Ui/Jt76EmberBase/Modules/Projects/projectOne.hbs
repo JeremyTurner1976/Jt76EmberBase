@@ -2,9 +2,19 @@
 
 <span class="jt76-underline h4">Api File Sample Project</span>
 
-<button {{action "printPdf"}}
-        {{bind-attr class=":btn :btn-success :btn-sm :jt76-padding-sides-sm :form-inline :pull-right"}}>
-    <i class="fa fa-asterisk"></i>&nbsp;Print PDF
-</button>
+<div class="pull-right">
+    <button {{action "viewPdf"}}
+            {{bind-attr class=":btn :btn-primary :btn-sm :jt76-padding-sides-lg :form-inline"}}>
+        <i class="fa fa-picture-o"></i>&nbsp;View PDF
+    </button>
+    <button {{action "popupPdf"}}
+            {{bind-attr class=":btn :btn-info :btn-sm :jt76-padding-sides-lg :form-inline"}}>
+        <i class="fa fa-toggle-up"></i>&nbsp;Popup PDF
+    </button>
+    <button {{action "downloadPdf"}}
+            {{bind-attr class=":btn :btn-success :btn-sm :jt76-padding-sides-lg :form-inline"}}>
+        <i class="fa fa-folder-o"></i>&nbsp;Download PDF
+    </button>
+</div>
 
-<div id="contentIframe">{{iframe}}</div>
+<div id="contentIframe"></div>

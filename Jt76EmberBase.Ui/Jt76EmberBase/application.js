@@ -14,10 +14,10 @@ window.Jt76EmberBase = Ember.Application.create({
 //App load begins
 Ember.Application.initializer({
     //register application dependencies here (Not implemented, just stubbed)
-    name: 'logger',
+    name: "logger",
 
     initialize: function (container, application) {
-        application.register('function:logger', function(message) {
+        application.register("function:logger", function(message) {
             alert(message);
         });
         Ember.Logger.info("Application Initialized.");
@@ -37,8 +37,26 @@ Jt76EmberBase.ApplicationRoute = Ember.Route.extend({
 
         var self = this;
         setTimeout(function () {
-            self.transitionTo("index.dashboard");
+            self.transitionTo("index.projects.projectOne");
         }, 250); //give the dom time to set then transition to the landing page
+    },
+
+    actions: {
+        openModal: function (modalName, model) {
+            console.log();  
+            this.controllerFor(modalName).set("model", model);
+            return this.render(modalName, {
+                into: "application",
+                outlet: "modal"
+            });
+        },
+        closeModal: function () {
+            return this.disconnectOutlet({
+                outlet: "modal",
+                parentView: "application"
+            });
+        }
     }
+
 });
 
