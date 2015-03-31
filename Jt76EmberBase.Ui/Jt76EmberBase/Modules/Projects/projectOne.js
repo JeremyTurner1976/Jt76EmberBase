@@ -44,6 +44,18 @@ Jt76EmberBase.IndexProjectsProjectOneController = Ember.ObjectController.extend(
         downloadPdf: function() {
             //attachment
             window.location.href = "Home/getPdf";
+        },
+        viewCreatedPdf: function() {
+            //inline
+            var iframe = document.createElement("iframe");
+            var parent = $("#contentIframe");
+            var nFrameHeight = this.get("nFrameHeight");
+            $(iframe).attr("style", "width:100%;height:" + nFrameHeight + "px;");
+            $(parent).attr("style", "width:100%;height:" + nFrameHeight + "px;");
+
+            iframe.src = "api/v1/getCreatedPdf";
+            $(parent).empty();
+            $(parent).append(iframe);
         }
     }
 });

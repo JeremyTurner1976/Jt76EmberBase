@@ -11,6 +11,9 @@ using System.Web;
 using System.Web.Http;
 using Antlr.Runtime.Misc;
 using ForecastIO;
+using Jt76EmberBase.Common.Services;
+using PdfSharp.Drawing;
+using PdfSharp.Pdf;
 
 namespace Jt76EmberBase.Ui.Controllers.Api
 {
@@ -88,6 +91,47 @@ namespace Jt76EmberBase.Ui.Controllers.Api
             Debug.WriteLine(GetType().FullName + "." + MethodBase.GetCurrentMethod().Name);
 
             var strFileName = HttpContext.Current.Server.MapPath(@"\Content\Files\sample.pdf");
+            var bytes = File.ReadAllBytes(strFileName);
+
+            try
+            {
+                var result = new HttpResponseMessage(HttpStatusCode.OK)
+                {
+                    Content = new ByteArrayContent(bytes)
+                };
+                result.Content.Headers.ContentType = new MediaTypeHeaderValue("application/pdf");
+                //attachment for download, inline for content
+                result.Content.Headers.ContentDisposition = new ContentDispositionHeaderValue("inline")
+                {
+                    FileName = "sample.pdf"
+                };
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw new HttpResponseException(HttpStatusCode.InternalServerError);
+            }
+        }
+
+        [Route("api/v1/GetCreatedPdf")]
+        public HttpResponseMessage GetCreatedPdf()
+        {
+            Debug.WriteLine(GetType().FullName + "." + MethodBase.GetCurrentMethod().Name);
+
+            FileService fileService = new FileService();
+            var strFolder = fileService.GetDirectoryFolderLocation(DirectoryFolders.Jt76Test);
+            var strFileName = strFolder + "\\firstPage.pdf";
+
+            PdfDocument pdf = new PdfDocument();
+            PdfPage pdfPage = pdf.AddPage();
+            XGraphics graph = XGraphics.FromPdfPage(pdfPage);
+            XFont font = new XFont("Verdana", 20, XFontStyle.Bold);
+            graph.DrawString("This is a newly created pdf document", 
+                                font, 
+                                XBrushes.Black,
+                                new XRect(0, 0, pdfPage.Width.Point, pdfPage.Height.Point), 
+                                XStringFormats.TopLeft);
+            pdf.Save(strFileName);
             var bytes = File.ReadAllBytes(strFileName);
 
             try

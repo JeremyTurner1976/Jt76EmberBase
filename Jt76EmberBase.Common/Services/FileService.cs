@@ -137,7 +137,7 @@ namespace Jt76EmberBase.Common.Services
             Debug.WriteLine(GetType().FullName + "." + MethodBase.GetCurrentMethod().Name);
 
             string strEnum = directory.ToNameString();
-            return _strExecutingDirectory + "\\App_Data\\" + strEnum;
+            return _strExecutingDirectory + "App_Data\\" + strEnum;
         }
 
         private string GetDirectoryFileLocation(DirectoryFolders directory)

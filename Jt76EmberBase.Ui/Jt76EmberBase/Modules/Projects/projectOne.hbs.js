@@ -20,5 +20,11 @@
     + escapeExpression(((helpers['bind-attr'] || (depth0 && depth0['bind-attr']) || helperMissing).call(depth0, {"name":"bind-attr","hash":{
     'class': (":btn :btn-success :btn-sm :jt76-padding-sides-lg :form-inline")
   },"data":data})))
-    + ">\r\n        <i class=\"fa fa-folder-o\"></i>&nbsp;Download PDF\r\n    </button>\r\n</div>\r\n\r\n<div id=\"contentIframe\"></div>\r\n";
+    + ">\r\n        <i class=\"fa fa-folder-o\"></i>&nbsp;Download PDF\r\n    </button>\r\n</div>\r\n\r\n<hr />\r\n\r\n<span class=\"jt76-underline h4\">PDF Sharp Sample Project</span>\r\n\r\n<div class=\"pull-right\">\r\n    <button "
+    + escapeExpression(((helpers.action || (depth0 && depth0.action) || helperMissing).call(depth0, "viewCreatedPdf", {"name":"action","hash":{},"data":data})))
+    + "\r\n            "
+    + escapeExpression(((helpers['bind-attr'] || (depth0 && depth0['bind-attr']) || helperMissing).call(depth0, {"name":"bind-attr","hash":{
+    'class': (":btn :btn-primary :btn-sm :jt76-padding-sides-lg :form-inline")
+  },"data":data})))
+    + ">\r\n        <i class=\"fa fa-picture-o\"></i>&nbsp;View Created PDF\r\n    </button>\r\n</div>\r\n\r\n<hr />\r\n\r\n<div id=\"contentIframe\"></div>\r\n";
 },"useData":true});
