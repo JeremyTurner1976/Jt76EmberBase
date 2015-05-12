@@ -13,7 +13,7 @@ Jt76EmberBase.IndexProjectsProjectOneRoute = Jt76EmberBase.BaseRoute.extend({
 
 Jt76EmberBase.IndexProjectsProjectOneController = Ember.ObjectController.extend({
     strPageTitle: "Project One",
-    strSubHeader: "A placeholder for future content.",
+    strSubHeader: "A sample set of PDF utilities.",
     nFrameHeight: function () {
         var nFooterHeight = 32;
         var nHeaderHeight = 52;

@@ -93,6 +93,10 @@ File Work
 	getPdf: function () {
 		window.location.href = "GetPdfResponse";
 	}
+	for pdfs there is also https://mozilla.github.io/pdf.js/ <https://mozilla.github.io/pdf.js/> 
+	https://mozilla.github.io/pdf.js/web/viewer.html
+
+http://www.codeproject.com/Articles/889240/Real-time-data-update-using-SignalR
 
 
 
@@ -111,4 +115,4 @@ File Work
 	draw in admin dashboard
 	return 422 and get the validation errors (ModelState.isValid)
 	Controller#controllerFor is deprecated, please use Controller#needs instead
-	Loading image for the pdf load
+	Loading image for the pdf load and make this an object, ie8 needs iframes though
