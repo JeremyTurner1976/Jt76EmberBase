@@ -281,6 +281,7 @@
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\ionicons.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Jt76EmberBase\Common\emberInputExtensions.js" />
     <Content Include="Jt76EmberBase\modal.js" />
     <Content Include="Jt76EmberBase\application.hbs.js">
       <DependentUpon>application.hbs</DependentUpon>
