@@ -7,13 +7,12 @@ Jt76EmberBase.ArrayRoute = Ember.Route.extend({
             this.controllerFor("index").set("bIsLoaded", false);
             this.store.unloadAll(this.get("strModel"));
             return this.store.find(this.get("strModel")).then(function (response) {
+                Jt76EmberBase.Common.create().log("Data pull.", response, "info");
                 return response.toArray();
             });
         }
     },
     setupController: function (controller, model) {
-        Jt76EmberBase.Common.create().log("Data pull.", model, "info");
-
         controller.set("model", model);
         this.controllerFor("index").set("bIsLoaded", true);
         controller.set("bForceRefresh", false);
@@ -30,7 +29,6 @@ Jt76EmberBase.SingleItemRoute = Ember.Route.extend({
     },
     setupController: function (controller, model) {
         Jt76EmberBase.Common.create().log("Data pull.", model, "info");
-
         controller.set("model", model);
     },
     deactivate: function () {

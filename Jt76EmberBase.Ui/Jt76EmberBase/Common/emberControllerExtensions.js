@@ -1,6 +1,6 @@
 ﻿/*_____________ARRAY CONTROLLER_____________*/
 Jt76EmberBase.ArrayController = Ember.ArrayController.extend({
-    nSearchDelayInSeconds: .6,
+    nSearchDelayInSeconds: .5,
     bForceRefresh: false,
     strToSearchFor: "",
     debouncedStrToSearchFor: "",
