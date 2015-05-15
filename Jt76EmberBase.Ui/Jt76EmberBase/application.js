@@ -37,7 +37,7 @@ Jt76EmberBase.ApplicationRoute = Ember.Route.extend({
 
         var self = this;
         setTimeout(function () {
-            self.transitionTo("index.dashboard");
+            self.transitionTo(Jt76EmberBase.CONFIG.create().get("strHomePage"));
         }, 250); //give the dom time to set then transition to the landing page
     },
 

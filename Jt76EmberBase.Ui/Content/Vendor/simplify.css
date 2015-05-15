@@ -1034,11 +1034,11 @@ a.list-group-item.active:focus {
   }
   .sidebar-menu.sidebar-mini .main-menu li:hover .submenu {
     display: block;
-    animation: fadeInLeft 0.7s ease;
-    -webkit-animation: fadeInLeft 0.7s ease;
-    -moz-animation: fadeInLeft 0.7s ease;
-    -ms-animation: fadeInLeft 0.7s ease;
-    -o-animation: fadeInLeft 0.7s ease;
+    animation: fadeInLeft 0.4s ease;
+    -webkit-animation: fadeInLeft 0.4s ease;
+    -moz-animation: fadeInLeft 0.4s ease;
+    -ms-animation: fadeInLeft 0.4s ease;
+    -o-animation: fadeInLeft 0.4s ease;
   }
   .sidebar-menu.sidebar-mini .main-menu li:hover .submenu:after {
     display: none;
@@ -4924,7 +4924,8 @@ label.parsley-error {
   -o-transition: all 0.5s ease-out;
 }
 .lock-screen-wrapper .modal-dialog {
-  display: table-cell;
+  /*display: table-cell;*/
+  display: block;
   width: 270px !important;
   vertical-align: middle;
   transform: translate(0, -40px);

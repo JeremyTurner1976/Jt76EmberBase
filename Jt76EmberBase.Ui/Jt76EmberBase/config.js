@@ -1,5 +1,6 @@
 ﻿Jt76EmberBase.CONFIG = Ember.Object.extend({
     strAppTitle: "Jt76EmberBase", //other app constants available here
+    strHomePage: "index.dashboard",
     bDebug: true,
     init: function () {
         //var config = Jt76EmberBase.CONFIG.create();

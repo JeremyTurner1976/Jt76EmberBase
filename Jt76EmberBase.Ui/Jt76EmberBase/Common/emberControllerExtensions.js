@@ -82,6 +82,10 @@ Jt76EmberBase.ArrayController = Ember.ArrayController.extend({
 
 
     actions: {
+        resetSortProperties: function () {
+            this.set("sortProperties", this.get("archivedSortProperties"));
+        },
+
         toggleSort: function (item) {
             var bResetSort = (item === "reset");
             var newSortProperties = [];
@@ -137,6 +141,10 @@ Jt76EmberBase.ArrayController = Ember.ArrayController.extend({
                 } else
                     element.className = "";
             });
+        },
+
+        newItem: function () {
+            this.transitionTo(this.get("strNewLink"), "new");
         }
     }
 });

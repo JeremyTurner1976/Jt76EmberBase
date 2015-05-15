@@ -10,17 +10,15 @@ Jt76EmberBase.IndexAdminLogMessagesController = Jt76EmberBase.ArrayController.ex
     strPageTitle: "Admin Log Messages",
     strSubHeader: "Handle your business.",
     strDisplayType: "Log",
+    strNewLink: "index.admin.logMessage",
     nMaxPagesToDisplay: 3,
     nMaxPageItemsToDisplay: 15,
     displayProperties: [{ key: "strLogMessage", value: "Message" },
                         { key: "dtCreated", value: "Date Created" }],
     sortProperties: ["dtCreated:desc", "numericId:desc"],
+    archivedSortProperties: ["dtCreated:desc", "numericId:desc"], //saved for resets
 
     actions: {
-        resetSortProperties: function () {
-            var archivedSortProperties = ["dtCreated:desc", "numericId:desc"];
-            this.set("sortProperties", archivedSortProperties);
-        },
         injectItem: function () {
             var self = this;
             var newItem = this.get("store").createRecord("logMessage", {

@@ -10,6 +10,7 @@ Jt76EmberBase.IndexAdminErrorsController = Jt76EmberBase.ArrayController.extend(
     strPageTitle: "Admin Errors",
     strSubHeader: "Handle your business.",
     strDisplayType: "Error",
+    strNewLink: "index.admin.errorDetails",
     nMaxPagesToDisplay: 5,
     nMaxPageItemsToDisplay: 10,
     displayProperties: [{ key: "strMessage", value: "Message" },
@@ -18,12 +19,9 @@ Jt76EmberBase.IndexAdminErrorsController = Jt76EmberBase.ArrayController.extend(
                         { key: "strErrorLevel", value: "Error Level" },
                         { key: "strAdditionalInformation", value: "Additional Information" }],
     sortProperties: ["dtCreated:desc", "numericId:desc"],
+    archivedSortProperties: ["dtCreated:desc", "numericId:desc"], //saved for resets
 
     actions: {
-        resetSortProperties: function () {
-            var archivedSortProperties = ["dtCreated:desc", "numericId:desc"];
-            this.set("sortProperties", archivedSortProperties);
-        },
         injectItem: function () {
             var self = this;
             var newItem = this.get("store").createRecord("error", {

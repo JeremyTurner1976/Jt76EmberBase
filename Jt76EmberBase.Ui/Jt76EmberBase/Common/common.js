@@ -57,14 +57,28 @@
         strType = strType || "info";
 
         if (bForceToast || config.get("bDebug") === true) {
+            var options =  { 
+                "closeButton": false,
+                "debug": true,
+                "positionClass": "toast-bottom-right",
+                "onclick": null,
+                "showDuration": "300",
+                "hideDuration": "1000",
+                "timeOut": "3000",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            }
             if (strType === "error") {
-                toastr.error(strMessage);
+                toastr.error(strMessage, data, options);
             } else if (strType === "warning") {
-                toastr.warning(strMessage);
+                toastr.warning(strMessage, data, options);
             } else if (strType === "success") {
-                toastr.success(strMessage);
+                toastr.success(strMessage, data, options);
             } else {
-                toastr.info(strMessage);
+                toastr.info(strMessage, data, options);
             }
         }
 
