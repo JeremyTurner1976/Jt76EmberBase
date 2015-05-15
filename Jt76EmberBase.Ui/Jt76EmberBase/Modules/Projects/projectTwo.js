@@ -3,18 +3,9 @@
 });
 
 Jt76EmberBase.IndexProjectsProjectTwoRoute = Jt76EmberBase.BaseRoute.extend({
-    setupController: function (controller) {
-        controller.set("startDate", new Date());
-    }
 });
 
 Jt76EmberBase.IndexProjectsProjectTwoController = Ember.ObjectController.extend({
     strPageTitle: "Project Two",
-    strSubHeader: "A placeholder for some more future content.",
-    startDate: null,
-    actions: {
-        setToToday: function () {
-            this.set("startDate", new Date());
-        }
-    }
+    strSubHeader: "Placeholder for future content."
 });
