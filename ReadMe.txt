@@ -1,3 +1,7 @@
+TODO-
+Finish out the email system and validations
+
+
 Note: If handlebars are changed the matching HandleBarsHelper nuget package must be installed
 
 http://Jt76EmberBase/Help will load the web api help area (VS Template item)

@@ -43,7 +43,6 @@ Jt76EmberBase.ApplicationRoute = Ember.Route.extend({
 
     actions: {
         openModal: function (modalName, model) {
-            console.log();  
             this.controllerFor(modalName).set("model", model);
             return this.render(modalName, {
                 into: "application",

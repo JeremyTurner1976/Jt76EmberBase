@@ -9,9 +9,15 @@
     },
 
     //helper methods
-    isNumber: function (val) {
+    isNumber: function (value) {
         // negative or positive
-        return /^[-]?\d+$/.test(val);
+        return /^[-]?\d+$/.test(value);
+    },
+    isValidLength: function(strValue, nMinLength, nMaxLength) {
+        if (strValue)
+            return (strValue.length < nMinLength || (nMaxLength && strValue.length > nMaxLength)) ? false : true;
+        else
+            return false;
     },
 
     //output helpers

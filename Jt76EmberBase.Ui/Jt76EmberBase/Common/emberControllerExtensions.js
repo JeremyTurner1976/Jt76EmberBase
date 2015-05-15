@@ -145,6 +145,7 @@ Jt76EmberBase.ArrayController = Ember.ArrayController.extend({
 Jt76EmberBase.SingleItemController = Ember.ObjectController.extend({
     bNew: Ember.computed.alias("model.isNew"),
     bChanged: Ember.computed.alias("model.isDirty"),
+    bInValid: false,
 
     actions: {
         goBack: function () {

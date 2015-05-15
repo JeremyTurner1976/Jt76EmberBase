@@ -18,11 +18,29 @@ Jt76EmberBase.Error = DS.Model.extend({
     strStackTrace: DS.attr("string"),
     dtCreated: DS.attr("date")
 });
+Jt76EmberBase.ErrorValidation = Ember.Object.extend({
+    isValid: function (model) {
+        var common = Jt76EmberBase.Common.create();
+        var bIsValid = common.isValidLength(model.get("strMessage"), 10, 255)
+            && common.isValidLength(model.get("strErrorLevel"), 1)
+            && common.isValidLength(model.get("strSource"), 5, 255)
+            && common.isValidLength(model.get("strAdditionalInformation"), 5, 255)
+            && common.isValidLength(model.get("strStackTrace"), 5, 4000);
+        return bIsValid;
+    }
+});
+
 
 Jt76EmberBase.LogMessage = DS.Model.extend({
     strLogMessage: DS.attr("string"),
     dtCreated: DS.attr("date")
 });
+Jt76EmberBase.LogMessageValidation = Ember.Object.extend({
+    isValid: function (model) {
+        return Jt76EmberBase.Common.create().isValidLength(model.get("strLogMessage"), 10, 255);
+    }
+});
+
 
 Jt76EmberBase.WeatherItem = DS.Model.extend({
     strSummary: DS.attr("string"),
