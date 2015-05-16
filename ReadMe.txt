@@ -1,5 +1,6 @@
 TODO-
 Finish out the email system and validations
+geolocation for webapi and city output on dashboard
 loading bar remove
 textarea spellcheck then losing focus causes isDirty?
 
@@ -54,7 +55,7 @@ Shorthand for function(){...}.property("controller.bIsLoaded")
 Ember.computed.alias("controller.bIsLoaded") to set a property that is bound to the controllers bIsLoaded property for change events 
 Ember.computed -> gt >, lt <, gte >=, lte <=, map, any, filter, max, min
 
-.property().volatile() means it is reloaded every time it is called
+.property().volatile() means it is reloaded every time it is called, very useful in specific cases
 
 willDestroyElement: function () {
     var clone = this.$().clone();
@@ -93,6 +94,7 @@ http://stackoverflow.com/questions/15235574/ember-data-reloading-content-ui-not-
 https://github.com/heartsentwined/ember-auth
 http://stackoverflow.com/questions/18863710/how-do-i-call-an-action-method-on-controller-from-the-outside-with-the-same-beh
 http://stackoverflow.com/questions/17434350/handling-server-side-validation-with-ember-data
+http://ember.zone/ember-application-initializers/
 
 
 File Work
@@ -103,6 +105,7 @@ File Work
 	https://mozilla.github.io/pdf.js/web/viewer.html
 
 http://www.codeproject.com/Articles/889240/Real-time-data-update-using-SignalR
+Instead work with Reactive IObservable and IQObservable items in Reactive.net (4.5)
 
 
 

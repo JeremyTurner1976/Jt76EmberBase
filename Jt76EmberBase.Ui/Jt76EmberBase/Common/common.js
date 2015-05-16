@@ -1,4 +1,8 @@
-﻿Jt76EmberBase.Common = Ember.Object.extend({
+﻿Jt76EmberBase.CommonFunctions = Ember.Object.extend({
+    init: function () {
+        //var common = Jt76EmberBase.Common;
+    },
+
     //helper methods
     isNumber: function (value) {
         // negative or positive
@@ -57,11 +61,10 @@
 
     //Common API functions
     log: function (strMessage, data, strType, bForceToast) {
-        var config = Jt76EmberBase.CONFIG.create();
         strMessage = strMessage || "No Message";
         strType = strType || "info";
 
-        if (bForceToast || config.get("bDebug") === true) {
+        if (bForceToast || Jt76EmberBase.CONFIG.bDebug === true) {
             var options = {
                 "closeButton": false,
                 "debug": false,

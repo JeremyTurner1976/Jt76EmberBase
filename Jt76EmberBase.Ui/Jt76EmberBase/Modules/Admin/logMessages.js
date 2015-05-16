@@ -25,10 +25,10 @@ Jt76EmberBase.IndexAdminLogMessagesController = Jt76EmberBase.ArrayController.ex
                 strLogMessage: "This is a strLogMessage"
             });
             newItem.save().then(function (data) {
-                Jt76EmberBase.Common.create().log("This item has been saved.", data, "info", true);
+                Jt76EmberBase.Common.log("This item has been saved.", data, "info", true);
                 self.send("refresh", false, false);
             }, function(errorResponse) {
-                Jt76EmberBase.Common.create().log("Unable to save record: ", errorResponse, "error", true);
+                Jt76EmberBase.Common.log("Unable to save record: ", errorResponse, "error", true);
             });
         }
     }

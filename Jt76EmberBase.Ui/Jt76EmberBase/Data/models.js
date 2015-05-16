@@ -20,7 +20,7 @@ Jt76EmberBase.Error = DS.Model.extend({
 });
 Jt76EmberBase.ErrorValidation = Ember.Object.extend({
     isValid: function (model) {
-        var common = Jt76EmberBase.Common.create();
+        var common = Jt76EmberBase.Common;
         var bIsValid = common.isValidLength(model.get("strMessage"), 10, 255)
             && common.isValidLength(model.get("strErrorLevel"), 1)
             && common.isValidLength(model.get("strSource"), 5, 255)
@@ -37,7 +37,7 @@ Jt76EmberBase.LogMessage = DS.Model.extend({
 });
 Jt76EmberBase.LogMessageValidation = Ember.Object.extend({
     isValid: function (model) {
-        return Jt76EmberBase.Common.create().isValidLength(model.get("strLogMessage"), 10, 255);
+        return Jt76EmberBase.Common.isValidLength(model.get("strLogMessage"), 10, 255);
     }
 });
 

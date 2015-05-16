@@ -69,7 +69,7 @@ namespace Jt76EmberBase.Ui
 
             //Ember App Directory
             //NOTE, if you want to find the line of a jt76EmberBase bundle error
-            //run the project and follow the stacktrace lines on the network response in the console
+            //run the project and follow the stacktrace lines on the source tab of the console
             var appBundle = new ScriptBundle("~/bundles/jt76EmberBase").Include(
                 "~/Jt76EmberBase/application.js",
                 "~/Jt76EmberBase/index.js",

@@ -12,17 +12,18 @@ window.Jt76EmberBase = Ember.Application.create({
 });
 
 //App load begins
-//Ember.Application.initializer({
-//    //register application dependencies here (Not implemented, just stubbed)
-//    name: "logger",
+Ember.Application.initializer({
+    //register application dependencies here
+    name: "Common Setup",
 
-//    initialize: function (container, application) {
-//        application.register("function:logger", function(message) {
-//            alert(message);
-//        });
-//        Ember.Logger.info("Application Initialized.");
-//    }
-//});
+    initialize: function (container, application) {
+        //setup common utility classes here
+        Jt76EmberBase.Common = Jt76EmberBase.CommonFunctions.create();
+        Jt76EmberBase.CONFIG = Jt76EmberBase.ConfigDeclarations.create();
+
+        Ember.Logger.info("Application Initialized.");
+    }
+});
 
 
 
@@ -38,10 +39,10 @@ Jt76EmberBase.ApplicationRoute = Ember.Route.extend({
         Ember.Logger.info("Application Activated.");
 
         //set the homepage
-        if (Jt76EmberBase.CONFIG.create().get("bDebug") === false) {
+        if (Jt76EmberBase.CONFIG.bDebug === false) {
             var self = this;
             setTimeout(function () {
-                self.transitionTo(Jt76EmberBase.CONFIG.create().get("strHomePage"));
+                self.transitionTo(Jt76EmberBase.CONFIG.get("strHomePage"));
             }, 250); //give the dom time to set then transition to the landing page
         }
     },

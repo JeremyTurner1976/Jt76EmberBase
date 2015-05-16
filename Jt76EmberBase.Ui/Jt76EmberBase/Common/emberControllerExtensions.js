@@ -39,11 +39,10 @@ Jt76EmberBase.ArrayController = Ember.ArrayController.extend({
     mappedModel: function () {
         var self = this;
         var mappedModel = self.get("model");
-        var common = Jt76EmberBase.Common.create();
 
         mappedModel.forEach(function (item) {
             item.set("numericId", parseInt(item.id));
-            item.set("strCreated", common.shortDateTimeFormat(item.get("dtCreated")));
+            item.set("strCreated", Jt76EmberBase.Common.shortDateTimeFormat(item.get("dtCreated")));
             var strToSearchAgainst = "";
             self.get("displayProperties").forEach(function (innerItem) {
                 strToSearchAgainst += item.get(innerItem.key);
@@ -173,10 +172,10 @@ Jt76EmberBase.SingleItemController = Ember.ObjectController.extend({
             var self = this;
             var model = this.get("model");
             model.save().then(function (response) {
-                Jt76EmberBase.Common.create().log("This item has been saved.", model, "info", true);
+                Jt76EmberBase.Common.log("This item has been saved.", model, "info", true);
                 self.gotoParentRoute();
             }, function(errorResponse) {
-                Jt76EmberBase.Common.create().log("Unable to save record: ", errorResponse, "error", true);
+                Jt76EmberBase.Common.log("Unable to save record: ", errorResponse, "error", true);
             });
         },
         deleteItem: function () {
@@ -184,11 +183,11 @@ Jt76EmberBase.SingleItemController = Ember.ObjectController.extend({
             var model = this.get("model");
             model.destroyRecord().then(function (response) {
                 if (response) {
-                    Jt76EmberBase.Common.create().log("This item has been deleted.", model, "info", true);
+                    Jt76EmberBase.Common.log("This item has been deleted.", model, "info", true);
                     self.gotoParentRoute();
                 }
                 else {
-                    Jt76EmberBase.Common.create().log("Unable to delete record.", model, "error", true);
+                    Jt76EmberBase.Common.log("Unable to delete record.", model, "error", true);
                 }
             });
         }
