@@ -15,8 +15,8 @@
                     <form name="Form" novalidate>
                         <div class="form-group">
                             <label>Message</label>
-                            {{textarea valueBinding="strLogMessage" class="form-control" placeHolder="Enter Message" rows="6"}}
-                            <span class="jt76-error">{{RequiredLength strLogMessage 10 255}}</span>
+                            {{textarea valueBinding="strLogMessage" class="form-control" placeholder="Enter Message" rows="6"}}
+                            <span class="jt76-error">{{RequiredLength strLogMessage 10 2000}}</span>
                         </div>
                     </form>
 

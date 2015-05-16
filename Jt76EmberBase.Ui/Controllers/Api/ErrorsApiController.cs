@@ -41,7 +41,6 @@ namespace Jt76EmberBase.Ui.Controllers.Api
             //var requestUri = Request.RequestUri;
 
             var error = CreateJItem(model["error"]);
-
             return _viewModel.AddError(error) ? 
                 Request.CreateResponse(HttpStatusCode.Created, new { error }) : 
                 Request.CreateResponse(HttpStatusCode.BadRequest);

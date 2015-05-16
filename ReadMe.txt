@@ -1,6 +1,7 @@
 TODO-
 Finish out the email system and validations
-loading bar
+loading bar remove
+textarea spellcheck then losing focus causes isDirty?
 
 
 Note: If handlebars are changed the matching HandleBarsHelper nuget package must be installed

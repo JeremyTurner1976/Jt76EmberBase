@@ -24,11 +24,15 @@ Jt76EmberBase.SingleItemRoute = Ember.Route.extend({
     model: function (params) {
         if (params.id === "new")
             return this.store.createRecord(this.get("strModel"));
-        else
-            return this.store.find(this.get("strModel"), params.id);
+        else 
+            return this.store.find(this.get("strModel"), params.id || params).then(function(response) {
+                if (params.id && params)
+                    Jt76EmberBase.Common.create().log("Data pull.", response, "info");
+
+                return response;
+            });
     },
     setupController: function (controller, model) {
-        Jt76EmberBase.Common.create().log("Data pull.", model, "info");
         controller.set("model", model);
     },
     deactivate: function () {

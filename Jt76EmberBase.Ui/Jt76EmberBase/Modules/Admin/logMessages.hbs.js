@@ -2,7 +2,7 @@
   var stack1, lambda=this.lambda, escapeExpression=this.escapeExpression, helperMissing=helpers.helperMissing, buffer = "                <tr>\r\n                    <td class=\"col-sm-2\">\r\n                        <div class=\"jt76-multiline\">"
     + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.item : depth0)) != null ? stack1.strCreated : stack1), depth0))
     + "</div>\r\n                    </td>\r\n                    <td class=\"col-sm-10 jt76-no-select\">\r\n";
-  stack1 = ((helpers.view || (depth0 && depth0.view) || helperMissing).call(depth0, "Jt76EmberBase.ExpandingSingleItemView", {"name":"view","hash":{
+  stack1 = ((helpers.view || (depth0 && depth0.view) || helperMissing).call(depth0, "expandingSingleItem", {"name":"view","hash":{
     'nMaxLength': (160),
     'strText': (((stack1 = (depth0 != null ? depth0.item : depth0)) != null ? stack1.strLogMessage : stack1))
   },"fn":this.program(2, data),"inverse":this.noop,"data":data}));

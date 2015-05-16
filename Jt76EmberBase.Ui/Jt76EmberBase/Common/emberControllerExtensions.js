@@ -1,6 +1,6 @@
 ﻿/*_____________ARRAY CONTROLLER_____________*/
 Jt76EmberBase.ArrayController = Ember.ArrayController.extend({
-    nSearchDelayInSeconds: .5,
+    nSearchDelayInSeconds: .45,
     bForceRefresh: false,
     strToSearchFor: "",
     debouncedStrToSearchFor: "",
@@ -43,7 +43,7 @@ Jt76EmberBase.ArrayController = Ember.ArrayController.extend({
 
         mappedModel.forEach(function (item) {
             item.set("numericId", parseInt(item.id));
-            item.set("strCreated", common.longDateTimeFormat(item.get("dtCreated")));
+            item.set("strCreated", common.shortDateTimeFormat(item.get("dtCreated")));
             var strToSearchAgainst = "";
             self.get("displayProperties").forEach(function (innerItem) {
                 strToSearchAgainst += item.get(innerItem.key);
@@ -144,7 +144,7 @@ Jt76EmberBase.ArrayController = Ember.ArrayController.extend({
         },
 
         newItem: function () {
-            this.transitionTo(this.get("strNewLink"), "new");
+            this.transitionToRoute(this.get("strNewLink"), "new");
         }
     }
 });
@@ -154,6 +154,12 @@ Jt76EmberBase.SingleItemController = Ember.ObjectController.extend({
     bNew: Ember.computed.alias("model.isNew"),
     bChanged: Ember.computed.alias("model.isDirty"),
     bInValid: false,
+
+    gotoParentRoute: function () {
+        var parentController = this.get("controllers." + this.get("strParentController"));
+        parentController.set("bForceRefresh", true);
+        this.transitionToRoute(this.get("strParentRoute"));
+    },
 
     actions: {
         goBack: function () {
@@ -167,15 +173,10 @@ Jt76EmberBase.SingleItemController = Ember.ObjectController.extend({
             var self = this;
             var model = this.get("model");
             model.save().then(function (response) {
-                if (response) {
-                    var controller = self.controllerFor(self.get("strParentRoute"));
-                    controller.set("bForceRefresh", true);
-                    Jt76EmberBase.Common.create().log("This item has been saved.", model, "info", true);
-                    self.transitionToRoute(self.get("strParentRoute"));
-                }
-                else {
-                    Jt76EmberBase.Common.create().log("Unable to save record: ", model, "error", true);
-                }
+                Jt76EmberBase.Common.create().log("This item has been saved.", model, "info", true);
+                self.gotoParentRoute();
+            }, function(errorResponse) {
+                Jt76EmberBase.Common.create().log("Unable to save record: ", errorResponse, "error", true);
             });
         },
         deleteItem: function () {
@@ -183,15 +184,11 @@ Jt76EmberBase.SingleItemController = Ember.ObjectController.extend({
             var model = this.get("model");
             model.destroyRecord().then(function (response) {
                 if (response) {
-                    var strErrorRoute = self.get("strParentRoute");
-                    var controller = self.controllerFor(strErrorRoute);
-                    controller.set("bForceRefresh", true);
                     Jt76EmberBase.Common.create().log("This item has been deleted.", model, "info", true);
-                    self.transitionToRoute(strErrorRoute);
+                    self.gotoParentRoute();
                 }
                 else {
                     Jt76EmberBase.Common.create().log("Unable to delete record.", model, "error", true);
-                    alert("Unable to save this item.");
                 }
             });
         }

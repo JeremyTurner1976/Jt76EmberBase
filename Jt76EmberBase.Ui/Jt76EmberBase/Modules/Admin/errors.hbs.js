@@ -6,7 +6,7 @@
   if (stack1 != null) { buffer += stack1; }
   return buffer + "\r\n                    </td>\r\n                    <td class=\"col-sm-3 col-md-3 hidden-xs\">\r\n                        <div class=\"jt76-multiline\">"
     + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.item : depth0)) != null ? stack1.strSource : stack1), depth0))
-    + " "
+    + "<br />"
     + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.item : depth0)) != null ? stack1.strErrorLevel : stack1), depth0))
     + "</div>\r\n                    </td>\r\n                    <td class=\"col-sm-3 col-md-3 hidden-xs hidden-sm hidden-md\">\r\n                        <div class=\"jt76-multiline\">"
     + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.item : depth0)) != null ? stack1.strAdditionalInformation : stack1), depth0))

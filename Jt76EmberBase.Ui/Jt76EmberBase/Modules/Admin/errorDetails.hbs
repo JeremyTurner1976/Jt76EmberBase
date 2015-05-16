@@ -15,27 +15,27 @@
                     <form name="Form" novalidate>
                         <div class="form-group">
                             <label>Message</label>
-                            {{input value=strMessage class="form-control" placeHolder="Enter Message"}}
+                            {{input value=strMessage class="form-control" placeholder="Enter Message"}}
                             <span class="jt76-error">{{RequiredLength strMessage 10 255}}</span>
                         </div>
                         <div class="form-group">
                             <label>Level</label>
-                            {{input value=strErrorLevel class="form-control" placeHolder="Enter Error Level"}}
+                            {{input value=strErrorLevel class="form-control" placeholder="Enter Error Level"}}
                             <span class="jt76-error">{{Required strErrorLevel}}</span>
                         </div>
                         <div class="form-group">
                             <label>Source</label>
-                            {{input value=strSource class="form-control" placeHolder="Enter Source"}}
+                            {{input value=strSource class="form-control" placeholder="Enter Source"}}
                             <span class="jt76-error">{{RequiredLength strSource 5 255}}</span>
                         </div>
                         <div class="form-group">
                             <label>Additional Information</label>
-                            {{input value=strAdditionalInformation class="form-control" placeHolder="Enter Additional Information"}}
+                            {{input value=strAdditionalInformation class="form-control" placeholder="Enter Additional Information"}}
                             <span class="jt76-error">{{RequiredLength strAdditionalInformation 5 255}}</span>
                         </div>
                         <div class="form-group">
                             <label>Stack Trace</label>
-                            {{textarea valueBinding="strStackTrace" class="form-control" placeHolder="Enter Stack Trace" rows="6"}}
+                            {{textarea valueBinding="strStackTrace" class="form-control" placeholder="Enter Stack Trace" rows="6"}}
                             <span class="jt76-error">{{RequiredLength strStackTrace 5 4000}}</span>
                         </div>
                     </form>
