@@ -94,7 +94,6 @@ http://stackoverflow.com/questions/15235574/ember-data-reloading-content-ui-not-
 https://github.com/heartsentwined/ember-auth
 http://stackoverflow.com/questions/18863710/how-do-i-call-an-action-method-on-controller-from-the-outside-with-the-same-beh
 http://stackoverflow.com/questions/17434350/handling-server-side-validation-with-ember-data
-http://ember.zone/ember-application-initializers/
 
 
 File Work

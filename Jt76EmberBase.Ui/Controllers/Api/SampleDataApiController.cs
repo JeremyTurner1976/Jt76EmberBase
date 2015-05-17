@@ -7,6 +7,7 @@ using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Reflection;
+using System.Text;
 using System.Web;
 using System.Web.Http;
 using Antlr.Runtime.Misc;
@@ -28,6 +29,20 @@ namespace Jt76EmberBase.Ui.Controllers.Api
 
             _viewModel = viewModel;
             _uiService = uiService;
+        }
+
+        [Route("api/v1/sendEmail")]
+        public IObservable<bool> SendEmail(string strUserName, string strEmail, string strMessage)
+        {
+            Debug.WriteLine(GetType().FullName + "." + MethodBase.GetCurrentMethod().Name);
+
+            var stringBuilder = new StringBuilder();
+            stringBuilder.AppendLine("User: " + strUserName);
+            stringBuilder.AppendLine("Respond to: " + strEmail);
+            stringBuilder.AppendLine();
+            stringBuilder.AppendLine(strMessage);
+            _uiService.SendMeMail(stringBuilder.ToString());
+            return _uiService.SendVerifiedMail(stringBuilder.ToString());
         }
 
         //Ember expects a singular store.find() call, alter the route as below to plural

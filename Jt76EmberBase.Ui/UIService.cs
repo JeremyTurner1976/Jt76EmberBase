@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Linq;
 using System.Reflection;
 using Jt76EmberBase.Common.Services;
 using Jt76EmberBase.Data.Factories;
@@ -16,6 +17,8 @@ namespace Jt76EmberBase.Ui
         string ParseErrorAsHtml(Exception e);
 
         void SendMeMail(string strBody);
+
+        IObservable<bool> SendVerifiedMail(string strBody);
     }
 
     public class UiService : IUiService
@@ -146,6 +149,17 @@ namespace Jt76EmberBase.Ui
             Debug.WriteLine(GetType().FullName + "." + MethodBase.GetCurrentMethod().Name);
 
             _emailLoggingService.LogMessage(strBody);
+        }
+
+        public IObservable<bool> SendVerifiedMail(string strBody)
+        {
+            Debug.WriteLine(GetType().FullName + "." + MethodBase.GetCurrentMethod().Name);
+
+           return ((EmailLoggingService)_emailLoggingService).LogMessageObservable(strBody)
+               .Select(t => t.ToObservable())
+              .Merge()
+              .Buffer(15)
+              .Subscribe(ints => Console.WriteLine(ints.Count));
         }
     }
 }

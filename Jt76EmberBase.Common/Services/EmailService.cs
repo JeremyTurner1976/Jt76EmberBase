@@ -17,8 +17,8 @@ namespace Jt76EmberBase.Common.Services
     //interface
     public interface IEmailService
     {
-        Task<bool[]> SendMail(string strTo, string strSubject, string strBody);
-        Task<bool[]> SendMeMail(string strBody);
+        Task<IEnumerable<bool>> SendMail(string strTo, string strSubject, string strBody);
+        Task<IEnumerable<bool>> SendMeMail(string strBody);
     }
 
     //ConfigEmailService
@@ -49,7 +49,7 @@ namespace Jt76EmberBase.Common.Services
         /// <param name="strSubject">Email Subject</param>
         /// <param name="strBody">Email Body</param>
         /// <returns>An awaitable bool array</returns>
-        public async Task<bool[]> SendMail(string strTo, string strSubject, string strBody)
+        public async Task<IEnumerable<bool>> SendMail(string strTo, string strSubject, string strBody)
         {
             Debug.WriteLine(GetType().FullName + "." + MethodBase.GetCurrentMethod().Name);
 
@@ -83,7 +83,7 @@ namespace Jt76EmberBase.Common.Services
         /// </summary>
         /// <param name="strBody">Email Body</param>
         /// <returns>An awaitable bool array</returns>
-        public Task<bool[]> SendMeMail(string strBody)
+        public Task<IEnumerable<bool>> SendMeMail(string strBody)
         {
             var strMailToMeAddress = _configService.GetAppSetting(ConfigService.JtAppSettings.PrimaryDeveloperEmail.ToNameString());
             return SendMail(strMailToMeAddress, StrMailToMeSubject, strBody);

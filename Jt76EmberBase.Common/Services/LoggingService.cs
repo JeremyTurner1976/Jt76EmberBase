@@ -1,7 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.Reflection;
 using System.Text;
+using System.Threading.Tasks;
 using Jt76EmberBase.Common.ObjectExtensions;
 using Jt76EmberBase.Data.Database.ModelRepositories;
 using Jt76EmberBase.Data.Factories;
@@ -41,7 +44,6 @@ namespace Jt76EmberBase.Common.Services
             sb.AppendLine(ErrorFactory.GetErrorAsString(e));
 
             _emailService.SendMeMail(sb.ToString());
-            //async can wait for !Result.Contains(false) if a valid return is wanted
             return true;
         }
 
@@ -50,8 +52,15 @@ namespace Jt76EmberBase.Common.Services
             Debug.WriteLine(GetType().FullName + "." + MethodBase.GetCurrentMethod().Name);
 
             _emailService.SendMeMail(strLogMessage);
-            //async can wait for !Result.Contains(false) if a valid return is wanted
             return true;
+        }
+
+        public Task<IEnumerable<bool>> LogMessageObservable(string strLogMessage)
+        {
+            Debug.WriteLine(GetType().FullName + "." + MethodBase.GetCurrentMethod().Name);
+
+            //async can wait for !Result.Contains(false) if a valid return is wanted
+            return _emailService.SendMeMail(strLogMessage);
         }
     }
 

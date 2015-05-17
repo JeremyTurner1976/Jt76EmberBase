@@ -27,3 +27,10 @@ Ember.Handlebars.registerBoundHelper("RequiredLength", function (strValue, nMinL
     else
         return "Required";
 });
+
+Ember.Handlebars.registerBoundHelper("EmailField", function (strValue, bRequired) {
+    if (strValue && strValue.length > 0) 
+        return Jt76EmberBase.Common.isValidEmail(strValue) ? "" : "Not a Valid Email";
+    else
+        return (bRequired === "true") ? "Required" : "";
+});
