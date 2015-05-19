@@ -24,6 +24,7 @@
     },
 
     //output helpers
+    //strings
     paddedStringFormat: function(strValue, nDesiredLength, character, bPadLeft) {
         var strPadding = Array(nDesiredLength).join(character || " ");
         if (typeof strValue === "undefined") 
@@ -36,6 +37,8 @@
         }
 
     },
+
+    //dates and times
     longDateTimeFormat: function (dtInput) {
         var localValue = moment.utc(dtInput).toDate();
         var formattedValue = moment(localValue).format("MMMM Do YYYY, h:mm:ss a");
@@ -131,7 +134,6 @@
         }
     },
 
-    //common UI functions
     scrollbarWidth: function () {
         var $inner = jQuery("<div style=\"width: 100%; height:200px;\">test</div>"),
             $outer = jQuery("<div style=\"width:200px;height:150px; position: absolute; top: 0; left: 0; visibility: hidden; overflow:hidden;\"></div>").append($inner),

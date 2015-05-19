@@ -17,8 +17,6 @@ namespace Jt76EmberBase.Ui
         string ParseErrorAsHtml(Exception e);
 
         void SendMeMail(string strBody);
-
-        IObservable<bool> SendVerifiedMail(string strBody);
     }
 
     public class UiService : IUiService
@@ -79,10 +77,10 @@ namespace Jt76EmberBase.Ui
         public bool HandleError(Exception e, ErrorLevels errorLevel = ErrorLevels.Default,
             string strAdditionalInformation = "Default Error Additional Information")
         {
-            string strMethodName = GetType().FullName + "." + MethodBase.GetCurrentMethod().Name;
+            var strMethodName = GetType().FullName + "." + MethodBase.GetCurrentMethod().Name;
             Debug.WriteLine(strMethodName);
 
-            string strException = "Default Exception String in " + strMethodName;
+            var strException = "Default Exception String in " + strMethodName;
 
             try
             {
@@ -149,17 +147,6 @@ namespace Jt76EmberBase.Ui
             Debug.WriteLine(GetType().FullName + "." + MethodBase.GetCurrentMethod().Name);
 
             _emailLoggingService.LogMessage(strBody);
-        }
-
-        public IObservable<bool> SendVerifiedMail(string strBody)
-        {
-            Debug.WriteLine(GetType().FullName + "." + MethodBase.GetCurrentMethod().Name);
-
-           return ((EmailLoggingService)_emailLoggingService).LogMessageObservable(strBody)
-               .Select(t => t.ToObservable())
-              .Merge()
-              .Buffer(15)
-              .Subscribe(ints => Console.WriteLine(ints.Count));
         }
     }
 }

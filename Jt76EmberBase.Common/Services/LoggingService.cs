@@ -54,14 +54,6 @@ namespace Jt76EmberBase.Common.Services
             _emailService.SendMeMail(strLogMessage);
             return true;
         }
-
-        public Task<IEnumerable<bool>> LogMessageObservable(string strLogMessage)
-        {
-            Debug.WriteLine(GetType().FullName + "." + MethodBase.GetCurrentMethod().Name);
-
-            //async can wait for !Result.Contains(false) if a valid return is wanted
-            return _emailService.SendMeMail(strLogMessage);
-        }
     }
 
     //DbLoggingService

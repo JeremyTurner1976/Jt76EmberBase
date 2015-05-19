@@ -1,7 +1,5 @@
 TODO-
-Finish out the email system and validations
-geolocation for webapi and city output on dashboard
-loading bar remove
+use new geolocation object to get the weather specific to the geoLocation
 textarea spellcheck then losing focus causes isDirty?
 
 

@@ -18,6 +18,13 @@ using PdfSharp.Pdf;
 
 namespace Jt76EmberBase.Ui.Controllers.Api
 {
+    public class Email
+    {
+        public string StrUserName { get; set; }
+        public string StrUserEmail { get; set; }
+        public string StrUserMessage { get; set; }
+    }
+
     public class SampleDataApiController : ApiController
     {
         private readonly IUiService _uiService;
@@ -32,17 +39,18 @@ namespace Jt76EmberBase.Ui.Controllers.Api
         }
 
         [Route("api/v1/sendEmail")]
-        public IObservable<bool> SendEmail(string strUserName, string strEmail, string strMessage)
-        {
+        public HttpResponseMessage SendEmail([FromBody] Email email)
+        { 
             Debug.WriteLine(GetType().FullName + "." + MethodBase.GetCurrentMethod().Name);
 
             var stringBuilder = new StringBuilder();
-            stringBuilder.AppendLine("User: " + strUserName);
-            stringBuilder.AppendLine("Respond to: " + strEmail);
+            stringBuilder.AppendLine("User: " + email.StrUserName);
+            stringBuilder.AppendLine("Respond to: " + email.StrUserEmail);
             stringBuilder.AppendLine();
-            stringBuilder.AppendLine(strMessage);
+            stringBuilder.AppendLine(email.StrUserMessage);
+
             _uiService.SendMeMail(stringBuilder.ToString());
-            return _uiService.SendVerifiedMail(stringBuilder.ToString());
+            return new HttpResponseMessage(HttpStatusCode.OK);
         }
 
         //Ember expects a singular store.find() call, alter the route as below to plural
@@ -92,7 +100,7 @@ namespace Jt76EmberBase.Ui.Controllers.Api
 
                 return new { weatherItems };
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 //work environment proxy issues
                 throw new HttpResponseException(HttpStatusCode.InternalServerError);
@@ -122,7 +130,7 @@ namespace Jt76EmberBase.Ui.Controllers.Api
                 };
                 return result;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw new HttpResponseException(HttpStatusCode.InternalServerError);
             }
@@ -163,7 +171,7 @@ namespace Jt76EmberBase.Ui.Controllers.Api
                 };
                 return result;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw new HttpResponseException(HttpStatusCode.InternalServerError);
             }

@@ -18,8 +18,20 @@ Jt76EmberBase.IndexContactController = Ember.ObjectController.extend({
     }.property("strUserName", "strUserMessage"),
 
     actions: {
-        send: function() {
-            
+        send: function () {
+            var self = this;
+            var email = {
+                strUserName: self.get("strUserName"),
+                strUserEmail: self.get("strUserEmail"),
+                strUserMessage: self.get("strUserMessage")
+            }
+
+            $.post("api/v1/sendEmail", email).then(function (response) {
+                Jt76EmberBase.Common.log("Message sent, thank you for your input.", response, "info", false);
+            },
+            function (errorResponse) {
+                Jt76EmberBase.Common.log("Unable to send message. Please contact customer support.", errorResponse, "error", true);
+            });
         }
     }
 });

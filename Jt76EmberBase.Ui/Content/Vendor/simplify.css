@@ -305,7 +305,7 @@ a.list-group-item.active:focus {
 }
 .top-nav .top-nav-inner {
   position: relative;
-  border-top: 2px solid #2baab1;
+  /*border-top: 2px solid #2baab1;*/
 }
 .top-nav .top-nav-inner:before,
 .top-nav .top-nav-inner:after {
