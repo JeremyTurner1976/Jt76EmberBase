@@ -20,6 +20,7 @@ Ember.Application.initializer({
         //setup common utility classes here
         Jt76EmberBase.Common = Jt76EmberBase.CommonFunctions.create();
         Jt76EmberBase.CONFIG = Jt76EmberBase.ConfigDeclarations.create();
+        Jt76EmberBase.Location = Jt76EmberBase.Jt76GeoLocation.create();
 
         Ember.Logger.info("Application Initialized.");
     }

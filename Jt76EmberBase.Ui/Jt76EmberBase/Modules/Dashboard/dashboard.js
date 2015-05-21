@@ -3,31 +3,46 @@
 });
 
 Jt76EmberBase.IndexDashboardRoute = Jt76EmberBase.ArrayRoute.extend({
-    strModel: "weatherItem"
+    strModel: "weatherItem",
+    model: function () {
+        var self = this;
+        var promise = Jt76EmberBase.Location.getDataPromise();
+        return promise.then(function (geoLocation) {
+            if (self.get("controller.bForceRefresh") === false) {
+                return self.store.all(self.get("strModel")).toArray();
+            } else {
+                self.controllerFor("index").set("bIsLoaded", false);
+                self.store.unloadAll(self.get("strModel"));
+                var coordinates = { dLatitude: geoLocation.coords.latitude, dLongitude: geoLocation.coords.longitude };
+                return self.store.find(self.get("strModel"), coordinates).then(function (response) {
+                    Jt76EmberBase.Common.log("Data pull.", response, "info", false);
+                    return response.toArray();
+                },
+                function (errorResponse) {
+                    Jt76EmberBase.Common.log("Unable to load item  Lat:" + geoLocation.coords.latitude + ", Long: " + geoLocation.coords.longitude + ".", errorResponse, "error", true);
+                });
+            }
+        }, function (errorResponse) {
+            Jt76EmberBase.Common.log("Unable to load geoLocation for this device.", errorResponse, "error", true);
+        });
+    }
 });
 
 Jt76EmberBase.IndexDashboardController = Jt76EmberBase.ArrayController.extend({
-    init: function() {
-        this._super();
-        var newGeoLocation = Jt76EmberBase.Jt76GeoLocation.create();
-        this.set("geoLocation", newGeoLocation);
-    },
     strPageTitle: "Dashboard",
     strSubHeader: function () {
-        return "Welcome Back, <strong>Jeremy Turner</strong> , <i class='fa fa-map-marker text-danger'></i> " + this.get("strLocation");
-    }.property("strLocation"),
-    locationWatcher: function () {
-        var self = this;
-        var geoLocation = this.get("geoLocation").get("currentLocation")
-        var strUrl = "http://maps.googleapis.com/maps/api/geocode/json?latlng=" + geoLocation.coords.latitude + "," + geoLocation.coords.longitude + "&sensor=true";
-        return $.get(strUrl).then(function (data) {
-            self.set("strLocation", data["results"][1].address_components[0].long_name);
-        });
+        return "Welcome Back, <strong>Jeremy Turner</strong>&nbsp;&nbsp;<i class='fa fa-map-marker text-danger'></i> "
+            + this.get("strCity");
+    }.property("strCity"),
+    strCity: "",
+    setStrCity: function () {
+        this.set("strCity", this.get("geoLocation").get("strCity"));
     }.observes("geoLocation.bLoaded"),
-    strLocation: "Loading",
     geoLocation: {},
     mappedModel: function () {
         var self = this;
+        var geoLocation = Jt76EmberBase.Location;
+        self.set("geoLocation", geoLocation);
         var model = self.get("model")[0];
         var dailyWeather = model.get("dailyWeather");
         var dtToday = moment().format("dddd");

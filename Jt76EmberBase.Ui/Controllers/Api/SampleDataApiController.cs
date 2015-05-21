@@ -53,9 +53,15 @@ namespace Jt76EmberBase.Ui.Controllers.Api
             return new HttpResponseMessage(HttpStatusCode.OK);
         }
 
+        public class LocationCoordinates
+        {
+            public double DLatitude { get; set; }
+            public double DLongitude { get; set; }
+        }
+
         //Ember expects a singular store.find() call, alter the route as below to plural
         [Route("api/v1/weatherItems")]
-        public object GetWeather(float fLatitude = 47.4886f, float fLongitude = -117.5786f)
+        public object GetWeather(double dLatitude = 47.4886, double dLongitude = -117.5786)
         {
             Debug.WriteLine(GetType().FullName + "." + MethodBase.GetCurrentMethod().Name);
 
@@ -65,46 +71,40 @@ namespace Jt76EmberBase.Ui.Controllers.Api
             //Credit us with a “Powered by Forecast” badge that links to http://forecast.io/ wherever you display data from the API.
             //https://api.forecast.io/forecast/ec8fab02bc1bf58c04e74c58bc2c3525/47.4886,-117.5786
 
-            try
-            {
-                //https://github.com/f0xy/forecast.io-csharp  // API Key, Lat, Long, Unit
-                var request = new ForecastIORequest("ec8fab02bc1bf58c04e74c58bc2c3525", fLatitude, fLongitude, Unit.us);
-                var response = request.Get();
+            //https://github.com/f0xy/forecast.io-csharp  // API Key, Lat, Long, Unit
+            var request = new ForecastIORequest("ec8fab02bc1bf58c04e74c58bc2c3525", (float)dLatitude, (float)dLongitude, Unit.us);
+            var response = request.Get();
 
-                var strSummary = response.daily.summary;
-                var currently = response.currently;
+            var strSummary = response.daily.summary;
+            var currently = response.currently;
 
-                List<DailyForecast> tempList = new ListStack<DailyForecast>();
-                tempList.AddRange(response.daily.data);
+            List<DailyForecast> tempList = new ListStack<DailyForecast>();
+            tempList.AddRange(response.daily.data);
+            if (!tempList.Any())
+                return new HttpResponseException(HttpStatusCode.BadRequest);
 
-                //Ember Data expects a JSon array and an id in all returns
-                const int id = 1;
-                var currentWeather = new { currently.summary, currently.icon, currently.temperature };
-                var dailyWeather =
-                    tempList.AsQueryable()
-                        .Select(
-                            x =>
-                                new
-                                {
-                                    x.summary,
-                                    x.icon,
-                                    x.temperatureMin,
-                                    x.temperatureMinTime,
-                                    x.temperatureMax,
-                                    x.temperatureMaxTime
-                                })
-                        .ToList();
+            //Ember Data expects a JSon array and an id in all returns
+            const int id = 1;
+            var currentWeather = new { currently.summary, currently.icon, currently.temperature };
+            var dailyWeather =
+                tempList.AsQueryable()
+                    .Select(
+                        x =>
+                            new
+                            {
+                                x.summary,
+                                x.icon,
+                                x.temperatureMin,
+                                x.temperatureMinTime,
+                                x.temperatureMax,
+                                x.temperatureMaxTime
+                            })
+                    .ToList();
 
-                var data = new { id, strSummary, currentWeather, dailyWeather };
-                var weatherItems = new List<object>() { data }.AsEnumerable();
+            var data = new { id, strSummary, currentWeather, dailyWeather };
+            var weatherItems = new List<object>() { data }.AsEnumerable();
 
-                return new { weatherItems };
-            }
-            catch (Exception)
-            {
-                //work environment proxy issues
-                throw new HttpResponseException(HttpStatusCode.InternalServerError);
-            }
+            return new { weatherItems };
         }
 
 
