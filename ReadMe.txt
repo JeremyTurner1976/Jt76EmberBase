@@ -1,9 +1,28 @@
 TODO-
-use new geolocation object to get the weather specific to the geoLocation
-textarea spellcheck then losing focus causes isDirty?
+textarea spellcheck then losing focus causes isDirty - override?
+decorate invalid controls as an additional identifier?
 
+  <system.net>
+    <defaultProxy>
+      <proxy
+        usesystemdefault="True"
+        proxyaddress="http://someProxy.someDomain.com:somePort"
+        bypassonlocal="False"/>
+      <bypasslist>
+        <add address="forecast.io\[a-z]" />
+      </bypasslist>
+    </defaultProxy>
+  </system.net>
 
-Note: If handlebars are changed the matching HandleBarsHelper nuget package must be installed
+import an .edmx file into the Data project to go database first, 
+this is also a fast way to get objects for importing existing databases into code first solutions - 
+	1. Import the edmx file, and grab the row class objects created when drilling into the edmx properties
+	2. Remove anything that is not a pure property from this code and copy paste to a new class
+	3. Create a DBSet of that object in the new dbContext
+	4. Add Database.SetInitializer<someDBContext>(null); into App_Start in Global Asax
+	5. Autofac inject the Context and any new repositorys in the App_Start Autofac Config file
+
+Note: If handlebar js versions are changed the matching HandleBarsHelper nuget package must be installed
 
 http://Jt76EmberBase/Help will load the web api help area (VS Template item)
 
