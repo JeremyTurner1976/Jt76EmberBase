@@ -45,7 +45,19 @@
   },"data":data})))
     + "\r\n                            <span class=\"jt76-error\">"
     + escapeExpression(((helpers.RequiredLength || (depth0 && depth0.RequiredLength) || helperMissing).call(depth0, (depth0 != null ? depth0.strStackTrace : depth0), 5, 4000, {"name":"RequiredLength","hash":{},"data":data})))
-    + "</span>\r\n                        </div>\r\n                    </form>\r\n\r\n                    "
+    + "</span>\r\n                        </div>\r\n                    </form>\r\n\r\n                    <button "
+    + escapeExpression(((helpers.action || (depth0 && depth0.action) || helperMissing).call(depth0, "prevItem", {"name":"action","hash":{},"data":data})))
+    + "\r\n                            "
+    + escapeExpression(((helpers['bind-attr'] || (depth0 && depth0['bind-attr']) || helperMissing).call(depth0, {"name":"bind-attr","hash":{
+    'class': (":btn :btn-info :btn-sm :jt76-padding-sides-sm :form-inline")
+  },"data":data})))
+    + ">\r\n                        <i class=\"fa fa-backward\"></i>&nbsp;Previous Item\r\n                    </button>\r\n                    <button "
+    + escapeExpression(((helpers.action || (depth0 && depth0.action) || helperMissing).call(depth0, "nextItem", {"name":"action","hash":{},"data":data})))
+    + "\r\n                            "
+    + escapeExpression(((helpers['bind-attr'] || (depth0 && depth0['bind-attr']) || helperMissing).call(depth0, {"name":"bind-attr","hash":{
+    'class': (":btn :btn-info :btn-sm :jt76-padding-sides-sm :form-inline")
+  },"data":data})))
+    + ">\r\n                        <i class=\"fa fa-backward\"></i>&nbsp;Next Item\r\n                    </button>\r\n\r\n                    "
     + escapeExpression(((helpers.partial || (depth0 && depth0.partial) || helperMissing).call(depth0, "singleItemButtonSet", {"name":"partial","hash":{},"data":data})))
     + "\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>\r\n\r\n\r\n\r\n\r\n";
 },"useData":true});

@@ -40,6 +40,15 @@
                         </div>
                     </form>
 
+                    <button {{action "prevItem"}}
+                            {{bind-attr class=":btn :btn-info :btn-sm :jt76-padding-sides-sm :form-inline"}}>
+                        <i class="fa fa-backward"></i>&nbsp;Previous Item
+                    </button>
+                    <button {{action "nextItem"}}
+                            {{bind-attr class=":btn :btn-info :btn-sm :jt76-padding-sides-sm :form-inline"}}>
+                        <i class="fa fa-backward"></i>&nbsp;Next Item
+                    </button>
+
                     {{partial "singleItemButtonSet"}}
                 </div>
             </div>

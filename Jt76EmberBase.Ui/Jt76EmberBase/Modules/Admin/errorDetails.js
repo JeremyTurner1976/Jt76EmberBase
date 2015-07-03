@@ -20,5 +20,27 @@ Jt76EmberBase.IndexAdminErrorDetailsController = Jt76EmberBase.SingleItemControl
                 "model.strSource",
                 "model.strErrorLevel",
                 "model.strAdditionalInformation",
-                "model.strStackTrace")
+                "model.strStackTrace"),
+
+
+    needs: ["indexAdminErrors"],
+    actions: {
+        prevItem: function() {
+            return this.advanceItem(-1);
+        },
+        nextItem: function() {
+            //alert(this.index);
+            return this.advanceItem(1);
+        }
+    },
+    advanceItem: function(delta) {
+        var items = this.get("controllers.indexAdminErrors");
+        var length = items.get("length");
+        var index = (items.indexOf(this.get("model")) + delta + length) % length;
+        if (index === NaN || index === 0)
+            index = 1;
+
+        return this.transitionToRoute("index.admin.errorDetails", items.objectAt(index));
+    }
+
 });
